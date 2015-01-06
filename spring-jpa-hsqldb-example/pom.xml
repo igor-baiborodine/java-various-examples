@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>spring-jpa-hsqldb-example</groupId>
+    <groupId>java-various-examples</groupId>
     <artifactId>spring-jpa-hsqldb-example</artifactId>
     <version>1.0</version>
 
