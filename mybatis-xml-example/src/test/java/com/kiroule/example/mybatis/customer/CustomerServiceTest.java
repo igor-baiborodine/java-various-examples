@@ -19,7 +19,7 @@ public class CustomerServiceTest {
 
     @Test
     public void getCustomer_shouldReturnNullForZeroCustomerId() {
-        Customer customer = customerService.getCustomer(new Short("0"));
+        Customer customer = customerService.getCustomer((short) 0);
         assertNull("get customer failed - customer must be null", customer);
     }
 
@@ -32,7 +32,7 @@ public class CustomerServiceTest {
     @Test
     public void getCustomerRewardsReport_shouldReturnEmptyRewardsReport() {
         Byte minMonthlyPurchases = Byte.MAX_VALUE;
-        Double minDollarAmountPurchased = new Double("1000000.0");
+        Double minDollarAmountPurchased = 1000000.0;
         List<Customer> rewardsReport = customerService.getCustomerRewardsReport(
                 minMonthlyPurchases, minDollarAmountPurchased);
         assertNotNull("get customer rewards report failed - rewards report is null", rewardsReport);
