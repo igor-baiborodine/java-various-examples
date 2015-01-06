@@ -1,6 +1,6 @@
 .idea/
-target/
-out/
+*/target/
+*/out/
 
 *.class
 
