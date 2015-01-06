@@ -1,4 +1,4 @@
-mybatis-example
+mybatis-xml-example
 ---------------
 
 This is an example of using MyBatis SQL mapping framework for basic CRUD operations and
