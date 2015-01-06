@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+	<classPathEntry location="C:\Users\Farnsworth\.m2\repository\mysql\mysql-connector-java\5.1.27\mysql-connector-java-5.1.27.jar" />
+	
+  	<context id="sakila" >
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/sakila"
+                userId="testuser" password="123abc" />
+
+        <javaModelGenerator targetPackage="com.kiroule.example.mybatis.generator"
+                targetProject="C:\Users\Farnsworth\idea-projects\github\mybatis-example\src\main\java">
+            <!--DOES NOT WORK WITH MYSQL-->
+            <!--<property name="enableSubPackages" value="true" />-->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.kiroule.example.mybatis.generator"
+                targetProject="C:\Users\Farnsworth\idea-projects\github\mybatis-example\src\main\java">
+            <!--DOES NOT WORK WITH MYSQL-->
+            <!--<property name="enableSubPackages" value="true" />-->
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.kiroule.example.mybatis.generator"
+                targetProject="C:\Users\Farnsworth\idea-projects\github\mybatis-example\src\main\java"
+                type="XMLMAPPER">
+            <!--DOES NOT WORK WITH MYSQL-->
+            <!--<property name="enableSubPackages" value="true" />-->
+        </javaClientGenerator>
+
+        <table schema="sakila" tableName="address" />
+        <table schema="sakila" tableName="customer" />
+
+  	</context>
+</generatorConfiguration>

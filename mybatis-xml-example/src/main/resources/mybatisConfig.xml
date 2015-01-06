@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="DEV">
+		<environment id="DEV">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/sakila"/>
+				<property name="username" value="testuser"/>
+				<property name="password" value="123abc"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/kiroule/example/mybatis/customer/CustomerMapper.xml"/>
+		<mapper resource="com/kiroule/example/mybatis/address/AddressMapper.xml"/>
+	</mappers>
+
+</configuration>
