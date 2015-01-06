@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<dataset>
+  <book BOOK_ID="1" VERSION="0" ISBN="978-0-321-50362-6" AUTHOR="Steve Freeman, Nat Pryce" TITLE="Growing Object-Oriented Software, Guided by Tests" PRICE="50.0"/>
+</dataset>
