@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="org.mybatis.jpetstore" />
+
+    <context:property-placeholder location="classpath:db-test.properties" />
+
+    <bean id="mongoClient" class="com.mongodb.MongoClient" destroy-method="close">
+        <constructor-arg index="0" type="java.lang.String" value="${mongodb.host}" />
+        <constructor-arg index="1" type="int" value="${mongodb.port}" />
+    </bean>
+
+    <bean id="accountDao" class="org.mybatis.jpetstore.persistence.mongodb.AccountDao"
+          depends-on="mongoClient" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="${mongodb.db.collection.accounts}" />
+    </bean>
+
+    <bean id="categoryDao" class="org.mybatis.jpetstore.persistence.mongodb.CategoryDao"
+          depends-on="mongoClient" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="${mongodb.db.collection.categories}" />
+    </bean>
+
+    <bean id="productDao" class="org.mybatis.jpetstore.persistence.mongodb.ProductDao"
+          depends-on="mongoClient" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="${mongodb.db.collection.products}" />
+    </bean>
+
+    <bean id="itemDao" class="org.mybatis.jpetstore.persistence.mongodb.ItemDao"
+          depends-on="mongoClient" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="${mongodb.db.collection.items}" />
+    </bean>
+
+    <bean id="orderDao" class="org.mybatis.jpetstore.persistence.mongodb.OrderDao"
+          depends-on="mongoClient" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="${mongodb.db.collection.orders}" />
+    </bean>
+
+    <bean id="sequenceDao" class="org.mybatis.jpetstore.persistence.mongodb.SequenceDao"
+          depends-on="mongoClient" init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="${mongodb.db.collection.sequences}" />
+    </bean>
+
+    <bean id="initialDataLoadUtils" class="org.mybatis.jpetstore.util.InitialDataLoadUtils"
+          init-method="init">
+        <constructor-arg index="0" type="java.lang.String" value="db-test.properties" />
+    </bean>
+
+</beans>

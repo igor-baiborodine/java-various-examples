@@ -1,0 +1,54 @@
+{
+    "accounts" : [
+        {
+            "_id" : "brodriguez" ,
+            "username" : "brodriguez" ,
+            "password" : "beer" ,
+            "firstname" : "Bender" ,
+            "lastname" : "Rodriguez" ,
+            "email" : "bender.rodriguez@planet-express.earth" ,
+            "status" : "OK" ,
+            "address" : {
+                "address1" : "101 Robot Arms Ave." ,
+                "address2" : "#901" ,
+                "city" : "New New York City" ,
+                "state" : "NY" ,
+                "zip" : "01234" ,
+                "country" : "Earth" ,
+                "phone" : "0123456789"
+            } ,
+            "profile" : {
+                "fav_category" : "DOGS" ,
+                "lang_pref" : "Martian" ,
+                "list_opt" : "true" ,
+                "banner_opt" : "true" ,
+                "banner_name" : "<image src=\"../images/banner_dogs.gif\">"
+            }
+        },
+        {
+            "_id" : "pfry" ,
+            "username" : "pfry" ,
+            "password" : "slurm" ,
+            "firstname" : "Philip" ,
+            "lastname" : "Fry" ,
+            "email" : "philip.fry@planet-express.earth" ,
+            "status" : "OK" ,
+            "address" : {
+                "address1" : "101 Robot Arms Ave." ,
+                "address2" : "#901" ,
+                "city" : "New New York City" ,
+                "state" : "NY" ,
+                "zip" : "01234" ,
+                "country" : "Earth" ,
+                "phone" : "0123456789"
+            } ,
+            "profile" : {
+                "fav_category" : "CATS" ,
+                "lang_pref" : "AL2" ,
+                "list_opt" : "true" ,
+                "banner_opt" : "true" ,
+                "banner_name" : "<image src=\"../images/banner_cats.gif\">"
+            }
+        }
+    ]
+}

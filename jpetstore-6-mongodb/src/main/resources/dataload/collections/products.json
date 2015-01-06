@@ -1,0 +1,117 @@
+{
+    "products" : [
+        {
+            "_id" : "FI-SW-01",
+            "product_id" : "FI-SW-01",
+            "category_id" : "FISH",
+            "name" : "Angelfish",
+            "description" : "<image src='../images/fish1.gif'>Salt Water fish from Australia"
+        },
+        {
+            "_id" : "FI-SW-02",
+            "product_id" : "FI-SW-02",
+            "category_id" : "FISH",
+            "name" : "Tiger Shark",
+            "description" : "<image src='../images/fish4.gif'>Salt Water fish from Australia"
+        },
+        {
+            "_id" : "FI-FW-01",
+            "product_id" : "FI-FW-01",
+            "category_id" : "FISH",
+            "name" : "Koi",
+            "description" : "<image src='../images/fish3.gif'>Fresh Water fish from Japan"
+        },
+        {
+            "_id" : "FI-FW-02",
+            "product_id" : "FI-FW-02",
+            "category_id" : "FISH",
+            "name" : "Goldfish",
+            "description" : "<image src='../images/fish2.gif'>Fresh Water fish from China"
+        },
+        {
+            "_id" : "K9-BD-01",
+            "product_id" : "K9-BD-01",
+            "category_id" : "DOGS",
+            "name" : "Bulldog",
+            "description" : "<image src='../images/dog2.gif'>Friendly dog from England"
+        },
+        {
+            "_id" : "K9-PO-02",
+            "product_id" : "K9-PO-02",
+            "category_id" : "DOGS",
+            "name" : "Poodle",
+            "description" : "<image src='../images/dog6.gif'>Cute dog from France"
+        },
+        {
+            "_id" : "K9-DL-01",
+            "product_id" : "K9-DL-01",
+            "category_id" : "DOGS",
+            "name" : "Dalmation",
+            "description" : "<image src='../images/dog5.gif'>Great dog for a Fire Station"
+        },
+        {
+            "_id" : "K9-RT-01",
+            "product_id" : "K9-RT-01",
+            "category_id" : "DOGS",
+            "name" : "Golden Retriever",
+            "description" : "<image src='../images/dog1.gif'>Great family dog"
+        },
+        {
+            "_id" : "K9-RT-02",
+            "product_id" : "K9-RT-02",
+            "category_id" : "DOGS",
+            "name" : "Labrador Retriever",
+            "description" : "<image src='../images/dog5.gif'>Great hunting dog"
+        },
+        {
+            "_id" : "K9-CW-01",
+            "product_id" : "K9-CW-01",
+            "category_id" : "DOGS",
+            "name" : "Chihuahua",
+            "description" : "<image src='../images/dog4.gif'>Great companion dog"
+        },
+        {
+            "_id" : "RP-SN-01",
+            "product_id" : "RP-SN-01",
+            "category_id" : "REPTILES",
+            "name" : "Rattlesnake",
+            "description" : "<image src='../images/snake1.gif'>Doubles as a watch dog"
+        },
+        {
+            "_id" : "RP-LI-02",
+            "product_id" : "RP-LI-02",
+            "category_id" : "REPTILES",
+            "name" : "Iguana",
+            "description" : "<image src='../images/lizard1.gif'>Friendly green friend"
+        },
+        {
+            "_id" : "FL-DSH-01",
+            "product_id" : "FL-DSH-01",
+            "category_id" : "CATS",
+            "name" : "Manx",
+            "description" : "<image src='../images/cat2.gif'>Great for reducing mouse populations"
+        },
+        {
+            "_id" : "FL-DLH-02",
+            "product_id" : "FL-DLH-02",
+            "category_id" : "CATS",
+            "name" : "Persian",
+            "description" : "<image src='../images/cat1.gif'>Friendly house cat, doubles as a princess"
+        },
+        {
+            "_id" : "AV-CB-01",
+            "product_id" : "AV-CB-01",
+            "category_id" : "BIRDS",
+            "name" : "Amazon Parrot",
+            "description" : "<image src='../images/bird2.gif'>Great companion for up to 75 years"
+        },
+        {
+            "_id" : "AV-SB-02",
+            "product_id" : "AV-SB-02",
+            "category_id" : "BIRDS",
+            "name" : "Finch",
+            "description" : "<image src='../images/bird1.gif'>Great stress reliever"
+        }
+    ]
+}
+

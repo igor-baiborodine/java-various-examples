@@ -1,0 +1,9 @@
+{
+    "sequences" : [
+        {
+            "_id" : "order",
+            "name" : "order",
+            "next_id" : 1000
+        }
+    ]
+}

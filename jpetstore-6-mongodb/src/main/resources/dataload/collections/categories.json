@@ -1,0 +1,34 @@
+{
+    "categories" : [
+        {
+            "_id" : "FISH",
+            "category_id" : "FISH",
+            "name" : "Fish",
+            "description" : "<image src='../images/fish_icon.gif'><font size='5' color='blue'> Fish</font>"
+        },
+        {
+            "_id" : "DOGS",
+            "category_id" : "DOGS",
+            "name" : "Dogs",
+            "description" : "<image src='../images/dogs_icon.gif'><font size='5' color='blue'> Dogs</font>"
+        },
+        {
+            "_id" : "REPTILES",
+            "category_id" : "REPTILES",
+            "name" : "Reptiles",
+            "description" : "<image src='../images/reptiles_icon.gif'><font size='5' color='blue'> Reptiles</font>"
+        },
+        {
+            "_id" : "CATS",
+            "category_id" : "CATS",
+            "name" : "Cats",
+            "description" : "<image src='../images/cats_icon.gif'><font size='5' color='blue'> Cats</font>"
+        },
+        {
+            "_id" : "BIRDS",
+            "category_id" : "BIRDS",
+            "name" : "Birds",
+            "description" : "<image src='../images/birds_icon.gif'><font size='5' color='blue'> Birds</font>"
+        }
+    ]
+}

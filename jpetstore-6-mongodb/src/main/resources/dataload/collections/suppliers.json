@@ -1,0 +1,28 @@
+{
+    "suppliers" : [
+        {
+            "_id" :1,
+            "supplier_id" : 1,
+            "name" : "XYZ Pets",
+            "status" : "AC",
+            "addr1" : "600 Avon Way",
+            "addr2" : null,
+            "city" : "Los Angeles",
+            "state" : "CA",
+            "zip" : "94024",
+            "phone" : "212-947-0797"
+        },
+        {
+            "_id" : 2,
+            "supplier_id" : 2,
+            "name" : "ABC Pets",
+            "status" : "AC",
+            "addr1" : "700 Abalone Way",
+            "addr2" : null,
+            "city" : "San Francisco",
+            "state" : "CA",
+            "zip" : "94024",
+            "phone" : "415-947-0797"
+        }
+    ]
+}
