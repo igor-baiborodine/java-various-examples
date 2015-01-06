@@ -2,6 +2,7 @@ package com.kiroule.example.mybatis.address;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nonnull;
 
@@ -15,6 +16,7 @@ public class AddressService {
     private static final Logger logger = LoggerFactory.getLogger(AddressService.class);
     private AddressMapper addressMapper;
 
+    @Autowired
     public void setAddressMapper(@Nonnull AddressMapper addressMapper) {
         checkNotNull(addressMapper, "Argument[addressMapper] must not be null");
         this.addressMapper = addressMapper;

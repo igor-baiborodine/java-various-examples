@@ -4,6 +4,7 @@ import com.kiroule.example.mybatis.address.Address;
 import com.kiroule.example.mybatis.address.AddressMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Nonnull;
@@ -23,10 +24,12 @@ public class CustomerService {
     private CustomerMapper customerMapper;
     private AddressMapper addressMapper;
 
+    @Autowired
     public void setCustomerMapper(@Nonnull CustomerMapper customerMapper) {
         this.customerMapper = customerMapper;
     }
 
+    @Autowired
     public void setAddressMapper(@Nonnull AddressMapper addressMapper) {
         this.addressMapper = addressMapper;
     }
