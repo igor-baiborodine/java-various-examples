@@ -18,8 +18,7 @@ import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.*;
  *
  * @author Igor Baiborodine
  */
-public class OrderServiceTest
-        extends AbstractBaseServiceTest {
+public class OrderServiceTest extends AbstractBaseServiceTest {
 
     @Autowired
     private OrderService service;
@@ -39,30 +38,30 @@ public class OrderServiceTest
         Sequence sequence = sequenceMapper.getSequence(new Sequence("order", -1));
         assertThat(sequence, notNullValue());
 
-        assertThat(service.getOrdersByUsername(USERNAME).size(), equalTo(0));
+        assertThat(service.getOrdersByUsername(USERNAME).size(), is(0));
 
         Account account = accountMapper.getAccountByUsername(USERNAME);
         assertThat(account, notNullValue());
 
-        Item item = itemMapper.getItem(ITEMID);
+        Item item = itemMapper.getItem(ITEM_ID);
         assertThat(item, notNullValue());
 
         service.insertOrder(createOrderWithAllFields(account, item));
         List<Order> orders = service.getOrdersByUsername(USERNAME);
-        assertThat(orders.size(), equalTo(1));
+        assertThat(orders.size(), is(1));
 
         Order order = orders.get(0);
-        assertThat(sequence.getNextId(), equalTo(order.getOrderId()));
+        assertThat(sequence.getNextId(), is(order.getOrderId()));
 
         List<LineItem> lineItems = order.getLineItems();
-        assertThat(lineItems.size(), equalTo(1));
+        assertThat(lineItems.size(), is(1));
 
         Integer lineItemQty = lineItems.get(0).getQuantity();
         Integer adjustedItemInventoryQty = itemMapper.getInventoryQuantity(item.getItemId());
-        assertThat(adjustedItemInventoryQty, equalTo(item.getQuantity() - lineItemQty));
+        assertThat(adjustedItemInventoryQty, is(item.getQuantity() - lineItemQty));
 
         Sequence adjustedSequence = sequenceMapper.getSequence(new Sequence("order", -1));
-        assertThat(sequence.getNextId() + 1, equalTo(adjustedSequence.getNextId()));
+        assertThat(sequence.getNextId() + 1, is(adjustedSequence.getNextId()));
     }
 
 }

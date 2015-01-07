@@ -13,22 +13,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.util.*;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createItemBuilderWithAllFields;
-import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createItemBuilderWithBaseFields;
-import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createProductBuilderWithAllFields;
-import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 import static org.mybatis.jpetstore.persistence.NumericValueUpdateParam.*;
+import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.*;
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 /**
  * JUnit based unit tests for the {@link ItemDao} class.
  *
  * @author Igor Baiborodine
  */
-public class ItemDaoTest
-        extends AbstractBaseDaoTest {
+public class ItemDaoTest extends AbstractBaseDaoTest {
 
     @Autowired
     private ItemDao itemDao;
@@ -73,12 +70,11 @@ public class ItemDaoTest
     @Test
     public void getInventoryQuantity_shouldFindQuantityForExistingItem() {
 
-        Item existingItem = createItemBuilderWithBaseFields()
-                .quantity(100).build();
+        Item existingItem = createItemBuilderWithBaseFields().quantity(100).build();
         insertItem(existingItem);
 
         int quantity = itemDao.getInventoryQuantity(existingItem.getItemId());
-        assertThat(quantity, equalTo(100));
+        assertThat(quantity, is(100));
     }
 
     @Test
@@ -115,10 +111,10 @@ public class ItemDaoTest
             }
         }
 
-        assertThat(sortedPersistedItems.size(), equalTo(3));
-        assertThat(sortedPersistedItems.get(0).getQuantity(), equalTo(items.get(0).getQuantity()));
-        assertThat(sortedPersistedItems.get(1).getQuantity(), equalTo(items.get(1).getQuantity()));
-        assertThat(sortedPersistedItems.get(2).getQuantity(), equalTo(items.get(2).getQuantity()));
+        assertThat(sortedPersistedItems.size(), is(3));
+        assertThat(sortedPersistedItems.get(0).getQuantity(), is(items.get(0).getQuantity()));
+        assertThat(sortedPersistedItems.get(1).getQuantity(), is(items.get(1).getQuantity()));
+        assertThat(sortedPersistedItems.get(2).getQuantity(), is(items.get(2).getQuantity()));
     }
 
     @Test
@@ -127,18 +123,15 @@ public class ItemDaoTest
         List<Item> items = Lists.newArrayListWithCapacity(3);
         Product product = createProductBuilderWithAllFields().build();
 
-        Item item = createItemBuilderWithBaseFields("item-1", product)
-                .unitCost(new BigDecimal("1.00")).build();
+        Item item = createItemBuilderWithBaseFields("item-1", product).unitCost(new BigDecimal("1.00")).build();
         insertItem(item);
         items.add(item);
 
-        item = createItemBuilderWithBaseFields("item-2", product)
-                .unitCost(new BigDecimal("10.00")).build();
+        item = createItemBuilderWithBaseFields("item-2", product).unitCost(new BigDecimal("10.00")).build();
         insertItem(item);
         items.add(item);
 
-        item = createItemBuilderWithBaseFields("item-3", product)
-                .unitCost(new BigDecimal("2.00")).build();
+        item = createItemBuilderWithBaseFields("item-3", product).unitCost(new BigDecimal("2.00")).build();
         insertItem(item);
         items.add(item);
 
@@ -158,16 +151,16 @@ public class ItemDaoTest
                 sortedPersistedItems.add(Item.fromDBObject(itemObj));
             }
         }
-        assertThat(sortedPersistedItems.size(), equalTo(3));
+        assertThat(sortedPersistedItems.size(), is(3));
 
         BigDecimal actualUnitCost = sortedPersistedItems.get(0).getUnitCost();
-        assertThat(actualUnitCost.compareTo(items.get(0).getUnitCost()), equalTo(0));
+        assertThat(actualUnitCost.compareTo(items.get(0).getUnitCost()), is(0));
 
         actualUnitCost = sortedPersistedItems.get(1).getUnitCost();
-        assertThat(actualUnitCost.compareTo(items.get(1).getUnitCost()), equalTo(0));
+        assertThat(actualUnitCost.compareTo(items.get(1).getUnitCost()), is(0));
 
         actualUnitCost = sortedPersistedItems.get(2).getUnitCost();
-        assertThat(actualUnitCost.compareTo(items.get(2).getUnitCost()), equalTo(0));
+        assertThat(actualUnitCost.compareTo(items.get(2).getUnitCost()), is(0));
     }
 
     @Test
@@ -184,7 +177,7 @@ public class ItemDaoTest
         itemDao.updateInventoryQuantity(params);
 
         Item updatedItem = itemDao.getItem(existingItem.getItemId());
-        assertThat(updatedItem.getQuantity(), equalTo(0));
+        assertThat(updatedItem.getQuantity(), is(0));
     }
 
     @Test
@@ -194,7 +187,7 @@ public class ItemDaoTest
         insertItem(existingItem);
 
         List<Item> items = itemDao.getItemListByProduct(existingItem.getProduct().getProductId());
-        assertThat(items.size(), equalTo(1));
+        assertThat(items.size(), is(1));
         assertReflectionEquals(existingItem, items.get(0));
     }
 
@@ -203,7 +196,7 @@ public class ItemDaoTest
         collection.insert(item.toDBObject());
 
         DBObject itemObj = collection.findOne(new BasicDBObject("_id", item.getItemId()));
-        assertNotNull("Cannot find item with id[" + item.getItemId() + "]", itemObj);
+        assertThat("Cannot find item with id[" + item.getItemId() + "]", itemObj, notNullValue());
     }
 
 }

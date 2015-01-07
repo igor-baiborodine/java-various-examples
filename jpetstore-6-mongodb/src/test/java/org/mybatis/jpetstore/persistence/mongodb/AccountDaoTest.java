@@ -7,8 +7,9 @@ import org.junit.Test;
 import org.mybatis.jpetstore.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static junit.framework.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.*;
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
@@ -17,8 +18,7 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  *
  * @author Igor Baiborodine
  */
-public class AccountDaoTest
-        extends AbstractBaseDaoTest {
+public class AccountDaoTest extends AbstractBaseDaoTest {
 
     @Autowired
     private AccountDao accountDao;
@@ -42,8 +42,7 @@ public class AccountDaoTest
         accountDao.insertAccount(newAccount);
 
         DBObject accountObj = collection.findOne(new BasicDBObject("_id", newAccount.getUsername()));
-        assertNotNull("Cannot find account with username ["
-                + newAccount.getUsername() + "]", accountObj);
+        assertThat("Cannot find account with username [" + newAccount.getUsername() + "]", accountObj, notNullValue());
 
         Account persistedAccount = Account.fromDBObject(accountObj);
         assertReflectionEquals(newAccount, persistedAccount);
@@ -85,7 +84,7 @@ public class AccountDaoTest
     public void getAccountByUsername_shouldReturnNullForNonExistingAccount() {
 
         Account account = accountDao.getAccountByUsername("non_existing_username");
-        assertNull(account);
+        assertThat(account, nullValue());
     }
 
     @Test(expected = NullPointerException.class)
@@ -129,32 +128,27 @@ public class AccountDaoTest
         Account existingAccount = createAccountBuilderWithAllFields().build();
         insertAccount(existingAccount);
 
-        Account account = accountDao.getAccountByUsernameAndPassword(
-                existingAccount.getUsername(), "invalid_password");
-        assertNull(account);
+        Account account = accountDao.getAccountByUsernameAndPassword(existingAccount.getUsername(), "invalid_password");
+        assertThat(account, nullValue());
     }
 
     @Test
     public void updateAccount_shouldUpdateExistingAccount() {
 
-        Account existingAccount = createAccountBuilderWithBaseFields(
-                USERNAME, null, null, null).build();
+        Account existingAccount = createAccountBuilderWithBaseFields(USERNAME, null, null, null).build();
         insertAccount(existingAccount);
 
-        Account accountToUpdate = createAccountBuilderWithBaseFields(
-                USERNAME, PASSWORD, FIRST_NAME, LAST_NAME).build();
+        Account accountToUpdate = createAccountBuilderWithBaseFields(USERNAME, PASSWORD, FIRST_NAME, LAST_NAME).build();
         accountDao.updateAccount(accountToUpdate);
 
-        DBObject accountObj = collection.findOne(
-                new BasicDBObject("_id", accountToUpdate.getUsername()));
+        DBObject accountObj = collection.findOne(new BasicDBObject("_id", accountToUpdate.getUsername()));
         assertReflectionEquals(accountToUpdate, Account.fromDBObject(accountObj));
     }
 
     @Test(expected = RuntimeException.class)
     public void updateAccount_shouldThrowRuntimeExceptionForNonExistingAccount() {
 
-        Account nonExistingAccount = createAccountBuilderWithBaseFields(
-                USERNAME, PASSWORD, FIRST_NAME, LAST_NAME).build();
+        Account nonExistingAccount = createAccountBuilderWithBaseFields(USERNAME, PASSWORD, FIRST_NAME, LAST_NAME).build();
         accountDao.updateAccount(nonExistingAccount);
     }
 
@@ -165,16 +159,15 @@ public class AccountDaoTest
         insertAccount(existingAccount);
 
         accountDao.delete(existingAccount.getUsername());
-        DBObject accountObj = collection.findOne(
-                new BasicDBObject("_id", existingAccount.getUsername()));
-        assertNull(accountObj);
+        DBObject accountObj = collection.findOne(new BasicDBObject("_id", existingAccount.getUsername()));
+        assertThat(accountObj, nullValue());
     }
 
     @Test(expected = RuntimeException.class)
     public void deleteAccount_shouldThrowRuntimeExceptionForNonExistingAccount() {
 
         DBObject accountObj = collection.findOne(new BasicDBObject("_id", USERNAME));
-        assertNull(accountObj);
+        assertThat(accountObj, nullValue());
 
         accountDao.delete(USERNAME);
     }
@@ -183,10 +176,8 @@ public class AccountDaoTest
 
         collection.insert(account.toDBObject());
 
-        DBObject accountObj = collection.findOne(
-                new BasicDBObject("_id", account.getUsername()));
-        assertNotNull("Cannot find account with username ["
-                + account.getUsername() + "]", accountObj);
+        DBObject accountObj = collection.findOne(new BasicDBObject("_id", account.getUsername()));
+        assertThat("Cannot find account with username [" + account.getUsername() + "]", accountObj, nullValue());
     }
 
 }

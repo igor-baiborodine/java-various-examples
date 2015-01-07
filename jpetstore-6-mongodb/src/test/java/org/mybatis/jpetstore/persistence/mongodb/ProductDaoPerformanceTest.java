@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createProductBuilderWithBaseFields;
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
@@ -21,8 +21,7 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  *
  * @author Igor Baiborodine
  */
-public class ProductDaoPerformanceTest
-        extends AbstractBaseDaoTest {
+public class ProductDaoPerformanceTest extends AbstractBaseDaoTest {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductDaoPerformanceTest.class);
 
@@ -62,7 +61,7 @@ public class ProductDaoPerformanceTest
         }
         logger.info("Last inserted product[{}]", product);
 
-        assertThat(collection.count(), equalTo(maxNumber));
+        assertThat(collection.count(), is(maxNumber));
 
         // test performance of old implementation
         DBObject regex = new BasicDBObject("$regex", ".*" + keyword + ".*");
@@ -70,8 +69,8 @@ public class ProductDaoPerformanceTest
 
         findProduct(nameRegexQuery);
         assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), equalTo(false));
-        assertThat(explain.getLong("nscanned"), equalTo(maxNumber));
+        assertThat(explain.getBoolean("isMultiKey"), is(false));
+        assertThat(explain.getLong("nscanned"), is(maxNumber));
         // "millis" : 6929
 
         collection.ensureIndex(new BasicDBObject("name", 1));
@@ -79,8 +78,8 @@ public class ProductDaoPerformanceTest
         findProduct(nameRegexQuery);
 
         assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), equalTo(false));
-        assertThat(explain.getLong("nscanned"), equalTo(maxNumber));
+        assertThat(explain.getBoolean("isMultiKey"), is(false));
+        assertThat(explain.getLong("nscanned"), is(maxNumber));
         // "millis" : 7561
 
         // test performance of new implementation
@@ -89,8 +88,8 @@ public class ProductDaoPerformanceTest
         findProduct(nameKeywordsQuery);
 
         assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), equalTo(false));
-        assertThat(explain.getLong("nscanned"), equalTo(maxNumber));
+        assertThat(explain.getBoolean("isMultiKey"), is(false));
+        assertThat(explain.getLong("nscanned"), is(maxNumber));
         // "millis" : 1633
 
         collection.ensureIndex(new BasicDBObject("name_keywords", 1));
@@ -98,8 +97,8 @@ public class ProductDaoPerformanceTest
         findProduct(nameKeywordsQuery);
 
         assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), equalTo(true));
-        assertThat(explain.getLong("nscanned"), equalTo(1L));
+        assertThat(explain.getBoolean("isMultiKey"), is(true));
+        assertThat(explain.getLong("nscanned"), is(1L));
         // "millis" : 0
 
     }
@@ -115,7 +114,6 @@ public class ProductDaoPerformanceTest
             }
         }
         logger.info("explain[{}]", explain);
-
     }
 
 }

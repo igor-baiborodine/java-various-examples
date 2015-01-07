@@ -1,5 +1,6 @@
 package org.mybatis.jpetstore.persistence.mongodb;
 
+import com.google.common.collect.Lists;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import org.junit.Test;
@@ -7,13 +8,11 @@ import org.mybatis.jpetstore.domain.LineItem;
 import org.mybatis.jpetstore.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.mongodb.util.MyAsserts.assertTrue;
-import static junit.framework.Assert.assertNull;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createLineItemBuilderWithAllFields;
 import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createOrderWithAllFields;
@@ -24,8 +23,7 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  *
  * @author Igor Baiborodine
  */
-public class OrderDaoTest
-        extends AbstractBaseDaoTest {
+public class OrderDaoTest extends AbstractBaseDaoTest {
 
     @Autowired
     private OrderDao orderDao;
@@ -75,18 +73,17 @@ public class OrderDaoTest
         insertOrder(existingOrder);
 
         Integer lineNumber = existingOrder.getLineItems().size() + 1;
-        LineItem newLineItem = createLineItemBuilderWithAllFields(
-                existingOrder.getOrderId(), lineNumber).build();
+        LineItem newLineItem = createLineItemBuilderWithAllFields(existingOrder.getOrderId(), lineNumber).build();
         orderDao.insertLineItem(newLineItem);
 
         DBObject orderObj = collection.findOne(new BasicDBObject("_id", existingOrder.getOrderId()));
-        List<LineItem> lineItems = new ArrayList<>();
+        List<LineItem> lineItems = Lists.newArrayList();
 
         if (orderObj != null) {
             Order order = Order.fromDBObject(orderObj);
             lineItems.addAll(order.getLineItems());
         }
-        assertTrue(lineItems.contains(newLineItem));
+        assertThat(lineItems.contains(newLineItem), is(true));
     }
 
     @Test
@@ -106,7 +103,7 @@ public class OrderDaoTest
         orderDao.insertOrder(newOrder);
 
         DBObject orderObj = collection.findOne(new BasicDBObject("_id", newOrder.getOrderId()));
-        assertNotNull("Cannot find order with id [" + newOrder.getOrderId() + "]", orderObj);
+        assertThat("Cannot find order with id [" + newOrder.getOrderId() + "]", orderObj, notNullValue());
 
         Order persistedOrder = Order.fromDBObject(orderObj);
         assertReflectionEquals(newOrder, persistedOrder);
@@ -119,7 +116,7 @@ public class OrderDaoTest
         insertOrder(existingOrder);
 
         List<Order> orders = orderDao.getOrdersByUsername(existingOrder.getUsername());
-        assertThat(orders.size(), equalTo(1));
+        assertThat(orders.size(), is(1));
         assertReflectionEquals(existingOrder, orders.get(0));
     }
 
@@ -127,7 +124,7 @@ public class OrderDaoTest
     public void getOrderByUsername_shouldFindEmptyListForNonExistingUsername() {
 
         List<Order> orders = orderDao.getOrdersByUsername("NON_EXISTING_USERNAME");
-        assertThat(orders.size(), equalTo(0));
+        assertThat(orders.size(), is(0));
     }
 
     @Test
@@ -140,16 +137,15 @@ public class OrderDaoTest
         orderDao.insertOrderStatus(existingOrder);
         DBObject orderObj = collection.findOne(new BasicDBObject("_id", existingOrder.getOrderId()));
         Order orderWithNewStatus = Order.fromDBObject(orderObj);
-        assertThat(existingOrder.getStatus(), equalTo(orderWithNewStatus.getStatus()));
+        assertThat(existingOrder.getStatus(), is(orderWithNewStatus.getStatus()));
     }
 
     @Test(expected = RuntimeException.class)
     public void insertOrderStatus_shouldThrowRuntimeExceptionForNonExistingOrder() {
 
         Order nonExistingOrder = createOrderWithAllFields();
-        DBObject orderObj = collection.findOne(
-                new BasicDBObject("_id", nonExistingOrder.getOrderId()));
-        assertNull(orderObj);
+        DBObject orderObj = collection.findOne(new BasicDBObject("_id", nonExistingOrder.getOrderId()));
+        assertThat(orderObj, nullValue());
 
         orderDao.insertOrderStatus(nonExistingOrder);
     }
@@ -159,7 +155,7 @@ public class OrderDaoTest
         collection.insert(order.toDBObject());
 
         DBObject orderObj = collection.findOne(new BasicDBObject("_id", order.getOrderId()));
-        assertNotNull("Cannot find order with id[" + order.getOrderId() + "]", orderObj);
+        assertThat("Cannot find order with id[" + order.getOrderId() + "]", orderObj, notNullValue());
     }
 
 }

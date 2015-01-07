@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createProductBuilderWithAllFields;
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
@@ -20,8 +20,7 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  *
  * @author Igor Baiborodine
  */
-public class ProductDaoTest
-        extends AbstractBaseDaoTest {
+public class ProductDaoTest extends AbstractBaseDaoTest {
 
     @Autowired
     private ProductDao productDao;
@@ -72,9 +71,8 @@ public class ProductDaoTest
         Product existingProduct = createProductBuilderWithAllFields().build();
         insertProduct(existingProduct);
 
-        List<Product> products = productDao.getProductListByCategory(
-                existingProduct.getCategoryId());
-        assertThat(products.size(), equalTo(1));
+        List<Product> products = productDao.getProductListByCategory(existingProduct.getCategoryId());
+        assertThat(products.size(), is(1));
         assertReflectionEquals(existingProduct, products.get(0));
     }
 
@@ -82,7 +80,7 @@ public class ProductDaoTest
     public void getProductListByCategory_shouldFindEmptyListForNonExistingCategory() {
 
         List<Product> products = productDao.getProductListByCategory("NON_EXISTING_CATEGORY");
-        assertThat(products.size(), equalTo(0));
+        assertThat(products.size(), is(0));
     }
 
     @Test(expected = NullPointerException.class)
@@ -106,24 +104,22 @@ public class ProductDaoTest
         insertProduct(existingProduct);
 
         List<Product> products = productDao.searchProductList("One");
-        assertThat(products.size(), equalTo(1));
+        assertThat(products.size(), is(1));
         assertReflectionEquals(existingProduct, products.get(0));
 
         products = productDao.searchProductList("Two");
-        assertThat(products.size(), equalTo(1));
+        assertThat(products.size(), is(1));
 
         products = productDao.searchProductList("Three");
-        assertThat(products.size(), equalTo(1));
+        assertThat(products.size(), is(1));
     }
 
     private void insertProduct(final Product product) {
 
         collection.insert(product.toDBObject());
 
-        DBObject productObj = collection.findOne(
-                new BasicDBObject("_id", product.getProductId()));
-        assertNotNull("Cannot find product with id["
-                + product.getProductId() + "]", productObj);
+        DBObject productObj = collection.findOne(new BasicDBObject("_id", product.getProductId()));
+        assertThat("Cannot find product with id[" + product.getProductId() + "]", productObj, notNullValue());
     }
 
 }

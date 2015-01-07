@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
@@ -69,17 +69,17 @@ public class InitialDataLoadUtilsTest {
         loadUtils.importCollection(collectionName, categoriesJson);
 
         collection = database.getCollection(collectionName);
-        assertThat(collection.count(), equalTo((long) categoriesJson.size()));
+        assertThat(collection.count(), is((long) categoriesJson.size()));
 
         String _id = (String) categoryJson.get("_id");
         DBObject categoryDBObject = collection.findOne(new BasicDBObject("_id", _id));
         assertThat(categoryDBObject, notNullValue());
 
         Category category = Category.fromDBObject(categoryDBObject);
-        assertThat(category.getId(), equalTo(_id));
-        assertThat(category.getCategoryId(), equalTo((String) categoryJson.get("category_id")));
-        assertThat(category.getName(), equalTo((String) categoryJson.get("name")));
-        assertThat(category.getDescription(), equalTo((String) categoryJson.get("description")));
+        assertThat(category.getId(), is(_id));
+        assertThat(category.getCategoryId(), is((String) categoryJson.get("category_id")));
+        assertThat(category.getName(), is((String) categoryJson.get("name")));
+        assertThat(category.getDescription(), is((String) categoryJson.get("description")));
     }
 
     private JSONObject getCategoryJson() {

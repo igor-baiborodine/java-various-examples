@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -43,7 +43,7 @@ public abstract class AbstractBaseDaoTest {
 
         database = mongoClient.getDB(dbName);
         collection = database.getCollection(getCollectionName());
-        assertThat(collection.count(), equalTo(0L));
+        assertThat(collection.count(), is(0L));
     }
 
     @After

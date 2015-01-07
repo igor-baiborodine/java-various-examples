@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -45,7 +45,7 @@ public abstract class AbstractBaseServiceTest {
         database.dropDatabase();
 
         database = mongoClient.getDB(dbName);
-        assertThat(database.getCollectionNames().size(), equalTo(0));
+        assertThat(database.getCollectionNames().size(), is(0));
         helper.importInitialDataToMongo();
     }
 

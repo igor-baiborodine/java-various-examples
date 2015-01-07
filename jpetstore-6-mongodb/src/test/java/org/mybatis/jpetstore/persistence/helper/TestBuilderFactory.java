@@ -15,7 +15,7 @@ public class TestBuilderFactory {
     public static final String PASSWORD = "beer";
     public static final String FIRST_NAME = "Bender";
     public static final String LAST_NAME = "Rodriguez";
-    public static final String ITEMID = "EST-1";
+    public static final String ITEM_ID = "EST-1";
 
     public static Builder<Account> createAccountBuilderWithBaseFields(
             String username, String password, String firstname, String lastname) {
@@ -65,11 +65,10 @@ public class TestBuilderFactory {
     }
 
     public static ItemBuilder createItemBuilderWithBaseFields() {
-        return createItemBuilderWithBaseFields(ITEMID, createProductBuilderWithAllFields().build());
+        return createItemBuilderWithBaseFields(ITEM_ID, createProductBuilderWithAllFields().build());
     }
 
-    public static ItemBuilder createItemBuilderWithBaseFields(
-            final String itemId, final Product product) {
+    public static ItemBuilder createItemBuilderWithBaseFields(final String itemId, final Product product) {
         return new ItemBuilder(itemId, product);
     }
 

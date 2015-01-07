@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.createCategoryBuilderWithAllFields;
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
@@ -19,8 +19,7 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  *
  * @author Igor Baiborodine
  */
-public class CategoryDaoTest
-        extends AbstractBaseDaoTest {
+public class CategoryDaoTest extends AbstractBaseDaoTest {
 
     @Autowired
     private CategoryDao categoryDao;
@@ -60,7 +59,7 @@ public class CategoryDaoTest
         insertCategory(existingCategory);
 
         List<Category> categories = categoryDao.getCategoryList();
-        assertThat(categories.size(), equalTo(1));
+        assertThat(categories.size(), is(1));
         assertReflectionEquals(existingCategory, categories.get(0));
     }
 
@@ -68,10 +67,8 @@ public class CategoryDaoTest
 
         collection.insert(category.toDBObject());
 
-        DBObject categoryObj = collection.findOne(
-                new BasicDBObject("_id", category.getCategoryId()));
-        assertNotNull("Cannot find category with id["
-                + category.getCategoryId() + "]", categoryObj);
+        DBObject categoryObj = collection.findOne(new BasicDBObject("_id", category.getCategoryId()));
+        assertThat("Cannot find category with id[" + category.getCategoryId() + "]", categoryObj, notNullValue());
     }
 
 }

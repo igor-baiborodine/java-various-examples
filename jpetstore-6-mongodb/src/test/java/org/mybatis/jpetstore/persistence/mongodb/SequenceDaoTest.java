@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.mybatis.jpetstore.domain.Sequence;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -16,8 +16,7 @@ import static org.junit.Assert.assertThat;
  *
  * @author Igor Baiborodine
  */
-public class SequenceDaoTest
-        extends AbstractBaseDaoTest {
+public class SequenceDaoTest extends AbstractBaseDaoTest {
 
     @Autowired
     private SequenceDao sequenceDao;
@@ -31,10 +30,10 @@ public class SequenceDaoTest
     public void getSequence_shouldFindSequenceWithOneInNextIdForNonExistingSequence() {
 
         DBCursor cursor = collection.find(new BasicDBObject("name", "order"));
-        assertThat(cursor.size(), equalTo(0));
+        assertThat(cursor.size(), is(0));
 
         Sequence sequence = sequenceDao.getSequence(new Sequence("order", -1));
-        assertThat(sequence.getNextId(), equalTo(1));
+        assertThat(sequence.getNextId(), is(1));
     }
 
     @Test
@@ -44,10 +43,10 @@ public class SequenceDaoTest
         insertSequence(existingSequence);
 
         DBCursor cursor = collection.find(new BasicDBObject("name", "order"));
-        assertThat(cursor.size(), equalTo(1));
+        assertThat(cursor.size(), is(1));
 
         Sequence sequence = sequenceDao.getSequence(new Sequence("order", -1));
-        assertThat(sequence.getNextId(), equalTo(10));
+        assertThat(sequence.getNextId(), is(10));
     }
 
     private void insertSequence(final Sequence sequence) {
@@ -55,7 +54,7 @@ public class SequenceDaoTest
         collection.insert(sequence.toDBObject());
 
         DBObject sequenceObj = collection.findOne(new BasicDBObject("_id", sequence.getName()));
-        assertNotNull("Cannot find sequence with id[" + sequence.getName() + "]", sequenceObj);
+        assertThat("Cannot find sequence with id[" + sequence.getName() + "]", sequenceObj, notNullValue());
     }
 
 }
