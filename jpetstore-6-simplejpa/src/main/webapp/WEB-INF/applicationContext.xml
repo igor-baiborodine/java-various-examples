@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:component-scan base-package="org.mybatis.jpetstore" />
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:simplejpa.properties</value>
+                <value>classpath:AwsCredentials.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="false" />
+    </bean>
+
+    <bean id="entityManagerFactory" class="com.spaceprogram.simplejpa.EntityManagerFactoryImpl">
+        <property name="printQueries" value="${printQueries}"/>
+        <!-- persistenceUnitName -->
+        <constructor-arg index="0" type="java.lang.String" value="${persistenceUnitName}"/>
+        <!-- props -->
+        <constructor-arg index="1" type="java.util.Map">
+            <map>
+                <entry key="accessKey" value="${accessKey}"/>
+                <entry key="secretKey" value="${secretKey}"/>
+            </map>
+        </constructor-arg>
+        <!-- libs to scan -->
+        <constructor-arg index="2">
+            <null />
+        </constructor-arg>
+        <!-- classes to scan -->
+        <constructor-arg index="3">
+            <set>
+                <value>org.mybatis.jpetstore.domain.Account</value>
+                <value>org.mybatis.jpetstore.domain.Category</value>
+                <value>org.mybatis.jpetstore.domain.Item</value>
+                <value>org.mybatis.jpetstore.domain.LineItem</value>
+                <value>org.mybatis.jpetstore.domain.Product</value>
+                <value>org.mybatis.jpetstore.domain.Sequence</value>
+                <value>org.mybatis.jpetstore.domain.Supplier</value>
+            </set>
+        </constructor-arg>
+    </bean>
+
+    <bean id="AWSCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
+        <constructor-arg index="0" value="${accessKey}" />
+        <constructor-arg index="1" value="${secretKey}" />
+    </bean>
+
+    <bean id="amazonSimpleDBClient" class="com.amazonaws.services.simpledb.AmazonSimpleDBClient">
+        <constructor-arg ref="AWSCredentials"/>
+    </bean>
+
+    <bean id="initialDataLoader" class="org.mybatis.jpetstore.util.InitialDataLoader" />
+
+</beans>

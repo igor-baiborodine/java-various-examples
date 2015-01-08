@@ -1,0 +1,101 @@
+{
+    "Items" : [
+        {
+            "itemName()" : "FI-SW-01",
+            "categoryId" : "FISH",
+            "name" : "Angelfish",
+            "description" : "<image src='../images/fish1.gif'>Salt Water fish from Australia"
+        },
+        {
+            "itemName()" : "FI-SW-02",
+            "categoryId" : "FISH",
+            "name" : "Tiger Shark",
+            "description" : "<image src='../images/fish4.gif'>Salt Water fish from Australia"
+        },
+        {
+            "itemName()" : "FI-FW-01",
+            "categoryId" : "FISH",
+            "name" : "Koi",
+            "description" : "<image src='../images/fish3.gif'>Fresh Water fish from Japan"
+        },
+        {
+            "itemName()" : "FI-FW-02",
+            "categoryId" : "FISH",
+            "name" : "Goldfish",
+            "description" : "<image src='../images/fish2.gif'>Fresh Water fish from China"
+        },
+        {
+            "itemName()" : "K9-BD-01",
+            "categoryId" : "DOGS",
+            "name" : "Bulldog",
+            "description" : "<image src='../images/dog2.gif'>Friendly dog from England"
+        },
+        {
+            "itemName()" : "K9-PO-02",
+            "categoryId" : "DOGS",
+            "name" : "Poodle",
+            "description" : "<image src='../images/dog6.gif'>Cute dog from France"
+        },
+        {
+            "itemName()" : "K9-DL-01",
+            "categoryId" : "DOGS",
+            "name" : "Dalmation",
+            "description" : "<image src='../images/dog5.gif'>Great dog for a Fire Station"
+        },
+        {
+            "itemName()" : "K9-RT-01",
+            "categoryId" : "DOGS",
+            "name" : "Golden Retriever",
+            "description" : "<image src='../images/dog1.gif'>Great family dog"
+        },
+        {
+            "itemName()" : "K9-RT-02",
+            "categoryId" : "DOGS",
+            "name" : "Labrador Retriever",
+            "description" : "<image src='../images/dog5.gif'>Great hunting dog"
+        },
+        {
+            "itemName()" : "K9-CW-01",
+            "categoryId" : "DOGS",
+            "name" : "Chihuahua",
+            "description" : "<image src='../images/dog4.gif'>Great companion dog"
+        },
+        {
+            "itemName()" : "RP-SN-01",
+            "categoryId" : "REPTILES",
+            "name" : "Rattlesnake",
+            "description" : "<image src='../images/snake1.gif'>Doubles as a watch dog"
+        },
+        {
+            "itemName()" : "RP-LI-02",
+            "categoryId" : "REPTILES",
+            "name" : "Iguana",
+            "description" : "<image src='../images/lizard1.gif'>Friendly green friend"
+        },
+        {
+            "itemName()" : "FL-DSH-01",
+            "categoryId" : "CATS",
+            "name" : "Manx",
+            "description" : "<image src='../images/cat2.gif'>Great for reducing mouse populations"
+        },
+        {
+            "itemName()" : "FL-DLH-02",
+            "categoryId" : "CATS",
+            "name" : "Persian",
+            "description" : "<image src='../images/cat1.gif'>Friendly house cat, doubles as a princess"
+        },
+        {
+            "itemName()" : "AV-CB-01",
+            "categoryId" : "BIRDS",
+            "name" : "Amazon Parrot",
+            "description" : "<image src='../images/bird2.gif'>Great companion for up to 75 years"
+        },
+        {
+            "itemName()" : "AV-SB-02",
+            "categoryId" : "BIRDS",
+            "name" : "Finch",
+            "description" : "<image src='../images/bird1.gif'>Great stress reliever"
+        }
+    ]
+}
+

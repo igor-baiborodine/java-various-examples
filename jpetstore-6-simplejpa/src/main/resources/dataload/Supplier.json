@@ -1,0 +1,24 @@
+{
+    "Items" : [
+        {
+            "itemName()" : "1",
+            "name" : "XYZ Pets",
+            "status" : "AC",
+            "addr1" : "600 Avon Way",
+            "city" : "Los Angeles",
+            "state" : "CA",
+            "zip" : "94024",
+            "phone" : "212-947-0797"
+        },
+        {
+            "itemName()" : "2",
+            "name" : "ABC Pets",
+            "status" : "AC",
+            "addr1" : "700 Abalone Way",
+            "city" : "San Francisco",
+            "state" : "CA",
+            "zip" : "94024",
+            "phone" : "415-947-0797"
+        }
+    ]
+}
