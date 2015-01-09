@@ -1,0 +1,115 @@
+body {
+    background-color: #FFFFFF;
+    padding: 1em;
+    margin: 0;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+input {
+    border: 1px solid #CBCC88;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0.5em;
+    resize: none;
+}
+
+.button, button:visited {
+    border: 1px solid #C0C083;
+    color: #000000;
+    background-color: #FFFFFF;
+
+    position: relative;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    font-size: 11px;
+    padding: 4px 10px;
+}
+
+.button:hover {
+    background-color: #AAB0CC;
+}
+
+.button:active {
+    background-color: #AABBCC;
+}
+
+
+table {
+}
+
+td {
+    padding: 1em;
+    margin: 1em;
+    border: 0;
+    color: #F0F0F0;
+}
+
+tr {
+    border: 0;
+}
+
+td:first-child {
+    background-color: #AAB0CC;
+}
+
+td:last-child {
+    background-color: #AABBEE;
+}
+
+fieldset {
+    border: none;
+    background-color: #AABBEE;
+    width: 400px;
+    color: #F0F0F0;
+}
+
+fieldset li {
+    padding-bottom: 1em;
+    float: left;
+    clear: left;
+}
+
+fieldset input {
+    float: left;
+}
+
+fieldset textarea {
+    float: left;
+}
+
+fieldset ol {
+    /*padding: 1em 1em 0 0;*/
+    list-style: none;
+}
+
+fieldset label {
+    float: left;
+    width: 10em;
+}
+
+.title {
+    color: #AABBCC;
+    font-size: 20px;
+}
+
+.flash-message {
+    background: #DB5535;
+    color: #FBEC83;
+
+    width: 200px;
+
+    text-align: left;
+
+    padding: 1em;
+    margin: 1em;
+}

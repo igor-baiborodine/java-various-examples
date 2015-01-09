@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>spring-jaxrs-webapp-example</h2>
+</body>
+</html>
+
+
+<head>
+    <title>spring-jaxrs-webapp-example</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.js">
+    </script>
+</head>
+
+<body>
+
+<p class="title">Find Book</p>
+
+<form id="get-book" action="javascript:alert('get book')">
+    <input id="get-book-isbn" type="text"/>
+    <input class="button" type="submit" value="Find"/>
+</form>
+
+<div id="find-book-flash-message" class="flash-message">
+</div>
+
+<div class="result">
+    <table>
+        <tr>
+            <td>ISBN</td>
+            <td id="isbn"></td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td id="title"></td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td id="author"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td id="price"></td>
+        </tr>
+        <tr>
+            <td>Categories</td>
+            <td id="category"></td>
+        </tr>
+    </table>
+</div>
+
+<p class="title">Add new book</p>
+
+<div id="add-book-flash-message" class="flash-message">
+</div>
+
+<form id="add-book" action="javascript:alert('add book')">
+    <fieldset>
+        <ol>
+            <li>
+                <label for="add-book-isbn">ISBN</label>
+                <input id="add-book-isbn" name="isbn" type="text"/>
+            </li>
+            <li>
+                <label for="add-book-author">Author</label>
+                <input id="add-book-author" name="author" type="text"/>
+            </li>
+            <li>
+                <label for="add-book-title">Title</label>
+                <input id="add-book-title" name="title" type="text"/>
+            </li>
+            <li>
+                <label for="add-book-price">Price</label>
+                <input id="add-book-price" name="price" type="text"/>
+            </li>
+            <li>
+                <label for="add-book-category-1">Category 1</label>
+                <input id="add-book-category-1" name="category-1" type="text"/>
+            </li>
+            <li>
+                <label for="add-book-category-2">Category 2</label>
+                <input id="add-book-category-2" name="category-2" type="text"/>
+            </li>
+            <li>
+                <label for="add-book-category-3">Category 3</label>
+                <input id="add-book-category-3" name="category-3" type="text"/>
+            </li>
+            <li>
+                <input class="button" type="submit" value="Add"/>
+                <input class="button" type="button" onclick="addFormReset()" value="Reset">
+            </li>
+        </ol>
+    </fieldset>
+</form>
+
+<script>
+    $('#find-book-flash-message').hide();
+    $('.result').hide();
+    $('#add-book-flash-message').hide();
+
+    $("#get-book").submit(function() {
+        $.ajax({
+            type: "GET",
+            url: "resources/books/" + $("#get-book-isbn").val(),
+            dataType: "json",
+
+            success: function(data) {
+                $(".result").fadeOut(500, function() {
+                    $("#isbn").html(data.isbn);
+                    $("#author").html(data.author);
+                    $("#title").html(data.title);
+                    $("#price").html(data.price);
+                    $("#category").html(data.category.toString().replace(/,/g, ", "));
+
+                    $(".result").fadeIn(500)
+                });
+            },
+            error: function(request, textStatus, errorThrown) {
+                if (textStatus == 'error') {
+                    $("#find-book-flash-message").show().html(request.responseText).fadeOut(5000);
+                } else {
+                    $("#find-book-flash-message").show().html("Server error").fadeOut(5000);
+                }
+            }
+        });
+
+        return false;
+    });
+
+    $("#add-book").submit(function() {
+        if ($("#add-book-isbn").val().trim() == "") {
+            alert("ISBN must not be empty!");
+            return false;
+        };
+        var book = formToJSON();
+        //alert(book);
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "resources/books",
+            dataType: "json",
+            data: book,
+
+            success: function() {
+                $("#add-book-flash-message").show().html("Book with ISBN[" +
+                        $("#add-book-isbn").val() + "] was added").fadeOut(5000);
+            },
+            error: function(request, textStatus, errorThrown) {
+                if (textStatus == 'error') {
+                    $("#add-book-flash-message").show().html(request.responseText).fadeOut(5000);
+                } else {
+                    $("#add-book-flash-message").show().html("Server error").fadeOut(5000);
+                }
+            }
+        });
+
+        return false;
+    });
+
+    function formToJSON() {
+        var isbn = $("#add-book-isbn").val().trim();
+        var author = $("#add-book-author").val().trim();
+        var title = $("#add-book-title").val().trim();
+        var price = $("#add-book-price").val().trim();
+        var categories = [];
+
+        var category_1 = $("#add-book-category-1").val().trim();
+        if (category_1 != "") {
+            categories.push(category_1);
+        }
+        var category_2 = $("#add-book-category-2").val().trim();
+        if (category_2 != "") {
+            categories.push(category_2);
+        }
+        var category_3 = $("#add-book-category-3").val().trim();
+        if (category_3 != "") {
+            categories.push(category_3);
+        }
+
+        return JSON.stringify({
+            "isbn": isbn == "" ? null : isbn,
+            "author": author == "" ? null : author,
+            "title": title == "" ? null : title,
+            "price": price == "" ? null : price,
+            "category" : categories
+        });
+    }
+
+    function addFormReset() {
+        $("#add-book")[0].reset();
+    }
+</script>
+
+</body>
+
+</html>
