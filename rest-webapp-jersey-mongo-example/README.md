@@ -1,7 +1,7 @@
 spring-jaxrs-webapp-example
 ---------------------------
 
-#####Branch[mongodb]: this is an example of using Spring IoC, JAX-RS/Jersey, and MongoDB.#####
+#####This is an example of using Spring IoC, JAX-RS/Jersey, and MongoDB.#####
 
 ######Technologies and software used:######
 * [Java SE 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
