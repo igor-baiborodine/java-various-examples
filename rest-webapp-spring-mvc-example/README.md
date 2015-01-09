@@ -1,7 +1,7 @@
-rest-webapp-example
+rest-webapp-spring-mvc-example
 ---------------
 
-#####Branch[spring-mvc]: this is an example of using Spring IoC and Spring MVC to implement RESTful web services.#####
+#####This is an example of using Spring IoC and Spring MVC to implement RESTful web services.#####
 
 ######Technologies and software used:######
 * [Java SE 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
