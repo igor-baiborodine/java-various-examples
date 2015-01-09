@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:property-placeholder location="classpath:db-test.properties" />
+
+    <bean id="mongoClient" class="com.mongodb.MongoClient" destroy-method="close">
+        <constructor-arg type="java.lang.String" value="${mongodb.host}" />
+        <constructor-arg type="int" value="${mongodb.port}" />
+    </bean>
+
+    <bean id="bookDao" class="com.kiroule.example.restwebapp.dao.BookDao"
+            depends-on="mongoClient" init-method="init">
+        <property name="mongoClient" ref="mongoClient" />
+        <property name="dbName" value="${mongodb.db.name}" />
+        <property name="collectionName" value="${mongodb.db.collection.books}" />
+    </bean>
+
+    <context:component-scan base-package="com.kiroule.example.restwebapp" />
+
+</beans>
