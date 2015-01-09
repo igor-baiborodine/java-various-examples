@@ -1,11 +1,7 @@
-spring-jaxrs-webapp-example
+rest-webapp-jersey-example
 ---------------------------
 
-#####Branch[master]: this is an example of using Spring IoC and JAX-RS/Jersey.#####
-
-######Deployed App: http://spring-jaxrs-webapp-example.kiroule.cloudbees.net/######
-
-######CloudBees Jenkins: [![Build Status](https://kiroule.ci.cloudbees.com/buildStatus/icon?job=spring-jaxrs-webapp-example)](https://kiroule.ci.cloudbees.com/job/spring-jaxrs-webapp-example/)######
+#####This is an example of using Spring IoC and JAX-RS/Jersey.#####
 
 ######Technologies and software used:######
 * Java
