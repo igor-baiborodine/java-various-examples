@@ -1,4 +1,4 @@
-spring-jaxrs-webapp-example
+rest-webapp-jersey-mongo-example
 ---------------------------
 
 #####This is an example of using Spring IoC, JAX-RS/Jersey, and MongoDB.#####
