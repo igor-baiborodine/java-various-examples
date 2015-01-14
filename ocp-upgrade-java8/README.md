@@ -43,14 +43,14 @@ ocp-upgrade-java8
 - 6.4. Describe other stream sources: Arrays.stream(), IntStream.range()
 
 #####7. Method Enhancements
-7.1. Adding static methods to interfaces
-7.2. Define and use a default method of a interface; Describe the inheritance rules for a default method
+- 7.1. Adding static methods to interfaces
+- 7.2. Define and use a default method of a interface; Describe the inheritance rules for a default method
 
 #####8. Use Java SE 8 Date/Time API - 10%
-8.1. Create and manage date-based and time-based events; including combination of date and time into a single object using  LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration
-8.2. Work with dates and times across time-zones and manage changes resulting from daylight savings
-8.3. Define and create timestamps, periods and durations; apply formatting to local and zoned dates and times
+- 8.1. Create and manage date-based and time-based events; including combination of date and time into a single object using  LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration
+- 8.2. Work with dates and times across time-zones and manage changes resulting from daylight savings
+- 8.3. Define and create timestamps, periods and durations; apply formatting to local and zoned dates and times
 
 #####9.JavaScript on Java with Nashorn
-9.1. Develop Javascript code that creates and uses Java members such as Java objects, methods, JavaBeans, Arrays, Collections, Interfaces.
-9.2. Develop code that  evaluates JavaScript in java, passes Java object to Javascript, invokes Javascript function and calls methods on Javascript objects.
+- 9.1. Develop Javascript code that creates and uses Java members such as Java objects, methods, JavaBeans, Arrays, Collections, Interfaces.
+- 9.2. Develop code that  evaluates JavaScript in java, passes Java object to Javascript, invokes Javascript function and calls methods on Javascript objects.
