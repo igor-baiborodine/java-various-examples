@@ -3,8 +3,8 @@ ocp-upgrade-java8
 
 ####Exam topics:
 
-#####Lambda Expressions
-* Describe Java inner classes and develop the code that uses Java inner classes (such as: nested class, static class, local class and anonymous classes)
+#####1. Lambda Expressions
+1.1 Describe Java inner classes and develop the code that uses Java inner classes (such as: nested class, static class, local class and anonymous classes)
 * Define and write functional interfaces
 * Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
 
