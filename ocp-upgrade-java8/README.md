@@ -4,18 +4,18 @@ ocp-upgrade-java8
 ####Exam topics:
 
 #####1. Lambda Expressions
-1.1. Describe Java inner classes and develop the code that uses Java inner classes (such as: nested class, static class, local class and anonymous classes)
-1.2. Define and write functional interfaces
-1.3. Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
+- 1.1. Describe Java inner classes and develop the code that uses Java inner classes (such as: nested class, static class, local class and anonymous classes)
+- 1.2. Define and write functional interfaces
+- 1.3. Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
 
 #####2. Using Built in Lambda Types
-2.1. Describe the built in interfaces included in Java 8 – java.util.function package
-2.2. Develop code that uses Function interface
-2.3. Develop code that uses Consumer interface
-2.4. Develop code that uses Supplier interface
-2.5. Develop code that uses UnaryOperator interface
-2.6. Develop code that uses Predicate interface
-2.7. Develop the code that use primitive and binary variations of base interfaces of java.util.function package
+- 2.1. Describe the built in interfaces included in Java 8 – java.util.function package
+- 2.2. Develop code that uses Function interface
+- 2.3. Develop code that uses Consumer interface
+- 2.4. Develop code that uses Supplier interface
+- 2.5. Develop code that uses UnaryOperator interface
+- 2.6. Develop code that uses Predicate interface
+- 2.7. Develop the code that use primitive and binary variations of base interfaces of java.util.function package
 2.8. Develop the code that use method reference; including refactor the code that use Lambda expression to use method references
 
 #####3. Filtering Collections with Lambdas
