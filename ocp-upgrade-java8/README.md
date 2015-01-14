@@ -16,31 +16,31 @@ ocp-upgrade-java8
 - 2.5. Develop code that uses UnaryOperator interface
 - 2.6. Develop code that uses Predicate interface
 - 2.7. Develop the code that use primitive and binary variations of base interfaces of java.util.function package
-2.8. Develop the code that use method reference; including refactor the code that use Lambda expression to use method references
+- 2.8. Develop the code that use method reference; including refactor the code that use Lambda expression to use method references
 
 #####3. Filtering Collections with Lambdas
-3.1. Develop the code that iterates a collection by using forEach; including method chaining
-3.2. Describe the Stream interface and pipelines
-3.3. Filter a collection using lambda expressions
-3.4. Identify lambda operations that are lazy
+- 3.1. Develop the code that iterates a collection by using forEach; including method chaining
+- 3.2. Describe the Stream interface and pipelines
+- 3.3. Filter a collection using lambda expressions
+- 3.4. Identify lambda operations that are lazy
 
 #####4. Collection Operations with Lambda
-4.1. Develop the code to extract data from an object using map
-4.2. Search for data using search methods including: findFirst, findAny, anyMatch, allMatch, noneMatch.
-4.3. Describe the unique characteristics of the Optional classes
-4.4. Perform calculations using methods: count, max, min, average, sum
-4.5. Sort a collection using lambda expressions
-4.6. Save results to a collection by using the collect method and Collector class; including methods such as averagingDouble,groupingBy,joining,partitioningBy
+- 4.1. Develop the code to extract data from an object using map
+- 4.2. Search for data using search methods including: findFirst, findAny, anyMatch, allMatch, noneMatch.
+- 4.3. Describe the unique characteristics of the Optional classes
+- 4.4. Perform calculations using methods: count, max, min, average, sum
+- 4.5. Sort a collection using lambda expressions
+- 4.6. Save results to a collection by using the collect method and Collector class; including methods such as averagingDouble,groupingBy,joining,partitioningBy
 
 #####5. Parallel Streams
-5.1. Develop the code that use parallel streams
-5.2. Implement decomposition, reduction, in streams
+- 5.1. Develop the code that use parallel streams
+- 5.2. Implement decomposition, reduction, in streams
 
 #####6. Lambda Cookbook
-6.1. Develop the code that use Java SE 8 collection improvements: Colleciton.removeIf, List.replaceAll, Map.computeIfAbsent/Present, Map.forEach
-6.2. Read files using lambda improvements: Files.find, lines(), walk()
-6.3. Use merge, flatMap methods on a collection
-6.4. Describe other stream sources: Arrays.stream(), IntStream.range()
+- 6.1. Develop the code that use Java SE 8 collection improvements: Colleciton.removeIf, List.replaceAll, Map.computeIfAbsent/Present, Map.forEach
+- 6.2. Read files using lambda improvements: Files.find, lines(), walk()
+- 6.3. Use merge, flatMap methods on a collection
+- 6.4. Describe other stream sources: Arrays.stream(), IntStream.range()
 
 #####7. Method Enhancements
 7.1. Adding static methods to interfaces
