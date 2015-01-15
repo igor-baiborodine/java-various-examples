@@ -5,12 +5,14 @@ package com.kiroule.ocpupgradejava8.topic1;
  */
 class OuterHelloWorld {
 
+    private String greeting = "Hello World!";
+
     public void printGreeting() {
-        System.out.println("OUTER: Hello World!");
+        System.out.println("OUTER: " + greeting);
     }
     class InnerHelloWorld{
         public void printGreeting() {
-            System.out.println("INNER: Hello World!");
+            System.out.println("INNER: " + greeting);
         }
     }
 
