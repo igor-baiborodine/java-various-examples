@@ -6,7 +6,7 @@ ocp-upgrade-java8
 #####1. Lambda Expressions
 - 1.1. [Describe Java inner classes and develop the code that uses Java inner classes (such as: nested class, static class, local class and anonymous classes)](http://docs.oracle.com/javase/tutorial/java/javaOO/nested.html)
 
-    [Inner class example](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/OuterHelloWorld.java)
+    Inner class example: [OuterHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/OuterHelloWorld.java)
     
 - 1.2. Define and write functional interfaces
 - 1.3. Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
