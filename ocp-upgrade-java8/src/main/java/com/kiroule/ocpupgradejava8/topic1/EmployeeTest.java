@@ -22,7 +22,8 @@ class EmployeeTest {
 
         System.out.println("Before sorting: " + employees);
 
-        Collections.sort(employees, new Employee.FirstNameAscComparator());
+        Employee.FirstNameAscComparator comparator = new Employee.FirstNameAscComparator();
+        Collections.sort(employees, comparator);
         System.out.println("After sorting: " + employees);
     }
 }
