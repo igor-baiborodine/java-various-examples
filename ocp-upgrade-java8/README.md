@@ -8,6 +8,8 @@ ocp-upgrade-java8
 
     Inner class example: [OuterHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/OuterHelloWorld.java)
     
+    Static inner class example: [Employee](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/Employee.java)/[EmployeeTest](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/EmployeeTest.java)
+    
 - 1.2. Define and write functional interfaces
 - 1.3. Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
 
