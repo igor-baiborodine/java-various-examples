@@ -11,12 +11,12 @@ class AnonymousHelloWorld {
 
     public static void main(String... args) {
 
-        HelloWorld anonymousHelloWorld = new HelloWorld() {
+        HelloWorld helloWorld = new HelloWorld() {
             @Override
             public void printGreeting() {
                 System.out.println("ANONYMOUS: Hello World!");
             }
         };
-        anonymousHelloWorld.printGreeting();
+        helloWorld.printGreeting();
     }
 }
