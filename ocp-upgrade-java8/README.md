@@ -12,7 +12,7 @@ These are preparation materials for the "Upgrade to Java SE 8 Programmer" exam /
     
     Static inner class example: [Employee.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/Employee.java)/[EmployeeTest.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/EmployeeTest.java)
     
-    Anonymous class example: [AnoymousHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/AnonymousHelloWorld.java) 
+    Anonymous class example: [AnonymousHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/AnonymousHelloWorld.java) 
     
 - 1.2. Define and write functional interfaces
 - 1.3. Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
