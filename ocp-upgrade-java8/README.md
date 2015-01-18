@@ -22,7 +22,7 @@ ocp-upgrade-java8
 method of a functional interface is called a function descriptor.
   @FunctionalInterface annotation is used to indicate that the interface is intended to be a functional interface.
   
-  Functional interface example: [FunctionalInterfaceHelloWorld.java]() 
+  Functional interface example: [FunctionalInterfaceHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_2/FunctionalInterfaceHelloWorld.java) 
   
 - 1.3. Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
 
