@@ -8,13 +8,13 @@ ocp-upgrade-java8
 #####1. Lambda Expressions
 - 1.1. [Describe Java inner classes and develop the code that uses Java inner classes (such as: nested class, static class, local class and anonymous classes)](http://docs.oracle.com/javase/tutorial/java/javaOO/nested.html)
 
-    Inner class example: [OuterHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/OuterHelloWorld.java)
+    Inner class example: [OuterHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_1/OuterHelloWorld.java)
     
-    Static inner class example: [Employee.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/Employee.java)/[EmployeeTest.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/EmployeeTest.java)
+    Static inner class example: [Employee.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_1/Employee.java)/[EmployeeTest.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/EmployeeTest.java)
     
-    Anonymous class example: [AnonymousHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/AnonymousHelloWorld.java) 
+    Anonymous class example: [AnonymousHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_1/AnonymousHelloWorld.java) 
     
-    Local method class example: [LocalMethodHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1/LocalMethodHelloWorld.java)
+    Local method class example: [LocalMethodHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_1/LocalMethodHelloWorld.java)
     
 - 1.2. Define and write functional interfaces
 
