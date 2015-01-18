@@ -1,4 +1,4 @@
-package com.kiroule.ocpupgradejava8.topic1;
+package com.kiroule.ocpupgradejava8.topic1_1;
 
 /**
  * @author Igor Baiborodine
