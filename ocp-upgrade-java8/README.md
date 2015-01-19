@@ -24,6 +24,10 @@ ocp-upgrade-java8
   
 - 1.3. [Describe a Lambda expression;](http://en.wikipedia.org/wiki/Anonymous_function#Java) refactor the code that use anonymous inner class to use Lambda expression; including type inference, target typing
 
+  [Type inference](http://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html)
+  [Target typing](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#target-typing)
+  Refactoring code example: [RefactoringCodeExample.java]()
+      
 #####2. Using Built in Lambda Types
 - 2.1. Describe the built in interfaces included in Java 8 – java.util.function package
 - 2.2. Develop code that uses Function interface
