@@ -13,7 +13,7 @@ public class TypeInferenceExample {
         Foo<Bar> foo = new Foo<>();
 
         foo.<String>apply(bar -> bar::setBar);
-        // Or we can omit the type String, a Java compiler automatically infers
+        // We omit the type String and Java compiler automatically infers
         // (from the method's argument) that the type parameter is String:
         foo.apply(bar -> bar::setBar);
     }
