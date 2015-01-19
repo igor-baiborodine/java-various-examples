@@ -5,12 +5,7 @@ package com.kiroule.ocpupgradejava8.topic1_2;
  */
 public class FunctionalInterfaceHelloWorld {
 
-    @FunctionalInterface
-    public interface HelloWorld {
-        void printGreeting();
-    }
-
-    public static void process(HelloWorld hw){
+    public static void process(HelloWorld hw) {
         hw.printGreeting();
     }
 
@@ -29,4 +24,9 @@ public class FunctionalInterfaceHelloWorld {
         process(hw2);
         process(() -> System.out.println("Hello World 3"));
     }
+}
+
+@FunctionalInterface
+interface HelloWorld {
+    void printGreeting();
 }
