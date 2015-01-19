@@ -29,6 +29,8 @@ ocp-upgrade-java8
   [Target typing](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#target-typing)
   
   Refactoring code example: [RefactoringCodeExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/RefactoringCodeExample.java)
+  
+  Type inference example: [TypeInferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/TypeInferenceExample.java)
       
 #####2. Using Built in Lambda Types
 - 2.1. Describe the built in interfaces included in Java 8 – java.util.function package
