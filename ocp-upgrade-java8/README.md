@@ -18,14 +18,16 @@ ocp-upgrade-java8
     
 - 1.2. Define and write functional interfaces
 
-  A functional interface is an interface that specifies exactly one abstract method. The signature of the abstract
-method of a functional interface is called a function descriptor.
-  @FunctionalInterface annotation is used to indicate that the interface is intended to be a functional interface.
+  A _functional interface_ is an interface that specifies exactly one abstract method. The signature of the abstract method of a functional interface is called a function descriptor. @FunctionalInterface annotation is used to indicate that the interface is intended to be a functional interface.
   
   Functional interface example: [FunctionalInterfaceHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_2/FunctionalInterfaceHelloWorld.java) 
   
-- 1.3. Describe a Lambda expression; refactor the code that use anonymous inner class to use Lambda expression; including type inference,target typing
+- 1.3. [Describe a Lambda expression;](http://en.wikipedia.org/wiki/Anonymous_function#Java) refactor the code that use anonymous inner class to use Lambda expression; including type inference, target typing
 
+  [Type inference](http://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html)
+  [Target typing](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#target-typing)
+  Refactoring code example: [RefactoringCodeExample.java]()
+      
 #####2. Using Built in Lambda Types
 - 2.1. Describe the built in interfaces included in Java 8 – java.util.function package
 - 2.2. Develop code that uses Function interface
