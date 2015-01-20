@@ -25,6 +25,10 @@ public class FunctionInterfaceExample {
                     e -> "Display name: " + e.getFirstName() + " " + e.getLastName()
             ));
         }
+
+        for (Employee employee : employees) {
+            System.out.println(employee.getDisplayName(new Employee.InverseNameFunction()));
+        }
     }
 }
 
@@ -40,6 +44,13 @@ class Employee {
 
     public String getDisplayName(Function<Employee, String> f) {
         return f.apply(this);
+    }
+
+    public static class InverseNameFunction implements Function<Employee, String> {
+        @Override
+        public String apply(Employee e) {
+            return  "Inverse display name: " + e.getLastName() + ", " + e.getFirstName();
+        }
     }
 
     public String getFirstName() {
