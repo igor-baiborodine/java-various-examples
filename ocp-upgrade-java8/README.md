@@ -34,6 +34,16 @@ ocp-upgrade-java8
       
 #####2. Using Built in Lambda Types
 - 2.1. Describe the built in interfaces included in Java 8 – java.util.function package
+
+|Functional interface|Function descriptor|Primitive specializations|
+|:--------------------------|:------------------------|:------------------------|
+|Predicate\<T\>|T -> boolean|IntPredicate, LongPredicate, DoublePredicate|
+|Consumer\<T\>|T -> void|IntConsumer, LongConsumer, DoubleConsumer|
+|Function\<T, R\>|T -> R|IntFunction<R>, IntToDoubleFunction, IntToLongFunction, LongFunction<R>, LongToDoubleFunction, LongToIntFunction, DoubleFunction<R>, ToIntFunction<T>, ToDoubleFunction<T>, ToLongFunction<T>|
+|Supplier\<T\>|() -> T|BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier|
+|UnaryOperator\<T\>|T -> T|IntUnaryOperator, LongUnaryOperator, DoubleUnaryOperator|
+|BinaryOperator\<T\>|(T, T) -> T|IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator|
+
 - 2.2. Develop code that uses Function interface
 - 2.3. Develop code that uses Consumer interface
 - 2.4. Develop code that uses Supplier interface
