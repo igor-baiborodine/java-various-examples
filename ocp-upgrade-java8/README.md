@@ -33,16 +33,16 @@ ocp-upgrade-java8
   Type inference example: [TypeInferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/TypeInferenceExample.java)
       
 #####2. Using Built in Lambda Types
-- 2.1. Describe the built in interfaces included in Java 8 – java.util.function package
+- 2.1. Describe the built in interfaces included in Java 8 – [java.util.function package](http://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)
 
 |Functional interface|Function descriptor|Primitive specializations|
 |:--------------------------|:------------------------|:------------------------|
-|Predicate\<T\>|T -> boolean|IntPredicate, LongPredicate, DoublePredicate|
-|Consumer\<T\>|T -> void|IntConsumer, LongConsumer, DoubleConsumer|
-|Function\<T, R\>|T -> R|IntFunction<R>, IntToDoubleFunction, IntToLongFunction, LongFunction<R>, LongToDoubleFunction, LongToIntFunction, DoubleFunction<R>, ToIntFunction<T>, ToDoubleFunction<T>, ToLongFunction<T>|
-|Supplier\<T\>|() -> T|BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier|
-|UnaryOperator\<T\>|T -> T|IntUnaryOperator, LongUnaryOperator, DoubleUnaryOperator|
-|BinaryOperator\<T\>|(T, T) -> T|IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator|
+|[Predicate\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html)|T -> boolean|IntPredicate, LongPredicate, DoublePredicate|
+|[Consumer\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html)|T -> void|IntConsumer, LongConsumer, DoubleConsumer|
+|[Function\<T, R\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html)|T -> R|IntFunction<R>, IntToDoubleFunction, IntToLongFunction, LongFunction<R>, LongToDoubleFunction, LongToIntFunction, DoubleFunction<R>, ToIntFunction<T>, ToDoubleFunction<T>, ToLongFunction<T>|
+|[Supplier\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html)|() -> T|BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier|
+|[UnaryOperator\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/UnaryOperator.html)|T -> T|IntUnaryOperator, LongUnaryOperator, DoubleUnaryOperator|
+|[BinaryOperator\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/BinaryOperator.html)|(T, T) -> T|IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator|
 
 - 2.2. Develop code that uses Function interface
 - 2.3. Develop code that uses Consumer interface
