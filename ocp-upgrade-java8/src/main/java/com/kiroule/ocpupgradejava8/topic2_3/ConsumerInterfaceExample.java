@@ -48,7 +48,7 @@ class Person {
     public static class InvertedFullNameConsumer implements Consumer<Person> {
         @Override
         public void accept(Person p) {
-            p.setLastName(p.getLastName().toUpperCase()); // side effect
+            p.setLastName(p.getLastName().toUpperCase()); // introducing side effect
             System.out.println("Inverted full name: " + p.getLastName() + ", " + p.getFirstName());
         }
     }
