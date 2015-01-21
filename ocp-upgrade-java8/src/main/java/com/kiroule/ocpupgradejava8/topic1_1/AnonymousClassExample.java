@@ -3,7 +3,7 @@ package com.kiroule.ocpupgradejava8.topic1_1;
 /**
  * @author Igor Baiborodine
  */
-class AnonymousHelloWorld {
+class AnonymousClassExample {
 
     abstract static class HelloWorld {
         public abstract void printGreeting();

@@ -3,7 +3,7 @@ package com.kiroule.ocpupgradejava8.topic1_1;
 /**
  * @author Igor Baiborodine
  */
-class LocalMethodHelloWorld {
+class LocalMethodClassExample {
 
     private String greeting = "Hello World!";
 
@@ -19,6 +19,6 @@ class LocalMethodHelloWorld {
     }
 
     public static void main(String... args) {
-        new LocalMethodHelloWorld().printGreeting();
+        new LocalMethodClassExample().printGreeting();
     }
 }
