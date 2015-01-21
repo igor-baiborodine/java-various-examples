@@ -11,45 +11,45 @@ public class FunctionInterfaceExample {
 
     public static void main(String... args) {
 
-        Employee emp1 = new Employee("Bender", "Rodriguez");
-        Employee emp2 = new Employee("Philip", "Fry");
-        Employee emp3 = new Employee("Amy", "Wong");
+        Person person1 = new Person("Bender", "Rodriguez");
+        Person person2 = new Person("Philip", "Fry");
+        Person person3 = new Person("Amy", "Wong");
 
-        List<Employee> employees = new ArrayList<>();
-        employees.add(emp1);
-        employees.add(emp2);
-        employees.add(emp3);
+        List<Person> persons = new ArrayList<>();
+        persons.add(person1);
+        persons.add(person2);
+        persons.add(person3);
 
-        for (Employee employee : employees) {
-            System.out.println(employee.getDisplayName(
-                    e -> "Display name: " + e.getFirstName() + " " + e.getLastName()
+        for (Person person : persons) {
+            System.out.println(person.getFullName(
+                    e -> "Full name: " + e.getFirstName() + " " + e.getLastName()
             ));
         }
 
-        for (Employee employee : employees) {
-            System.out.println(employee.getDisplayName(new Employee.InverseNameFunction()));
+        for (Person person : persons) {
+            System.out.println(person.getFullName(new Person.InvertedFullNameFunction()));
         }
     }
 }
 
-class Employee {
+class Person {
 
     private String firstName;
     private String lastName;
 
-    public Employee(String firstName, String lastName) {
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getDisplayName(Function<Employee, String> f) {
-        return f.apply(this);
+    public String getFullName(Function<Person, String> function) {
+        return function.apply(this);
     }
 
-    public static class InverseNameFunction implements Function<Employee, String> {
+    public static class InvertedFullNameFunction implements Function<Person, String> {
         @Override
-        public String apply(Employee e) {
-            return  "Inverse display name: " + e.getLastName() + ", " + e.getFirstName();
+        public String apply(Person p) {
+            return  "Inverted full name: " + p.getLastName() + ", " + p.getFirstName();
         }
     }
 
@@ -57,16 +57,8 @@ class Employee {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 }
 
