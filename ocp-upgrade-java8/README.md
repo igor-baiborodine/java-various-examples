@@ -1,7 +1,7 @@
 ocp-upgrade-java8
 -----------------
 
-#####These are preparation materials for the "Upgrade to Java SE 8 Programmer" exam \(1Z1-810\).
+#####These are preparation materials for the Oracle's "Upgrade to Java SE 8 Programmer" exam \([1Z1-810](http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=5001&get_params=p_exam_id:1Z0-810)\).
 
 ####Exam topics:
 
@@ -20,7 +20,7 @@ ocp-upgrade-java8
 
   A _functional interface_ is an interface that specifies exactly one abstract method. The signature of the abstract method of a functional interface is called a function descriptor. @FunctionalInterface annotation is used to indicate that the interface is intended to be a functional interface.
   
-  Functional interface example: [FunctionalInterfaceHelloWorld.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_2/FunctionalInterfaceHelloWorld.java) 
+  Functional interface example: [FunctionalInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_2/FunctionInterfaceExample.java) 
   
 - 1.3. [Describe a Lambda expression;](http://en.wikipedia.org/wiki/Anonymous_function#Java) refactor the code that use anonymous inner class to use Lambda expression; including type inference, target typing
 
@@ -28,9 +28,9 @@ ocp-upgrade-java8
   
   [Target typing](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#target-typing)
   
-  Refactoring code example: [RefactoringCodeExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/RefactoringCodeExample.java)
+  [RefactoringCodeExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/RefactoringCodeExample.java)
   
-  Type inference example: [TypeInferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/TypeInferenceExample.java)
+  [TypeInferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/TypeInferenceExample.java)
       
 #####2. Using Built in Lambda Types
 - 2.1. Describe the built in interfaces included in Java 8 – [java.util.function package](http://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)
