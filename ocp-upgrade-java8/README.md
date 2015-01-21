@@ -44,13 +44,9 @@ ocp-upgrade-java8
 |[UnaryOperator\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/UnaryOperator.html)|T -> T|IntUnaryOperator, LongUnaryOperator, DoubleUnaryOperator|
 |[BinaryOperator\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/BinaryOperator.html)|(T, T) -> T|IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator|
 
-- 2.2. Develop code that uses [Function](http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html) interface
+- 2.2. Develop code that uses [Function](http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html) interface: [FunctionInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_2/FunctionInterfaceExample.java)
 
-  [FunctionInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_2/FunctionInterfaceExample.java)
-
-- 2.3. Develop code that uses [Consumer](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html) interface
- 
-  [ConsumerInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_3/ConsumerInterfaceExample.java)
+- 2.3. Develop code that uses [Consumer](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html) interface: [ConsumerInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_3/ConsumerInterfaceExample.java)
 
 - 2.4. Develop code that uses Supplier interface
 - 2.5. Develop code that uses UnaryOperator interface
