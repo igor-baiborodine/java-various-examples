@@ -22,10 +22,10 @@ public class UnaryOperatorInterfaceExample {
 
         UnaryOperator<String> toUpperCaseUnaryOperator = (s) -> s.toUpperCase();
         for (Person p : persons) {
-            System.out.println(p.getFirstName() + " " + toUpperCaseUnaryOperator.apply(p.getLastName()));
+            System.out.println("Full name: " + p.getFirstName() + " " + toUpperCaseUnaryOperator.apply(p.getLastName()));
         }
         // the same, one-liner
-        persons.forEach(p -> System.out.println(p.getFirstName() + " " + toUpperCaseUnaryOperator.apply(p.getLastName())));
+        persons.forEach(p -> System.out.println("Full name: " + p.getFirstName() + " " + toUpperCaseUnaryOperator.apply(p.getLastName())));
     }
 }
 
