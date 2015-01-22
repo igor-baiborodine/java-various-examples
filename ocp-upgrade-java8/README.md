@@ -52,7 +52,8 @@ ocp-upgrade-java8
 
 - 2.5. Develop code that uses [UnaryOperator](http://docs.oracle.com/javase/8/docs/api/java/util/function/UnaryOperator.html) interface: [UnaryOperatorInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_5/UnaryOperatorInterfaceExample.java)
 
-- 2.6. Develop code that uses Predicate interface
+- 2.6. Develop code that uses [Predicate](http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html) interface: [PredicateInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_6/PredicateInterfaceExample.java)
+
 - 2.7. Develop the code that use primitive and binary variations of base interfaces of java.util.function package
 - 2.8. Develop the code that use method reference; including refactor the code that use Lambda expression to use method references
 
