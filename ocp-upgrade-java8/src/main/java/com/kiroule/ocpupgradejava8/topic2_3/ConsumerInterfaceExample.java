@@ -24,10 +24,18 @@ public class ConsumerInterfaceExample {
         persons.forEach(fullName);
 
         for (Person person : persons) {
-            person.printFullName(new Person.InvertedFullNameConsumer());
+            person.printFullName(new InvertedFullNameConsumer());
         }
 
         persons.forEach(fullName);
+    }
+}
+
+class InvertedFullNameConsumer implements Consumer<Person> {
+    @Override
+    public void accept(Person p) {
+        p.setLastName(p.getLastName().toUpperCase()); // introducing side effect
+        System.out.println("Inverted full name: " + p.getLastName() + ", " + p.getFirstName());
     }
 }
 
@@ -43,14 +51,6 @@ class Person {
 
     public void printFullName(Consumer<Person> consumer) {
         consumer.accept(this);
-    }
-
-    public static class InvertedFullNameConsumer implements Consumer<Person> {
-        @Override
-        public void accept(Person p) {
-            p.setLastName(p.getLastName().toUpperCase()); // introducing side effect
-            System.out.println("Inverted full name: " + p.getLastName() + ", " + p.getFirstName());
-        }
     }
 
     public String getFirstName() {

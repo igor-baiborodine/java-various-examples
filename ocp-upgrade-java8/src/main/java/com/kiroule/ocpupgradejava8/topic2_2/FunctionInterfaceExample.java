@@ -26,9 +26,14 @@ public class FunctionInterfaceExample {
             ));
         }
 
-        for (Person person : persons) {
-            System.out.println(person.getFullName(new Person.InvertedFullNameFunction()));
-        }
+        persons.forEach(p -> System.out.println(p.getFullName(new InvertedFullNameFunction())));
+    }
+}
+
+class InvertedFullNameFunction implements Function<Person, String> {
+    @Override
+    public String apply(Person p) {
+        return  "Inverted full name: " + p.getLastName() + ", " + p.getFirstName();
     }
 }
 
@@ -44,13 +49,6 @@ class Person {
 
     public String getFullName(Function<Person, String> function) {
         return function.apply(this);
-    }
-
-    public static class InvertedFullNameFunction implements Function<Person, String> {
-        @Override
-        public String apply(Person p) {
-            return  "Inverted full name: " + p.getLastName() + ", " + p.getFirstName();
-        }
     }
 
     public String getFirstName() {
