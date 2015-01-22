@@ -48,7 +48,8 @@ ocp-upgrade-java8
 
 - 2.3. Develop code that uses [Consumer](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html) interface: [ConsumerInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_3/ConsumerInterfaceExample.java)
 
-- 2.4. Develop code that uses Supplier interface
+- 2.4. Develop code that uses [Supplier](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_4/SupplierInterfaceExample.java) interface: [SupplierInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_4/SupplierInterfaceExample.java)
+
 - 2.5. Develop code that uses UnaryOperator interface
 - 2.6. Develop code that uses Predicate interface
 - 2.7. Develop the code that use primitive and binary variations of base interfaces of java.util.function package
