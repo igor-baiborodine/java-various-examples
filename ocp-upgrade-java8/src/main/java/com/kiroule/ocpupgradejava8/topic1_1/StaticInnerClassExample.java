@@ -1,9 +1,6 @@
 package com.kiroule.ocpupgradejava8.topic1_1;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Igor Baiborodine
@@ -12,14 +9,10 @@ public class StaticInnerClassExample {
 
     public static void main(String... args) {
 
-        Person person1 = new Person("Bender", "Rodriguez");
-        Person person2 = new Person("Philip", "Fry");
-        Person person3 = new Person("Amy", "Wong");
-
-        List<Person> persons = new ArrayList<>();
-        persons.add(person1);
-        persons.add(person2);
-        persons.add(person3);
+        List<Person> persons = Arrays.asList(
+                new Person("Bender", "Rodriguez"),
+                new Person("Philip", "Fry"),
+                new Person("Turanga", "Leela"));
 
         System.out.println("Before sorting: " + persons);
 

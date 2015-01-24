@@ -1,6 +1,6 @@
 package com.kiroule.ocpupgradejava8.topic2_3;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -11,14 +11,10 @@ public class ConsumerInterfaceExample {
 
     public static void main(String... args) {
 
-        Person person1 = new Person("Bender", "Rodriguez");
-        Person person2 = new Person("Philip", "Fry");
-        Person person3 = new Person("Amy", "Wong");
-
-        List<Person> persons = new ArrayList<>();
-        persons.add(person1);
-        persons.add(person2);
-        persons.add(person3);
+        List<Person> persons = Arrays.asList(
+                new Person("Bender", "Rodriguez"),
+                new Person("Philip", "Fry"),
+                new Person("Turanga", "Leela"));
 
         Consumer<Person> fullName = (Person p) -> System.out.println("Full name: " + p.getFirstName() + " " + p.getLastName());
         persons.forEach(fullName);
