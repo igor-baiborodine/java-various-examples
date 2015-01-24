@@ -14,7 +14,7 @@ public class MethodReferenceExample {
     public static void main(String... args) {
 
         BiFunction<String, String, Person> bf = (firstName, lastName) -> new Person(firstName, lastName);
-        BiFunction<String, String, Person> bf2 = Person::new;
+        BiFunction<String, String, Person> bf2 = Person::new; // method reference
 
         List<Person> persons = Arrays.asList(
                 bf.apply("Philip", "Fry"),
@@ -26,11 +26,11 @@ public class MethodReferenceExample {
 
         System.out.println("\nAfter sorting by last name(ASC):");
         persons.sort((Person p1, Person p2) -> p1.getLastName().compareTo(p2.getLastName()));
-        persons.forEach(Person::printFullName);
+        persons.forEach(Person::printFullName); // method reference
 
         System.out.println("\nAfter sorting by first name(ASC):");
-        persons.sort(comparing(Person::getFirstName));
-        persons.forEach(Person::printFullName);
+        persons.sort(comparing(Person::getFirstName)); // method reference
+        persons.forEach(Person::printFullName); // method reference
     }
 }
 
