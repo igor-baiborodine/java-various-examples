@@ -7,7 +7,7 @@ import java.util.function.BiFunction;
 /**
  * @author Igor Baiborodine
  */
-public class PrimitiveAndBinaryVariationExample {
+public class PrimitiveAndBinaryVariationsExample {
 
     public static void main(String... args) {
 
