@@ -58,7 +58,7 @@ ocp-upgrade-java8
 - 2.8. Develop the code that use method reference; including refactor the code that use Lambda expression to use method references: [MethodReferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_8/MethodReferenceExample.java)
 
 #####3. Filtering Collections with Lambdas
-- 3.1. Develop the code that iterates a collection by using forEach; including method chaining
+- 3.1. Develop the code that iterates a collection by using forEach; including method chaining: [ForEachExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic3_1/ForEachExample.java)
 - 3.2. Describe the Stream interface and pipelines
 - 3.3. Filter a collection using lambda expressions
 - 3.4. Identify lambda operations that are lazy
