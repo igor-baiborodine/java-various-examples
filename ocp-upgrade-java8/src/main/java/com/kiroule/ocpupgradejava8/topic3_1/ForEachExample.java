@@ -11,7 +11,7 @@ public class ForEachExample {
 
     public static void main(String... args) {
 
-        BiFunction<String, String, Person> bf = Person::new; // method reference
+        BiFunction<String, String, Person> bf = Person::new; 
 
         List<Person> persons = Arrays.asList(
                 bf.apply("Philip", "Fry"),
