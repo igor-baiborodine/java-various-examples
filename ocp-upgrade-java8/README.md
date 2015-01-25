@@ -45,15 +45,10 @@ ocp-upgrade-java8
 |[BinaryOperator\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/BinaryOperator.html)|(T, T) -> T|IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator|
 
 - 2.2. Develop code that uses [Function](http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html) interface: [FunctionInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_2/FunctionInterfaceExample.java)
-
 - 2.3. Develop code that uses [Consumer](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html) interface: [ConsumerInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_3/ConsumerInterfaceExample.java)
-
 - 2.4. Develop code that uses [Supplier](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_4/SupplierInterfaceExample.java) interface: [SupplierInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_4/SupplierInterfaceExample.java)
-
 - 2.5. Develop code that uses [UnaryOperator](http://docs.oracle.com/javase/8/docs/api/java/util/function/UnaryOperator.html) interface: [UnaryOperatorInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_5/UnaryOperatorInterfaceExample.java)
-
 - 2.6. Develop code that uses [Predicate](http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html) interface: [PredicateInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_6/PredicateInterfaceExample.java)
-
 - 2.7. Develop the code that use primitive and binary variations of base interfaces of java.util.function package: [PrimitiveAndBinaryVariationsExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_7/PrimitiveAndBinaryVariationsExample.java)
 - 2.8. Develop the code that use method reference; including refactor the code that use Lambda expression to use method references: [MethodReferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_8/MethodReferenceExample.java)
 
