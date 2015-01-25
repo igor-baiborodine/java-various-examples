@@ -55,7 +55,7 @@ ocp-upgrade-java8
 #####3. Filtering Collections with Lambdas
 - 3.1. Develop the code that iterates a collection by using forEach; including method chaining: [ForEachExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic3_1/ForEachExample.java)
 - 3.2. Describe the [Stream](http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html) interface and pipelines: [StreamInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic3_2/StreamInterfaceExample.java)
-- 3.3. Filter a collection using lambda expressions: [FilterCollectionExample.java]()
+- 3.3. Filter a collection using lambda expressions: [FilterCollectionExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic3_3/FilterCollectionExample.java)
 - 3.4. Identify lambda operations that are lazy
 
 #####4. Collection Operations with Lambda
