@@ -17,8 +17,11 @@ public class FilterCollectionExample {
                 new Person("Philip", "Fry", "human"),
                 new Person("Turanga", "Leela", "mutant"));
 
-        System.out.println("Robots:"); // extreme method chaining
-        persons.stream().filter(p -> p.getOrigin().equals("robot")).collect(toList()).forEach(p -> System.out.println(p));
+        System.out.println("Robots:");
+        persons.stream()
+                .filter(p -> p.getOrigin().equals("robot"))
+                .collect(toList())
+                .forEach(p -> System.out.println(p));
     }
 }
 
