@@ -16,7 +16,10 @@ public class StreamInterfaceExample {
                 new Person("Philip", "Fry", "human"),
                 new Person("Turanga", "Leela", "mutant"));
 
-        System.out.printf("Found %d mutant(s).", persons.stream().filter(new MutantOriginPredicate()).count());
+        long count = persons.stream()
+                .filter(new MutantOriginPredicate())
+                .count();
+        System.out.printf("Found %d mutant(s).", count);
     }
 }
 
