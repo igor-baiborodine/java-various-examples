@@ -3,8 +3,6 @@ package com.kiroule.ocpupgradejava8.topic4_1;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.util.stream.Collectors.toSet;
-
 /**
  * @author Igor Baiborodine
  */
@@ -21,8 +19,7 @@ public class ExtractDataWithMapExample {
         System.out.println("Distinct person origins:");
         persons.stream()
                 .map(Person::getOrigin)
-                .collect(toSet())
-                .stream()
+                .distinct()
                 .sorted()
                 .forEach(s -> System.out.println(s));
     }
