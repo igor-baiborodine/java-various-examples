@@ -22,6 +22,12 @@ public class ExtractDataWithMapExample {
                 .distinct()
                 .sorted()
                 .forEach(s -> System.out.println(s));
+
+        System.out.println("\nHashcodes:");
+        persons.stream()
+                .mapToInt(Person::hashCode)
+                .sorted()
+                .forEach(hc -> System.out.println(hc));
     }
 }
 
@@ -41,5 +47,27 @@ class Person {
     @Override
     public String toString() {
         return firstName + " " + lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) return false;
+        if (origin != null ? !origin.equals(person.origin) : person.origin != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName != null ? firstName.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (origin != null ? origin.hashCode() : 0);
+        return result;
     }
 }
