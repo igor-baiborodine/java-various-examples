@@ -59,7 +59,7 @@ ocp-upgrade-java8
 - 3.4. Identify lambda operations that are [lazy](http://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html#laziness)
 
 #####4. Collection Operations with Lambda
-- 4.1. Develop the code to extract data from an object using map
+- 4.1. Develop code to [extract data from an object using map](http://www.oracle.com/technetwork/articles/java/ma14-java-se-8-streams-2177646.html): [ExtractDataWithMapExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic4_1/ExtractDataWithMapExample.java)
 - 4.2. Search for data using search methods including: findFirst, findAny, anyMatch, allMatch, noneMatch.
 - 4.3. Describe the unique characteristics of the Optional classes
 - 4.4. Perform calculations using methods: count, max, min, average, sum
