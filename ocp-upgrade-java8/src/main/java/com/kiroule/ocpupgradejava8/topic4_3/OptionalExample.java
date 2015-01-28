@@ -3,6 +3,7 @@ package com.kiroule.ocpupgradejava8.topic4_3;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import static com.kiroule.ocpupgradejava8.topic4_3.Origin.*;
 
@@ -21,21 +22,35 @@ public class OptionalExample {
                 Optional.empty());
 
         characters.forEach(c -> System.out.printf("%s, %s %n", getCharacterFullName(c), getOriginName(c)));
+
+        System.out.printf("%nRobots: %n");
+        characters.stream()
+                .filter(new RobotOriginPredicate())
+                .forEach(c -> System.out.printf("%s %n", getCharacterFullName(c)));
     }
 
     private static String getCharacterFullName(Optional<FuturamaCharacter> c) {
         return c.map(FuturamaCharacter::toString)
-                .orElse("Empty character optional");
+                .orElse("Empty FuturamaCharacter optional!");
     }
 
     private static String getOriginName(Optional<FuturamaCharacter> character) {
         return character.flatMap(FuturamaCharacter::getOrigin)
                 .map(Origin::name)
-                .orElse("Possible alien origin!!!");
+                .orElse("Possible alien origin!");
     }
 
     private static Optional<FuturamaCharacter> createOptional(String firstName, String lastName, Origin origin) {
         return Optional.of(new FuturamaCharacter(firstName, lastName, Optional.ofNullable(origin)));
+    }
+
+    private static class RobotOriginPredicate implements Predicate<Optional<FuturamaCharacter>> {
+        @Override
+        public boolean test(Optional<FuturamaCharacter> character) {
+            return character.isPresent()
+                    && character.get().getOrigin().isPresent()
+                    && ROBOT.equals(character.get().getOrigin().get());
+        }
     }
 }
 
