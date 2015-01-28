@@ -59,6 +59,6 @@ class FuturamaCharacter {
 }
 
 enum Origin {
-    HUMAN, ROBOT, MUTANT//;
+    HUMAN, ROBOT, MUTANT
 }
 
