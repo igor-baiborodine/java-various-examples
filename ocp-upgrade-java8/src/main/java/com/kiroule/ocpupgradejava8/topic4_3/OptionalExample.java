@@ -54,6 +54,10 @@ public class OptionalExample {
     }
 }
 
+enum Origin {
+    HUMAN, ROBOT, MUTANT
+}
+
 class FuturamaCharacter {
     private String firstName;
     private String lastName;
@@ -73,7 +77,4 @@ class FuturamaCharacter {
     }
 }
 
-enum Origin {
-    HUMAN, ROBOT, MUTANT
-}
 
