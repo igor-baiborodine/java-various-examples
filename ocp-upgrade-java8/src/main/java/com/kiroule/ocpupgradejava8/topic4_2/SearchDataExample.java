@@ -11,56 +11,56 @@ public class SearchDataExample {
 
     public static void main(String... args) {
 
-        List<Person> persons = Arrays.asList(
-                new Person("Bender", "Rodriguez", "robot"),
-                new Person("Philip", "Fry", "human"),
-                new Person("Turanga", "Leela", "mutant"),
-                new Person("Zapp", "Brannigan", "human"));
+        List<FuturamaCharacter> characters = Arrays.asList(
+                new FuturamaCharacter("Bender", "Rodriguez", "robot"),
+                new FuturamaCharacter("Philip", "Fry", "human"),
+                new FuturamaCharacter("Turanga", "Leela", "mutant"),
+                new FuturamaCharacter("Zapp", "Brannigan", "human"));
 
         System.out.println("\nAll hashcodes:");
-        persons.stream()
-                .mapToInt(Person::hashCode)
+        characters.stream()
+                .mapToInt(FuturamaCharacter::hashCode)
                 .sorted()
                 .forEach(System.out::println);
 
         OptionalInt firstNegativeHashcode =
-                persons.stream()
-                        .mapToInt(Person::hashCode)
+                characters.stream()
+                        .mapToInt(FuturamaCharacter::hashCode)
                         .sorted()
                         .findFirst();
         System.out.println("\nFirst negative hashcode: " + firstNegativeHashcode);
 
 
-        OptionalInt anyNegativeHashcode =
-                persons.stream()
-                        .mapToInt(Person::hashCode)
+        OptionalInt anyHashcode =
+                characters.stream()
+                        .mapToInt(FuturamaCharacter::hashCode)
                         .filter(hc -> hc != firstNegativeHashcode.getAsInt())
                         .findAny();
-        System.out.println("Any negative hashcode: " + anyNegativeHashcode);
+        System.out.println("Any hashcode: " + anyHashcode);
 
-        System.out.println("\nPersons:");
-        persons.forEach(System.out::println);
+        System.out.println("\nFuturama characters:");
+        characters.forEach(System.out::println);
 
-        boolean containsRobot = persons.stream()
+        boolean containsRobot = characters.stream()
                 .anyMatch(p -> p.getOrigin().equals("robot"));
-        System.out.println("\nPersons contain a robot: " + containsRobot);
+        System.out.println("\nCharacters contain a robot: " + containsRobot);
 
-        boolean containsAlien = persons.stream()
+        boolean containsAlien = characters.stream()
                 .noneMatch(p -> p.getOrigin().equals("alien"));
-        System.out.println("Persons do not contain an alien: " + containsAlien);
+        System.out.println("Characters do not contain an alien: " + containsAlien);
 
-        boolean containsOnlyHumans = persons.stream()
+        boolean containsOnlyHumans = characters.stream()
                 .allMatch(p -> p.getOrigin().equals("human"));
-        System.out.println("Persons contain only humans: " + containsOnlyHumans);
+        System.out.println("Characters contain only humans: " + containsOnlyHumans);
     }
 }
 
-class Person {
+class FuturamaCharacter {
     private String firstName;
     private String lastName;
     private String origin = "human";
 
-    public Person(String firstName, String lastName, String origin) {
+    public FuturamaCharacter(String firstName, String lastName, String origin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.origin = origin;
@@ -78,12 +78,11 @@ class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Person person = (Person) o;
+        FuturamaCharacter character = (FuturamaCharacter) o;
 
-        if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) return false;
-        return !(origin != null ? !origin.equals(person.origin) : person.origin != null);
-
+        if (firstName != null ? !firstName.equals(character.firstName) : character.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(character.lastName) : character.lastName != null) return false;
+        return !(origin != null ? !origin.equals(character.origin) : character.origin != null);
     }
 
     @Override
