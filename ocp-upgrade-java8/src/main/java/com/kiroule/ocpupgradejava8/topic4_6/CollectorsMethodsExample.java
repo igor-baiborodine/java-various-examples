@@ -25,7 +25,7 @@ public class CollectorsMethodsExample {
                 .stream()
                 .filter(c -> c.getAge() < 100)
                 // sorted by age DESC
-                .sorted((c1, c2) -> new Integer(c2.getAge()).compareTo(new Integer(c1.getAge())))
+                .sorted((c1, c2) -> c2.getAge().compareTo(c1.getAge()))
                 //.collect(Collectors.toList());
                 .collect(Collectors.toCollection(ArrayList::new));
         youngerThan100Years.forEach(System.out::println);
@@ -83,7 +83,7 @@ class FuturamaCharacter {
 
     public String getLastName() { return lastName; }
 
-    public int getAge() { return age; }
+    public Integer getAge() { return age; }
 
     public Origin getOrigin() { return origin; }
 
