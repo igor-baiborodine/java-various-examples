@@ -67,7 +67,7 @@ ocp-upgrade-java8
 - 4.6. Save results to a collection by using the collect method and [Collectors](http://docs.oracle.com/javase/8/docs/api/java/util/stream/Collectors.html) class; including methods such as averagingDouble, groupingBy, joining, partitioningBy: [CollectorsMethodsExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic4_6/CollectorsMethodsExample.java)
 
 #####5. Parallel Streams
-- 5.1. Develop the code that use parallel streams
+- 5.1. [Develop the code that use parallel streams](http://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html): [ParallelStreamExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic5_1/ParallelStreamExample.java) 
 - 5.2. Implement decomposition, reduction, in streams
 
 #####6. Lambda Cookbook
