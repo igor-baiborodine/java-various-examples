@@ -17,7 +17,7 @@ public class CollectionImprovementsExample {
 
     public static void main(String... args) {
 
-        List<FuturamaCharacter> characters = new LinkedList(Arrays.asList(
+        List<FuturamaCharacter> characters = new LinkedList<>(Arrays.asList(
                 new FuturamaCharacter("Bender", "Rodriguez", 5, ROBOT),
                 new FuturamaCharacter("Philip", "Fry", 126, HUMAN),
                 new FuturamaCharacter("Turanga", "Leela", 22, MUTANT),
@@ -51,7 +51,7 @@ public class CollectionImprovementsExample {
                 return cache.computeIfAbsent(n, (key) -> get(n - 2) + get(n - 1));
             }
         }
-        Fibonacci fibonacci = new Fibonacci();
+        Fibonacci fibonacci = new Fibonacci() ;
         System.out.println("\nFirst 10 Fibonacci numbers: ");
         IntStream.range(0, 10).forEach(x -> System.out.println(fibonacci.get(x)));
     }
@@ -77,8 +77,6 @@ class FuturamaCharacter {
     public String getFirstName() { return firstName; }
 
     public String getLastName() { return lastName; }
-
-    public Integer getAge() { return age; }
 
     public Origin getOrigin() { return origin; }
 
