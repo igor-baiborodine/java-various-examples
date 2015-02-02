@@ -51,7 +51,7 @@ public class CollectionImprovementsExample {
                 return cache.computeIfAbsent(n, (key) -> get(n - 2) + get(n - 1));
             }
         }
-        Fibonacci fibonacci = new Fibonacci() ;
+        Fibonacci fibonacci = new Fibonacci();
         System.out.println("\nFirst 10 Fibonacci numbers: ");
         IntStream.range(0, 10).forEach(x -> System.out.println(fibonacci.get(x)));
     }
