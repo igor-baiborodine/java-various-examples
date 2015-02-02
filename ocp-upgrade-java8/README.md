@@ -14,15 +14,7 @@ ocp-upgrade-java8
   
   [FunctionalInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_2/FunctionInterfaceExample.java) 
   
-- 1.3. [Describe a Lambda expression;](http://en.wikipedia.org/wiki/Anonymous_function#Java) refactor the code that use anonymous inner class to use Lambda expression; including type inference, target typing
-
-  [Type inference](http://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html)
-  
-  [Target typing](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#target-typing)
-  
-  [RefactoringCodeExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/RefactoringCodeExample.java)
-  
-  [TypeInferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/TypeInferenceExample.java)
+- 1.3. [Describe a Lambda expression;](http://en.wikipedia.org/wiki/Anonymous_function#Java) refactor the code that use anonymous inner class to use Lambda expression including [type inference](http://docs.oracle.com/javase/tutorial/java/generics/genTypeInference.html), [target typing](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html#target-typing):   [RefactoringCodeExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/RefactoringCodeExample.java),   [TypeInferenceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic1_3/TypeInferenceExample.java)
       
 #####2. Using Built in Lambda Types
 - 2.1. Describe the built in interfaces included in Java 8 – [java.util.function package](http://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)
