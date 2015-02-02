@@ -71,7 +71,7 @@ ocp-upgrade-java8
 - 5.2. Implement decomposition and reduction in paraller streams: [ReductionExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic5_2/ReductionExample.java)
 
 #####6. Lambda Cookbook
-- 6.1. Develop the code that use Java SE 8 collection improvements: Colleciton.removeIf, List.replaceAll, Map.computeIfAbsent/Present, Map.forEach
+- 6.1. Develop the code that use Java SE 8 collection improvements: [Colleciton.removeIf](http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#removeIf-java.util.function.Predicate-), [List.replaceAll](http://docs.oracle.com/javase/8/docs/api/java/util/List.html#replaceAll-java.util.function.UnaryOperator-), [Map.computeIfAbsent](http://docs.oracle.com/javase/8/docs/api/java/util/Map.html#computeIfAbsent-K-java.util.function.Function-), [Map.computeIfPresent](http://docs.oracle.com/javase/8/docs/api/java/util/Map.html#computeIfPresent-K-java.util.function.BiFunction-), [Map.forEach](http://docs.oracle.com/javase/8/docs/api/java/util/Map.html#computeIfPresent-K-java.util.function.BiFunction-): [CollectionImprovmentsExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic6_1/CollectionImprovementsExample.java)
 - 6.2. Read files using lambda improvements: Files.find, lines(), walk()
 - 6.3. Use merge, flatMap methods on a collection
 - 6.4. Describe other stream sources: Arrays.stream(), IntStream.range()
