@@ -6,5 +6,4 @@ package com.kiroule.ocpupgradejava8.topic6_2;
 public class FilesApiImprovementsExample {
 
     // TODO: implement me
-    
 }
