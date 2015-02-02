@@ -68,7 +68,7 @@ ocp-upgrade-java8
 
 #####5. Parallel Streams
 - 5.1. [Develop the code that use parallel streams](http://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html): [ParallelStreamExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic5_1/ParallelStreamExample.java) 
-- 5.2. Implement decomposition, reduction, in streams
+- 5.2. Implement decomposition and reduction in paraller streams: [ReductionExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic5_2/ReductionExample.java)
 
 #####6. Lambda Cookbook
 - 6.1. Develop the code that use Java SE 8 collection improvements: Colleciton.removeIf, List.replaceAll, Map.computeIfAbsent/Present, Map.forEach
