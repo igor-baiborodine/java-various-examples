@@ -3,7 +3,7 @@ package com.kiroule.ocpupgradejava8.topic4_6;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.kiroule.ocpupgradejava8.topic4_6.Origin.*;
+import static com.kiroule.ocpupgradejava8.topic4_6.Species.*;
 
 /**
  * @author Igor Baiborodine
@@ -41,15 +41,15 @@ public class CollectorsMethodsExample {
         System.out.println("\nintSummaryStatistics: " + intSummaryStatistics);
         System.out.println("Sum of ages: " + intSummaryStatistics.getSum());
 
-        Map<Origin, List<FuturamaCharacter>> originToFuturamaCharactersMap = characters
+        Map<Species, List<FuturamaCharacter>> speciesToFuturamaCharactersMap = characters
                 .stream()
-                .collect(Collectors.groupingBy(FuturamaCharacter::getOrigin));
+                .collect(Collectors.groupingBy(FuturamaCharacter::getSpecies));
         System.out.println("\nHumans: ");
-        originToFuturamaCharactersMap.get(HUMAN).forEach(System.out::println);
+        speciesToFuturamaCharactersMap.get(HUMAN).forEach(System.out::println);
 
         Map<Boolean, List<FuturamaCharacter>> isHumanToFuturamaCharactersMap = characters
                 .stream()
-                .collect(Collectors.partitioningBy(c -> HUMAN.equals(c.getOrigin())));
+                .collect(Collectors.partitioningBy(c -> HUMAN.equals(c.getSpecies())));
         System.out.println("\nNon-humans: ");
         isHumanToFuturamaCharactersMap.get(Boolean.FALSE).forEach(System.out::println);
 
@@ -62,7 +62,7 @@ public class CollectorsMethodsExample {
     }
 }
 
-enum Origin {
+enum Species {
     HUMAN, ROBOT, MUTANT
 }
 
@@ -70,13 +70,13 @@ class FuturamaCharacter {
     private String firstName;
     private String lastName;
     private int age = 0;
-    private Origin origin = HUMAN;
+    private Species species = HUMAN;
 
-    public FuturamaCharacter(String firstName, String lastName, int age, Origin origin) {
+    public FuturamaCharacter(String firstName, String lastName, int age, Species species) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.origin = origin;
+        this.species = species;
     }
 
     public String getFirstName() { return firstName; }
@@ -85,10 +85,10 @@ class FuturamaCharacter {
 
     public Integer getAge() { return age; }
 
-    public Origin getOrigin() { return origin; }
+    public Species getSpecies() { return species; }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " [" + age + "][" + origin + "]";
+        return firstName + " " + lastName + " [" + age + "][" + species + "]";
     }
 }
