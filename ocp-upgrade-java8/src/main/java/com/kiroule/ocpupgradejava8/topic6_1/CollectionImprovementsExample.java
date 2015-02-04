@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.kiroule.ocpupgradejava8.topic6_1.Origin.*;
+import static com.kiroule.ocpupgradejava8.topic6_1.Species.*;
 
 /**
  * @author Igor Baiborodine
@@ -26,15 +26,15 @@ public class CollectionImprovementsExample {
         characters.forEach(System.out::println);
 
         // Map.forEach
-        Map<Origin, List<FuturamaCharacter>> originToFuturamaCharactersMap = characters
+        Map<Species, List<FuturamaCharacter>> speciesToFuturamaCharactersMap = characters
                 .stream()
-                .collect(Collectors.groupingBy(FuturamaCharacter::getOrigin));
-        System.out.println("\nCharacters by origin: ");
-        originToFuturamaCharactersMap.forEach((k, v) -> System.out.println(k + ": " + v));
+                .collect(Collectors.groupingBy(FuturamaCharacter::getSpecies));
+        System.out.println("\nCharacters by species: ");
+        speciesToFuturamaCharactersMap.forEach((k, v) -> System.out.println(k + ": " + v));
 
         // List.removeIf
         System.out.println("\nHumans: ");
-        characters.removeIf(c -> !c.getOrigin().equals(Origin.HUMAN));
+        characters.removeIf(c -> !c.getSpecies().equals(Species.HUMAN));
         characters.forEach(System.out::println);
 
         // List.replaceAll
@@ -57,7 +57,7 @@ public class CollectionImprovementsExample {
     }
 }
 
-enum Origin {
+enum Species {
     HUMAN, ROBOT, MUTANT
 }
 
@@ -65,23 +65,23 @@ class FuturamaCharacter {
     private String firstName;
     private String lastName;
     private int age = 0;
-    private Origin origin = HUMAN;
+    private Species species = HUMAN;
 
-    public FuturamaCharacter(String firstName, String lastName, int age, Origin origin) {
+    public FuturamaCharacter(String firstName, String lastName, int age, Species species) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.origin = origin;
+        this.species = species;
     }
 
     public String getFirstName() { return firstName; }
 
     public String getLastName() { return lastName; }
 
-    public Origin getOrigin() { return origin; }
+    public Species getSpecies() { return species; }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " [" + age + "][" + origin + "]";
+        return firstName + " " + lastName + " [" + age + "][" + species + "]";
     }
 }
