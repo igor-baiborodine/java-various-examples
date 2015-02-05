@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static com.kiroule.ocpupgradejava8.topic4_3.Origin.*;
+import static com.kiroule.ocpupgradejava8.topic4_3.Species.*;
 
 /**
  * @author Igor Baiborodine
@@ -21,11 +21,11 @@ public class OptionalExample {
                 createOptional("John", "Zoidberg", null),
                 Optional.empty());
 
-        characters.forEach(c -> System.out.printf("%s, %s %n", getCharacterFullName(c), getOriginName(c)));
+        characters.forEach(c -> System.out.printf("%s, %s %n", getCharacterFullName(c), getSpeciesName(c)));
 
         System.out.printf("%nRobots: %n");
         characters.stream()
-                .filter(new RobotOriginPredicate())
+                .filter(new RobotSpeciesPredicate())
                 .forEach(c -> System.out.printf("%s %n", getCharacterFullName(c)));
     }
 
@@ -34,42 +34,42 @@ public class OptionalExample {
                 .orElse("Empty FuturamaCharacter optional!");
     }
 
-    private static String getOriginName(Optional<FuturamaCharacter> character) {
-        return character.flatMap(FuturamaCharacter::getOrigin)
-                .map(Origin::name)
-                .orElse("Possible alien origin!");
+    private static String getSpeciesName(Optional<FuturamaCharacter> character) {
+        return character.flatMap(FuturamaCharacter::getSpecies)
+                .map(Species::name)
+                .orElse("Possible alien species!");
     }
 
-    private static Optional<FuturamaCharacter> createOptional(String firstName, String lastName, Origin origin) {
-        return Optional.of(new FuturamaCharacter(firstName, lastName, Optional.ofNullable(origin)));
+    private static Optional<FuturamaCharacter> createOptional(String firstName, String lastName, Species species) {
+        return Optional.of(new FuturamaCharacter(firstName, lastName, Optional.ofNullable(species)));
     }
 
-    private static class RobotOriginPredicate implements Predicate<Optional<FuturamaCharacter>> {
+    private static class RobotSpeciesPredicate implements Predicate<Optional<FuturamaCharacter>> {
         @Override
         public boolean test(Optional<FuturamaCharacter> character) {
             return character.isPresent()
-                    && character.get().getOrigin().isPresent()
-                    && ROBOT.equals(character.get().getOrigin().get());
+                    && character.get().getSpecies().isPresent()
+                    && ROBOT.equals(character.get().getSpecies().get());
         }
     }
 }
 
-enum Origin {
+enum Species {
     HUMAN, ROBOT, MUTANT
 }
 
 class FuturamaCharacter {
     private String firstName;
     private String lastName;
-    private Optional<Origin> origin;
+    private Optional<Species> species;
 
-    public FuturamaCharacter(String firstName, String lastName, Optional<Origin> origin) {
+    public FuturamaCharacter(String firstName, String lastName, Optional<Species> species) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.origin = origin;
+        this.species = species;
     }
 
-    public Optional<Origin> getOrigin() { return origin; }
+    public Optional<Species> getSpecies() { return species; }
 
     @Override
     public String toString() {
