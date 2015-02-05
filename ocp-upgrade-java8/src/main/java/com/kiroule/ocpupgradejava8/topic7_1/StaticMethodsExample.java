@@ -19,7 +19,7 @@ interface Greeting {
     void setName(String name);
     String getGreeting();
 
-    // static method
+    // static method in question
     static String getTemplate() {
         return "Hello, %s!";
     }
