@@ -10,39 +10,39 @@ public class ExtractDataWithMapExample {
 
     public static void main(String... args) {
 
-        List<Person> persons = Arrays.asList(
-                new Person("Bender", "Rodriguez", "robot"),
-                new Person("Philip", "Fry", "human"),
-                new Person("Turanga", "Leela", "mutant"),
-                new Person("Zapp", "Brannigan", "human"));
+        List<FuturamaCharacter> characters = Arrays.asList(
+                new FuturamaCharacter("Bender", "Rodriguez", "robot"),
+                new FuturamaCharacter("Philip", "Fry", "human"),
+                new FuturamaCharacter("Turanga", "Leela", "mutant"),
+                new FuturamaCharacter("Zapp", "Brannigan", "human"));
 
-        System.out.println("Distinct person origins:");
-        persons.stream()
-                .map(Person::getOrigin)
+        System.out.println("Distinct person species:");
+        characters.stream()
+                .map(FuturamaCharacter::getSpecies)
                 .distinct()
                 .sorted()
-                .forEach(s -> System.out.println(s));
+                .forEach(System.out::println);
 
         System.out.println("\nHashcodes:");
-        persons.stream()
-                .mapToInt(Person::hashCode)
+        characters.stream()
+                .mapToInt(FuturamaCharacter::hashCode)
                 .sorted()
-                .forEach(hc -> System.out.println(hc));
+                .forEach(System.out::println);
     }
 }
 
-class Person {
+class FuturamaCharacter {
     private String firstName;
     private String lastName;
-    private String origin = "human";
+    private String species = "human";
 
-    public Person(String firstName, String lastName, String origin) {
+    public FuturamaCharacter(String firstName, String lastName, String species) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.origin = origin;
+        this.species = species;
     }
 
-    public String getOrigin() { return origin; }
+    public String getSpecies() { return species; }
 
     @Override
     public String toString() {
@@ -54,20 +54,19 @@ class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Person person = (Person) o;
+        FuturamaCharacter character = (FuturamaCharacter) o;
 
-        if (firstName != null ? !firstName.equals(person.firstName) : person.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(person.lastName) : person.lastName != null) return false;
-        if (origin != null ? !origin.equals(person.origin) : person.origin != null) return false;
+        if (firstName != null ? !firstName.equals(character.firstName) : character.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(character.lastName) : character.lastName != null) return false;
+        return !(species != null ? !species.equals(character.species) : character.species != null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
         int result = firstName != null ? firstName.hashCode() : 0;
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (origin != null ? origin.hashCode() : 0);
+        result = 31 * result + (species != null ? species.hashCode() : 0);
         return result;
     }
 }
