@@ -62,7 +62,7 @@ ocp-upgrade-java8
 
 #####7. Method Enhancements
 - 7.1. Adding [static methods](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) to interfaces: [StaticMethodsExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic7_1/StaticMethodsExample.java)
-- 7.2. Define and use a default method of a interface; Describe the inheritance rules for a default method
+- 7.2. Define and use a [default method](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) of a interface and describe the inheritance rules for a default method: [DefaultMethodsExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic7_2/DefaultMethodsExample.java)
 
 #####8. Use Java SE 8 Date/Time API - 10%
 - 8.1. Create and manage date-based and time-based events; including combination of date and time into a single object using  LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration
