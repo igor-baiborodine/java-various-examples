@@ -20,7 +20,7 @@ interface Greeting {
     String getGreeting();
 
     // static method
-    static String getGreetingTemplate() {
+    static String getTemplate() {
         return "Hello, %s!";
     }
 }
@@ -35,6 +35,6 @@ class CustomGreeting implements Greeting {
 
     @Override
     public String getGreeting() {
-        return format(Greeting.getGreetingTemplate(), name);
+        return format(Greeting.getTemplate(), name);
     }
 }
