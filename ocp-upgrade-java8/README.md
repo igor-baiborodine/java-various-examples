@@ -61,7 +61,7 @@ ocp-upgrade-java8
 - 6.4. Describe other stream sources  [Arrays.stream()](http://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html) and [IntStream.range()](http://docs.oracle.com/javase/8/docs/api/java/util/stream/IntStream.html#range-int-int-): [OtherStreamSourcesExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic6_4/OtherStreamSourcesExample.java)
 
 #####7. Method Enhancements
-- 7.1. Adding static methods to interfaces
+- 7.1. Adding [static methods](http://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html) to interfaces: [StaticMethodsExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic7_1/StaticMethodsExample.java)
 - 7.2. Define and use a default method of a interface; Describe the inheritance rules for a default method
 
 #####8. Use Java SE 8 Date/Time API - 10%
