@@ -19,9 +19,9 @@ public class OtherStreamSourcesExample {
 
         System.out.printf("%nWords count: %d%n", Arrays.stream(words).count());
 
-        int minValue = 1;
-        int maxValue = 100_000;
-        long sum = IntStream.range(minValue, maxValue).sum();
-        System.out.printf("%nSum[%d, %d]: %d", minValue, maxValue, sum);
+        int startInclusive = 1;
+        int endExclusive = 100_000;
+        long sum = IntStream.range(startInclusive, endExclusive).sum();
+        System.out.printf("%nSum[%d, %d]: %d", startInclusive, endExclusive, sum);
     }
 }
