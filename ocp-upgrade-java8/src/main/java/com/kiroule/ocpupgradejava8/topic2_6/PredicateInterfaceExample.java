@@ -12,55 +12,54 @@ public class PredicateInterfaceExample {
 
     public static void main(String... args) {
 
-        List<Person> persons = Arrays.asList(
-                new Person("Bender", "Rodriguez", "robot"),
-                new Person("Philip", "Fry", "human"),
-                new Person("Turanga", "Leela", "mutant"));
+        List<FuturamaCharacter> characters = Arrays.asList(
+                new FuturamaCharacter("Bender", "Rodriguez", "robot"),
+                new FuturamaCharacter("Philip", "Fry", "human"),
+                new FuturamaCharacter("Turanga", "Leela", "mutant"));
 
         System.out.println("Robots:");
-        printPersonsByOrigin(persons, p -> p.getOrigin().equals("robot"));
+        printPersonsBySpecies(characters, c -> c.getSpecies().equals("robot"));
 
         System.out.println("Mutants:");
-        printPersonsByOrigin(persons, new MutantOriginPredicate());
+        printPersonsBySpecies(characters, new MutantSpeciesPredicate());
 
         System.out.println("Humans:");
-        printPersonsByOrigin(persons, p -> p.getOrigin().equals("human"),
-                p -> System.out.println(p.getFirstName() + " " + p.getLastName().toUpperCase()));
+        printPersonsBySpecies(characters, c -> c.getSpecies().equals("human"),
+                c -> System.out.println(c.getFirstName() + " " + c.getLastName().toUpperCase()));
     }
 
-    public static void printPersonsByOrigin(List<Person> persons, Predicate<Person> predicate) {
-        for (Person p : persons) {
-            if (predicate.test(p)) {
-                System.out.println(p.getFirstName() + " " + p.getLastName());
-            }
-        }
+    public static void printPersonsBySpecies(List<FuturamaCharacter> characters,
+                                             Predicate<FuturamaCharacter> predicate) {
+        characters.stream()
+                .filter(predicate::test)
+                .forEach(p -> System.out.println(p.getFirstName() + " " + p.getLastName()));
     }
 
-    public static void printPersonsByOrigin(List<Person> persons, Predicate<Person> predicate, Consumer<Person> consumer) {
-        for (Person p : persons) {
-            if (predicate.test(p)) {
-                consumer.accept(p);
-            }
-        }
+    public static void printPersonsBySpecies(List<FuturamaCharacter> characters,
+                                             Predicate<FuturamaCharacter> predicate,
+                                             Consumer<FuturamaCharacter> consumer) {
+        characters.stream()
+                .filter(predicate::test)
+                .forEach(consumer::accept);
     }
 }
 
-class MutantOriginPredicate implements Predicate<Person> {
+class MutantSpeciesPredicate implements Predicate<FuturamaCharacter> {
     @Override
-    public boolean test(Person person) {
-        return person.getOrigin().equals("mutant");
+    public boolean test(FuturamaCharacter character) {
+        return character.getSpecies().equals("mutant");
     }
 }
 
-class Person {
+class FuturamaCharacter {
     private String firstName;
     private String lastName;
-    private String origin = "human";
+    private String species = "human";
 
-    public Person(String firstName, String lastName, String origin) {
+    public FuturamaCharacter(String firstName, String lastName, String species) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.origin = origin;
+        this.species = species;
     }
 
     public String getFirstName() {
@@ -71,5 +70,5 @@ class Person {
         return lastName;
     }
 
-    public String getOrigin() { return origin; }
+    public String getSpecies() { return species; }
 }
