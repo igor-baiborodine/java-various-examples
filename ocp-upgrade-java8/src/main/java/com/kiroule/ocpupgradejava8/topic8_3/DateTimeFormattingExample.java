@@ -22,7 +22,7 @@ public class DateTimeFormattingExample {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ddMMyyyyPattern);
         String formattedDate = nowLocalDate.format(formatter);
         System.out.printf("Now date in [%s] format: %s %n", ddMMyyyyPattern, formattedDate);
-        System.out.printf("Parsed now date[%s]: %s %n", formattedDate,
+        System.out.printf("Parsed formatted now date[%s]: %s %n", formattedDate,
                 LocalDate.parse(formattedDate, formatter));
 
         // http://www.localeplanet.com/java/fr-CA/
