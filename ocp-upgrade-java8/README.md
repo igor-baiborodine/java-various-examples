@@ -70,8 +70,8 @@ ocp-upgrade-java8
 - 8.3. Define and create timestamps, periods and durations; apply formatting to local and zoned dates and times: [DateTimeFormattingExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic8_3/DateTimeFormattingExample.java)
 
 #####9.JavaScript on Java with Nashorn
-- 9.1. Develop Javascript code that creates and uses Java members such as Java objects, methods, JavaBeans, Arrays, Collections, Interfaces.
-- 9.2. Develop code that  evaluates JavaScript in java, passes Java object to Javascript, invokes Javascript function and calls methods on Javascript objects.
+- 9.1. [Develop](http://www.oracle.com/technetwork/articles/java/jf14-nashorn-2126515.html) Javascript code that creates and uses Java members such as Java objects, methods, JavaBeans, Arrays, Collections, Interfaces: [JavasriptUsesJavaExample.java](https://github.com/igor-baiborodine/java-various-examples/tree/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic9_1)
+- 9.2. [Develop](http://www.oracle.com/technetwork/articles/java/jf14-nashorn-2126515.html) code that  evaluates JavaScript in java, passes Java object to Javascript, invokes Javascript function and calls methods on Javascript objects: [JavaEvaluatesJavascriptExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic9_2/JavaEvaluatesJavascriptExample.java)
 
 ####Other resources:
 - [Java 8 in Action](http://www.amazon.com/Java-Action-Lambdas-functional-style-programming/dp/1617291994/ref=pd_bxgy_b_img_y)
