@@ -11,41 +11,42 @@ public class ConsumerInterfaceExample {
 
     public static void main(String... args) {
 
-        List<Person> persons = Arrays.asList(
-                new Person("Bender", "Rodriguez"),
-                new Person("Philip", "Fry"),
-                new Person("Turanga", "Leela"));
+        List<FuturamaCharacter> characters = Arrays.asList(
+                new FuturamaCharacter("Bender", "Rodriguez"),
+                new FuturamaCharacter("Philip", "Fry"),
+                new FuturamaCharacter("Turanga", "Leela"));
 
-        Consumer<Person> fullName = (Person p) -> System.out.println("Full name: " + p.getFirstName() + " " + p.getLastName());
-        persons.forEach(fullName);
+        Consumer<FuturamaCharacter> fullNameConsumer =
+                c -> System.out.println("Full name: " + c.getFirstName() + " " + c.getLastName());
+        characters.forEach(fullNameConsumer);
 
-        for (Person person : persons) {
-            person.printFullName(new InvertedFullNameConsumer());
+        for (FuturamaCharacter character : characters) {
+            character.printFullName(new InvertedFullNameConsumer());
         }
 
-        persons.forEach(fullName);
+        characters.forEach(fullNameConsumer);
     }
 }
 
-class InvertedFullNameConsumer implements Consumer<Person> {
+class InvertedFullNameConsumer implements Consumer<FuturamaCharacter> {
     @Override
-    public void accept(Person p) {
-        p.setLastName(p.getLastName().toUpperCase()); // introducing side effect
-        System.out.println("Inverted full name: " + p.getLastName() + ", " + p.getFirstName());
+    public void accept(FuturamaCharacter c) {
+        c.setLastName(c.getLastName().toUpperCase()); // introducing side effect
+        System.out.println("Inverted full name: " + c.getLastName() + ", " + c.getFirstName());
     }
 }
 
-class Person {
+class FuturamaCharacter {
 
     private String firstName;
     private String lastName;
 
-    public Person(String firstName, String lastName) {
+    public FuturamaCharacter(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public void printFullName(Consumer<Person> consumer) {
+    public void printFullName(Consumer<FuturamaCharacter> consumer) {
         consumer.accept(this);
     }
 
