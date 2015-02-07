@@ -11,39 +11,39 @@ public class FunctionInterfaceExample {
 
     public static void main(String... args) {
 
-        List<Person> persons = Arrays.asList(
-                new Person("Bender", "Rodriguez"),
-                new Person("Philip", "Fry"),
-                new Person("Turanga", "Leela"));
+        List<FuturamaCharacter> characters = Arrays.asList(
+                new FuturamaCharacter("Bender", "Rodriguez"),
+                new FuturamaCharacter("Philip", "Fry"),
+                new FuturamaCharacter("Turanga", "Leela"));
 
-        for (Person person : persons) {
-            System.out.println(person.getFullName(
-                    e -> "Full name: " + e.getFirstName() + " " + e.getLastName()
+        for (FuturamaCharacter character : characters) {
+            System.out.println(character.getFullName(
+                    c -> "Full name: " + c.getFirstName() + " " + c.getLastName()
             ));
         }
 
-        persons.forEach(p -> System.out.println(p.getFullName(new InvertedFullNameFunction())));
+        characters.forEach(c -> System.out.println(c.getFullName(new InvertedFullNameFunction())));
     }
 }
 
-class InvertedFullNameFunction implements Function<Person, String> {
+class InvertedFullNameFunction implements Function<FuturamaCharacter, String> {
     @Override
-    public String apply(Person p) {
-        return  "Inverted full name: " + p.getLastName() + ", " + p.getFirstName();
+    public String apply(FuturamaCharacter c) {
+        return  "Inverted full name: " + c.getLastName() + ", " + c.getFirstName();
     }
 }
 
-class Person {
+class FuturamaCharacter {
 
     private String firstName;
     private String lastName;
 
-    public Person(String firstName, String lastName) {
+    public FuturamaCharacter(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getFullName(Function<Person, String> function) {
+    public String getFullName(Function<FuturamaCharacter, String> function) {
         return function.apply(this);
     }
 
