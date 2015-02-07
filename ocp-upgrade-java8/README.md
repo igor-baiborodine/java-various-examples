@@ -66,7 +66,7 @@ ocp-upgrade-java8
 
 #####8. Use Java SE 8 Date/Time API - 10%
 - 8.1. [Create and manage date-based and time-based events](http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html); including combination of date and time into a single object using  LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration: [CreateAndManageDateTimeExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic8_1/CreateAndManageDateTimeExample.java)
-- 8.2. Work with dates and times across time-zones and manage changes resulting from daylight savings
+- 8.2. Work with dates and times across time-zones and manage changes resulting from daylight savings: [TimeZonesExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic8_2/TimeZonesExample.java)
 - 8.3. Define and create timestamps, periods and durations; apply formatting to local and zoned dates and times
 
 #####9.JavaScript on Java with Nashorn
