@@ -13,6 +13,7 @@ import static java.time.format.DateTimeFormatter.ISO_DATE;
 
 /**
  * @author Igor Baiborodine
+ * @see quebec-gst-tax-calculator.js
  */
 public class JavaEvaluatesJavascriptExample {
 
