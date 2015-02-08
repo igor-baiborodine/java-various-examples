@@ -1,7 +1,6 @@
 /**
  * @author Igor Baiborodine
  */
-
 function calculateGstTax(date, amount) {
 
     print("date[" + date + "], amount[" + amount + "]");
