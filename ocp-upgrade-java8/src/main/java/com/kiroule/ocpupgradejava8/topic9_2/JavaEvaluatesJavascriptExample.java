@@ -23,7 +23,8 @@ public class JavaEvaluatesJavascriptExample {
         ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
         ScriptEngine engine = scriptEngineManager.getEngineByName("nashorn");
 
-        engine.eval(new FileReader("ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic9_2/quebec-gst-tax-calculator.js"));
+        engine.eval(new FileReader("ocp-upgrade-java8/src/main/java/com/kiroule/" +
+                "ocpupgradejava8/topic9_2/quebec-gst-tax-calculator.js"));
         Invocable invocable = (Invocable) engine;
 
         BigDecimal purchaseAmount = new BigDecimal("100.00");
