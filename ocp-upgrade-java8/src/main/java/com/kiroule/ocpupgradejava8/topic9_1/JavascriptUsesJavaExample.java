@@ -26,6 +26,5 @@ public class JavascriptUsesJavaExample {
 
         Frame frame	= (Frame) invocable.invokeFunction("createCharactersList");
         frame.setVisible(true);
-        frame.setBackground(Color.gray);
     }
 }
