@@ -75,3 +75,6 @@ ocp-upgrade-java8
 
 ####Other resources:
 - [Java 8 in Action](http://www.amazon.com/Java-Action-Lambdas-functional-style-programming/dp/1617291994/ref=pd_bxgy_b_img_y)
+
+######Futurama and Futurama characters are the trademarks of Twentieth Century Fox Film Corporation. 
+
