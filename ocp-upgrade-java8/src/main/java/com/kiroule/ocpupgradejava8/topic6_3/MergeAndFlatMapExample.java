@@ -26,6 +26,7 @@ public class MergeAndFlatMapExample {
                 .stream()
                 .flatMap(phrase -> Stream.of(phrase.split(" +")))
                 .distinct()
+                .sorted()
                 .collect(Collectors.toList());
         System.out.println("Unique words: " + uniqueWords);
 
