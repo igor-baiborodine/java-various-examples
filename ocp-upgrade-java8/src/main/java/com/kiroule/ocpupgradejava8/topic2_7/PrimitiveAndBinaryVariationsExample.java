@@ -14,16 +14,18 @@ public class PrimitiveAndBinaryVariationsExample {
 
     public static void main(String... args) {
 
-        BiFunction<String, String, Person> bf = (firstName, lastName) -> new Person(firstName, lastName);
+        BiFunction<String, String, FuturamaCharacter> bf =
+                (firstName, lastName) -> new FuturamaCharacter(firstName, lastName);
 
-        List<Person> persons = Arrays.asList(
+        List<FuturamaCharacter> characters = Arrays.asList(
                 bf.apply("Bender", "Rodriguez"),
                 bf.apply("Philip", "Fry"),
                 bf.apply("Turanga", "Leela"));
 
-        BiConsumer<String, String> biConsumer = (firstName, lastName) -> System.out.println(lastName.toUpperCase() + ", " + firstName);
-        for (Person person : persons) {
-            biConsumer.accept(person.getFirstName(), person.getLastName());
+        BiConsumer<String, String> biConsumer =
+                (firstName, lastName) -> System.out.println(lastName.toUpperCase() + ", " + firstName);
+        for (FuturamaCharacter c : characters) {
+            biConsumer.accept(c.getFirstName(), c.getLastName());
         }
 
         IntBinaryOperator intBinaryOperator = (s1, s2) -> s1 * s2;
@@ -34,12 +36,12 @@ public class PrimitiveAndBinaryVariationsExample {
     }
 }
 
-class Person {
+class FuturamaCharacter {
 
     private String firstName;
     private String lastName;
 
-    public Person(String firstName, String lastName) {
+    public FuturamaCharacter(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

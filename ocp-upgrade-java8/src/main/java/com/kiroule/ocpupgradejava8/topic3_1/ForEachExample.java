@@ -11,30 +11,30 @@ public class ForEachExample {
 
     public static void main(String... args) {
 
-        BiFunction<String, String, Person> bf = Person::new;
+        BiFunction<String, String, FuturamaCharacter> bf = FuturamaCharacter::new;
 
-        List<Person> persons = Arrays.asList(
+        List<FuturamaCharacter> characters = Arrays.asList(
                 bf.apply("Philip", "Fry"),
                 bf.apply("Bender", "Rodriguez"),
                 bf.apply("Turanga", "Leela"));
 
         // Java 7
-        for (Person person : persons) {
-            person.printFullName();
+        for (FuturamaCharacter character : characters) {
+            character.printFullName();
         }
 
         // Java 8
-        persons.forEach(Person::printFullName);
-        persons.forEach(p -> System.out.println(p.getFirstName() + " " + p.getLastName().toUpperCase()));
+        characters.forEach(FuturamaCharacter::printFullName);
+        characters.forEach(c -> System.out.println(c.getFirstName() + " " + c.getLastName().toUpperCase()));
     }
 }
 
-class Person {
+class FuturamaCharacter {
 
     private String firstName;
     private String lastName;
 
-    public Person(String firstName, String lastName) {
+    public FuturamaCharacter(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

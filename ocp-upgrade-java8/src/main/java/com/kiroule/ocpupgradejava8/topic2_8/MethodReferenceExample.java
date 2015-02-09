@@ -13,33 +13,33 @@ public class MethodReferenceExample {
 
     public static void main(String... args) {
 
-        BiFunction<String, String, Person> bf = (firstName, lastName) -> new Person(firstName, lastName);
-        BiFunction<String, String, Person> bf2 = Person::new; // method reference
+        BiFunction<String, String, FuturamaCharacter> bf = (firstName, lastName) -> new FuturamaCharacter(firstName, lastName);
+        BiFunction<String, String, FuturamaCharacter> bf2 = FuturamaCharacter::new; // method reference
 
-        List<Person> persons = Arrays.asList(
+        List<FuturamaCharacter> characters = Arrays.asList(
                 bf.apply("Philip", "Fry"),
                 bf2.apply("Bender", "Rodriguez"),
                 bf2.apply("Turanga", "Leela"));
 
         System.out.println("\nBefore sorting:");
-        persons.forEach(p -> p.printFullName());
+        characters.forEach(c -> c.printFullName());
 
         System.out.println("\nAfter sorting by last name(ASC):");
-        persons.sort((Person p1, Person p2) -> p1.getLastName().compareTo(p2.getLastName()));
-        persons.forEach(Person::printFullName); // method reference
+        characters.sort((FuturamaCharacter c1, FuturamaCharacter c2) -> c1.getLastName().compareTo(c2.getLastName()));
+        characters.forEach(FuturamaCharacter::printFullName); // method reference
 
         System.out.println("\nAfter sorting by first name(ASC):");
-        persons.sort(comparing(Person::getFirstName)); // method reference
-        persons.forEach(Person::printFullName); // method reference
+        characters.sort(comparing(FuturamaCharacter::getFirstName)); // method reference
+        characters.forEach(FuturamaCharacter::printFullName); // method reference
     }
 }
 
-class Person {
+class FuturamaCharacter {
 
     private String firstName;
     private String lastName;
 
-    public Person(String firstName, String lastName) {
+    public FuturamaCharacter(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

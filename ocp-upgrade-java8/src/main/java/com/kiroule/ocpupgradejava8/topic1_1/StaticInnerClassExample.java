@@ -9,33 +9,33 @@ public class StaticInnerClassExample {
 
     public static void main(String... args) {
 
-        List<Person> persons = Arrays.asList(
-                new Person("Bender", "Rodriguez"),
-                new Person("Philip", "Fry"),
-                new Person("Turanga", "Leela"));
+        List<FuturamaCharacter> characters = Arrays.asList(
+                new FuturamaCharacter("Bender", "Rodriguez"),
+                new FuturamaCharacter("Philip", "Fry"),
+                new FuturamaCharacter("Turanga", "Leela"));
 
-        System.out.println("Before sorting: " + persons);
+        System.out.println("Before sorting: " + characters);
 
-        Person.FirstNameAscComparator comparator = new Person.FirstNameAscComparator();
-        Collections.sort(persons, comparator);
-        System.out.println("After sorting: " + persons);
+        FuturamaCharacter.FirstNameAscComparator comparator = new FuturamaCharacter.FirstNameAscComparator();
+        Collections.sort(characters, comparator);
+        System.out.println("After sorting: " + characters);
     }
 }
 
-class Person {
+class FuturamaCharacter {
 
     private String firstName;
     private String lastName;
 
-    Person(String firstName, String lastName) {
+    FuturamaCharacter(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    static class FirstNameAscComparator implements Comparator<Person> {
+    static class FirstNameAscComparator implements Comparator<FuturamaCharacter> {
 
         @Override
-        public int compare(Person o1, Person o2) {
+        public int compare(FuturamaCharacter o1, FuturamaCharacter o2) {
             return o1.getFirstName().compareTo(o2.getFirstName());
         }
     }

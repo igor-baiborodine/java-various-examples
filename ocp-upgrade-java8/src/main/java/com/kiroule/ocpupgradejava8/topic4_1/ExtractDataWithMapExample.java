@@ -16,7 +16,7 @@ public class ExtractDataWithMapExample {
                 new FuturamaCharacter("Turanga", "Leela", "mutant"),
                 new FuturamaCharacter("Zapp", "Brannigan", "human"));
 
-        System.out.println("Distinct person species:");
+        System.out.println("Distinct futurama character species:");
         characters.stream()
                 .map(FuturamaCharacter::getSpecies)
                 .distinct()

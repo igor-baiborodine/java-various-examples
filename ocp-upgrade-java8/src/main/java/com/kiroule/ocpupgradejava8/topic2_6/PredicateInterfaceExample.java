@@ -18,26 +18,26 @@ public class PredicateInterfaceExample {
                 new FuturamaCharacter("Turanga", "Leela", "mutant"));
 
         System.out.println("Robots:");
-        printPersonsBySpecies(characters, c -> c.getSpecies().equals("robot"));
+        printCharactersBySpecies(characters, c -> c.getSpecies().equals("robot"));
 
         System.out.println("Mutants:");
-        printPersonsBySpecies(characters, new MutantSpeciesPredicate());
+        printCharactersBySpecies(characters, new MutantSpeciesPredicate());
 
         System.out.println("Humans:");
-        printPersonsBySpecies(characters, c -> c.getSpecies().equals("human"),
+        printCharactersBySpecies(characters, c -> c.getSpecies().equals("human"),
                 c -> System.out.println(c.getFirstName() + " " + c.getLastName().toUpperCase()));
     }
 
-    public static void printPersonsBySpecies(List<FuturamaCharacter> characters,
+    public static void printCharactersBySpecies(List<FuturamaCharacter> characters,
                                              Predicate<FuturamaCharacter> predicate) {
         characters.stream()
                 .filter(predicate::test)
-                .forEach(p -> System.out.println(p.getFirstName() + " " + p.getLastName()));
+                .forEach(c -> System.out.println(c.getFirstName() + " " + c.getLastName()));
     }
 
-    public static void printPersonsBySpecies(List<FuturamaCharacter> characters,
-                                             Predicate<FuturamaCharacter> predicate,
-                                             Consumer<FuturamaCharacter> consumer) {
+    public static void printCharactersBySpecies(List<FuturamaCharacter> characters,
+                                                Predicate<FuturamaCharacter> predicate,
+                                                Consumer<FuturamaCharacter> consumer) {
         characters.stream()
                 .filter(predicate::test)
                 .forEach(consumer::accept);

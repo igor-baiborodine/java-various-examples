@@ -11,35 +11,35 @@ public class StreamInterfaceExample {
 
     public static void main(String... args) {
 
-        List<Person> persons = Arrays.asList(
-                new Person("Bender", "Rodriguez", "robot"),
-                new Person("Philip", "Fry", "human"),
-                new Person("Turanga", "Leela", "mutant"));
+        List<FuturamaCharacter> characters = Arrays.asList(
+                new FuturamaCharacter("Bender", "Rodriguez", "robot"),
+                new FuturamaCharacter("Philip", "Fry", "human"),
+                new FuturamaCharacter("Turanga", "Leela", "mutant"));
 
-        long count = persons.stream()
-                .filter(new MutantOriginPredicate())
+        long count = characters.stream()
+                .filter(new MutantSpeciesPredicate())
                 .count();
         System.out.printf("Found %d mutant(s).", count);
     }
 }
 
-class MutantOriginPredicate implements Predicate<Person> {
+class MutantSpeciesPredicate implements Predicate<FuturamaCharacter> {
     @Override
-    public boolean test(Person person) {
-        return person.getOrigin().equals("mutant");
+    public boolean test(FuturamaCharacter character) {
+        return character.getSpecies().equals("mutant");
     }
 }
 
-class Person {
+class FuturamaCharacter {
     private String firstName;
     private String lastName;
-    private String origin = "human";
+    private String species = "human";
 
-    public Person(String firstName, String lastName, String origin) {
+    public FuturamaCharacter(String firstName, String lastName, String species) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.origin = origin;
+        this.species = species;
     }
 
-    public String getOrigin() { return origin; }
+    public String getSpecies() { return species; }
 }
