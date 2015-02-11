@@ -13,13 +13,15 @@ public class MethodReferenceExample {
 
     public static void main(String... args) {
 
-        BiFunction<String, String, FuturamaCharacter> bf = (firstName, lastName) -> new FuturamaCharacter(firstName, lastName);
-        BiFunction<String, String, FuturamaCharacter> bf2 = FuturamaCharacter::new; // method reference
+        BiFunction<String, String, FuturamaCharacter> biFunctionLambda =
+                (firstName, lastName) -> new FuturamaCharacter(firstName, lastName);
+        BiFunction<String, String, FuturamaCharacter> biFunctionMethodReference =
+                FuturamaCharacter::new; // method reference
 
         List<FuturamaCharacter> characters = Arrays.asList(
-                bf.apply("Philip", "Fry"),
-                bf2.apply("Bender", "Rodriguez"),
-                bf2.apply("Turanga", "Leela"));
+                biFunctionLambda.apply("Philip", "Fry"),
+                biFunctionMethodReference.apply("Bender", "Rodriguez"),
+                biFunctionMethodReference.apply("Turanga", "Leela"));
 
         System.out.println("\nBefore sorting:");
         characters.forEach(c -> c.printFullName());
