@@ -21,13 +21,12 @@ ocp-upgrade-java8
 
 |Functional interface|Function descriptor|Primitive specializations|
 |:--------------------------|:------------------------|:------------------------|
-|[Predicate\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html)|T -> boolean|IntPredicate, LongPredicate, DoublePredicate|
-|[Consumer\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html)|T -> void|IntConsumer, LongConsumer, DoubleConsumer|
 |[Function\<T, R\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html)|T -> R|IntFunction<R>, IntToDoubleFunction, IntToLongFunction, LongFunction<R>, LongToDoubleFunction, LongToIntFunction, DoubleFunction<R>, ToIntFunction<T>, ToDoubleFunction<T>, ToLongFunction<T>|
+|[Consumer\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html)|T -> void|IntConsumer, LongConsumer, DoubleConsumer|
 |[Supplier\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html)|() -> T|BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier|
 |[UnaryOperator\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/UnaryOperator.html)|T -> T|IntUnaryOperator, LongUnaryOperator, DoubleUnaryOperator|
 |[BinaryOperator\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/BinaryOperator.html)|(T, T) -> T|IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator|
-
+|[Predicate\<T\>](http://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html)|T -> boolean|IntPredicate, LongPredicate, DoublePredicate|
 - 2.2. Develop code that uses [Function](http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html) interface: [FunctionInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_2/FunctionInterfaceExample.java)
 - 2.3. Develop code that uses [Consumer](http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html) interface: [ConsumerInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_3/ConsumerInterfaceExample.java)
 - 2.4. Develop code that uses [Supplier](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_4/SupplierInterfaceExample.java) interface: [SupplierInterfaceExample.java](https://github.com/igor-baiborodine/java-various-examples/blob/master/ocp-upgrade-java8/src/main/java/com/kiroule/ocpupgradejava8/topic2_4/SupplierInterfaceExample.java)
