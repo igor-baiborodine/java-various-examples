@@ -17,13 +17,16 @@ public class ConsumerInterfaceExample {
                 new FuturamaCharacter("Turanga", "Leela"));
 
         Consumer<FuturamaCharacter> fullNameConsumer =
-                c -> System.out.println("Full name: " + c.getFirstName() + " " + c.getLastName());
+                c -> System.out.println(c.getFirstName() + " " + c.getLastName());
+        System.out.println("\nFull names:");
         characters.forEach(fullNameConsumer);
 
+        System.out.println("\nInverted full names:");
         for (FuturamaCharacter character : characters) {
             character.printFullName(new InvertedFullNameConsumer());
         }
 
+        System.out.println("\nFull names after introducing the side effect:");
         characters.forEach(fullNameConsumer);
     }
 }
@@ -31,8 +34,8 @@ public class ConsumerInterfaceExample {
 class InvertedFullNameConsumer implements Consumer<FuturamaCharacter> {
     @Override
     public void accept(FuturamaCharacter c) {
-        c.setLastName(c.getLastName().toUpperCase()); // introducing side effect
-        System.out.println("Inverted full name: " + c.getLastName() + ", " + c.getFirstName());
+        c.setLastName(c.getLastName().toUpperCase()); // introducing a side effect
+        System.out.println(c.getLastName() + ", " + c.getFirstName());
     }
 }
 
