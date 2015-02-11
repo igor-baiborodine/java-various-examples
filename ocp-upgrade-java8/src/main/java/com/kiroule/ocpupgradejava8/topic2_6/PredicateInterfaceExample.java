@@ -29,7 +29,7 @@ public class PredicateInterfaceExample {
                 c -> System.out.println(c.getFirstName() + " " + c.getLastName().toUpperCase()));
 
         System.out.println("Aliens:");
-        printCharactersBySpecies(characters, FuturamaCharacter::isAlienSpecies );
+        printCharactersBySpecies(characters, FuturamaCharacter::isAlienSpecies);
     }
 
     public static void printCharactersBySpecies(List<FuturamaCharacter> characters,
