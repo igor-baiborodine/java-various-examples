@@ -16,12 +16,13 @@ public class FunctionInterfaceExample {
                 new FuturamaCharacter("Philip", "Fry"),
                 new FuturamaCharacter("Turanga", "Leela"));
 
+        System.out.println("Full names:");
         for (FuturamaCharacter character : characters) {
             System.out.println(character.getFullName(
-                    c -> "Full name: " + c.getFirstName() + " " + c.getLastName()
+                    c -> c.getFirstName() + " " + c.getLastName()
             ));
         }
-
+        System.out.println("\nInverted full names:");
         characters.forEach(c -> System.out.println(c.getFullName(new InvertedFullNameFunction())));
     }
 }
@@ -29,7 +30,7 @@ public class FunctionInterfaceExample {
 class InvertedFullNameFunction implements Function<FuturamaCharacter, String> {
     @Override
     public String apply(FuturamaCharacter c) {
-        return  "Inverted full name: " + c.getLastName() + ", " + c.getFirstName();
+        return c.getLastName() + ", " + c.getFirstName();
     }
 }
 
