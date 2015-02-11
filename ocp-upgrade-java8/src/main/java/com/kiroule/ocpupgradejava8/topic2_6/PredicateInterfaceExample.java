@@ -15,7 +15,8 @@ public class PredicateInterfaceExample {
         List<FuturamaCharacter> characters = Arrays.asList(
                 new FuturamaCharacter("Bender", "Rodriguez", "robot"),
                 new FuturamaCharacter("Philip", "Fry", "human"),
-                new FuturamaCharacter("Turanga", "Leela", "mutant"));
+                new FuturamaCharacter("Turanga", "Leela", "mutant"),
+                new FuturamaCharacter("John", "Zoidberg", "alien"));
 
         System.out.println("Robots:");
         printCharactersBySpecies(characters, c -> c.getSpecies().equals("robot"));
@@ -26,6 +27,9 @@ public class PredicateInterfaceExample {
         System.out.println("Humans:");
         printCharactersBySpecies(characters, c -> c.getSpecies().equals("human"),
                 c -> System.out.println(c.getFirstName() + " " + c.getLastName().toUpperCase()));
+
+        System.out.println("Aliens:");
+        printCharactersBySpecies(characters, FuturamaCharacter::isAlienSpecies );
     }
 
     public static void printCharactersBySpecies(List<FuturamaCharacter> characters,
@@ -62,6 +66,9 @@ class FuturamaCharacter {
         this.species = species;
     }
 
+    public boolean isAlienSpecies() {
+        return "alien".equals(species);
+    }
     public String getFirstName() {
         return firstName;
     }
