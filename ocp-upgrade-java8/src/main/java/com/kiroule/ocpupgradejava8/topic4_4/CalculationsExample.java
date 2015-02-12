@@ -17,7 +17,7 @@ public class CalculationsExample {
                 new FuturamaCharacter("Philip", "Fry", 126),
                 new FuturamaCharacter("Turanga", "Leela", 22));
         System.out.println("Futurama characters:");
-        characters.forEach(c -> System.out.println(c));
+        characters.forEach(FuturamaCharacter::toString); // c -> System.out.println(c)
 
         long count = characters.stream().count();
         System.out.println("\nCharacters count: " + count);
