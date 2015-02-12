@@ -35,7 +35,8 @@ public class SearchDataExample {
                 .mapToInt(FuturamaCharacter::hashCode)
                 .filter(hc -> hc != firstNegativeHashcode.getAsInt())
                 .findAny();
-        System.out.println("Any hashcode except the first negative hashcode: " + anyHashcode);
+        System.out.println("Any hashcode except the first negative hashcode: "
+                + (anyHashcode.isPresent() ? anyHashcode.getAsInt() : "Not found"));
 
         System.out.println("\nFuturama characters:");
         characters.forEach(System.out::println);
