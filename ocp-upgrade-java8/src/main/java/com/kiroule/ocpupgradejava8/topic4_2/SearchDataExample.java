@@ -23,34 +23,36 @@ public class SearchDataExample {
                 .sorted()
                 .forEach(System.out::println);
 
-        OptionalInt firstNegativeHashcode =
-                characters.stream()
-                        .mapToInt(FuturamaCharacter::hashCode)
-                        .sorted()
-                        .findFirst();
+        OptionalInt firstNegativeHashcode = characters
+                .stream()
+                .mapToInt(FuturamaCharacter::hashCode)
+                .sorted()
+                .findFirst();
         System.out.println("\nFirst negative hashcode: " + firstNegativeHashcode);
 
-
-        OptionalInt anyHashcode =
-                characters.stream()
-                        .mapToInt(FuturamaCharacter::hashCode)
-                        .filter(hc -> hc != firstNegativeHashcode.getAsInt())
-                        .findAny();
+        OptionalInt anyHashcode = characters
+                .stream()
+                .mapToInt(FuturamaCharacter::hashCode)
+                .filter(hc -> hc != firstNegativeHashcode.getAsInt())
+                .findAny();
         System.out.println("Any hashcode except the first negative hashcode: " + anyHashcode);
 
         System.out.println("\nFuturama characters:");
         characters.forEach(System.out::println);
 
-        boolean containsRobot = characters.stream()
-                .anyMatch(p -> p.getOrigin().equals("robot"));
+        boolean containsRobot = characters
+                .stream()
+                .anyMatch(c -> c.getSpecies().equals("robot"));
         System.out.println("\nCharacters contain a robot: " + containsRobot);
 
-        boolean containsAlien = characters.stream()
-                .noneMatch(p -> p.getOrigin().equals("alien"));
+        boolean containsAlien = characters
+                .stream()
+                .noneMatch(c -> c.getSpecies().equals("alien"));
         System.out.println("Characters do not contain an alien: " + containsAlien);
 
-        boolean containsOnlyHumans = characters.stream()
-                .allMatch(p -> p.getOrigin().equals("human"));
+        boolean containsOnlyHumans = characters
+                .stream()
+                .allMatch(FuturamaCharacter::isHumanSpecies);
         System.out.println("Characters contain only humans: " + containsOnlyHumans);
     }
 }
@@ -58,19 +60,21 @@ public class SearchDataExample {
 class FuturamaCharacter {
     private String firstName;
     private String lastName;
-    private String origin = "human";
+    private String species = "human";
 
-    public FuturamaCharacter(String firstName, String lastName, String origin) {
+    public FuturamaCharacter(String firstName, String lastName, String species) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.origin = origin;
+        this.species = species;
     }
 
-    public String getOrigin() { return origin; }
+    public String getSpecies() { return species; }
+
+    public boolean isHumanSpecies() { return "human".equals(species); }
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + " [" + origin + "]";
+        return firstName + " " + lastName + " [" + species + "]";
     }
 
     @Override
@@ -82,14 +86,14 @@ class FuturamaCharacter {
 
         if (firstName != null ? !firstName.equals(character.firstName) : character.firstName != null) return false;
         if (lastName != null ? !lastName.equals(character.lastName) : character.lastName != null) return false;
-        return !(origin != null ? !origin.equals(character.origin) : character.origin != null);
+        return !(species != null ? !species.equals(character.species) : character.species != null);
     }
 
     @Override
     public int hashCode() {
         int result = firstName != null ? firstName.hashCode() : 0;
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (origin != null ? origin.hashCode() : 0);
+        result = 31 * result + (species != null ? species.hashCode() : 0);
         return result;
     }
 }

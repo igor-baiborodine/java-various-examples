@@ -16,16 +16,18 @@ public class ExtractDataWithMapExample {
                 new FuturamaCharacter("Turanga", "Leela", "mutant"),
                 new FuturamaCharacter("Zapp", "Brannigan", "human"));
 
-        System.out.println("Distinct futurama character species:");
+        System.out.println("Distinct Futurama character species:");
         characters.stream()
-                .map(FuturamaCharacter::getSpecies)
+                // <R> Stream<R> map(Function<? super T, ? extends R> mapper);
+                .map(FuturamaCharacter::getSpecies) // c -> c.getSpecies()
                 .distinct()
                 .sorted()
                 .forEach(System.out::println);
 
         System.out.println("\nHashcodes:");
         characters.stream()
-                .mapToInt(FuturamaCharacter::hashCode)
+                // IntStream mapToInt(ToIntFunction<? super T> mapper);
+                .mapToInt(FuturamaCharacter::hashCode) // c -> c.hashCode()
                 .sorted()
                 .forEach(System.out::println);
     }
