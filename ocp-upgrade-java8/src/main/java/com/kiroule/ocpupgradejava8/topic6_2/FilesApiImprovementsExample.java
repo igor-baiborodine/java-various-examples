@@ -23,6 +23,7 @@ public class FilesApiImprovementsExample {
         BiPredicate<Path, BasicFileAttributes> topicDirectoriesMatcher =
                 (path, basicFileAttributes) -> basicFileAttributes.isDirectory() && path.toString().contains("topic");
         Stream<Path> pathStream = Files.find(start, maxDepth, topicDirectoriesMatcher);
+
         System.out.println("Topic directories ASC:");
         pathStream.sorted().forEach(System.out::println);
 
