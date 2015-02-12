@@ -17,6 +17,7 @@ public class CollectorsMethodsExample {
                 new FuturamaCharacter("Philip", "Fry", 126, HUMAN),
                 new FuturamaCharacter("Turanga", "Leela", 22, MUTANT),
                 new FuturamaCharacter("Hubert", "Farnsworth", 161, HUMAN));
+
         System.out.println("Futurama characters:");
         characters.forEach(System.out::println);
 
