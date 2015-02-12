@@ -22,6 +22,7 @@ public class CollectionImprovementsExample {
                 new FuturamaCharacter("Philip", "Fry", 126, HUMAN),
                 new FuturamaCharacter("Turanga", "Leela", 22, MUTANT),
                 new FuturamaCharacter("Hubert", "Farnsworth", 161, HUMAN)));
+
         System.out.println("Futurama characters:");
         characters.forEach(System.out::println);
 
@@ -52,8 +53,8 @@ public class CollectionImprovementsExample {
             }
         }
         Fibonacci fibonacci = new Fibonacci();
-        System.out.println("\nFirst 10 Fibonacci numbers: ");
-        IntStream.range(0, 10).forEach(x -> System.out.println(fibonacci.get(x)));
+        System.out.print("\nFirst 10 Fibonacci numbers: ");
+        IntStream.range(0, 10).forEach(x -> System.out.print(fibonacci.get(x) + " "));
     }
 }
 
