@@ -27,7 +27,7 @@ public class StreamInterfaceExample {
                 .count();
         System.out.printf("%nFound %d mutant(s).", count);
 
-        // Cannot re-use the stream, will throw runtime exception:
+        // Cannot re-use the stream, it will throw a runtime exception:
         // java.lang.IllegalStateException: stream has already been operated upon or closed
         characterStream.count();
     }
