@@ -19,16 +19,19 @@ public class PredicateInterfaceExample {
                 new FuturamaCharacter("John", "Zoidberg", "alien"));
 
         System.out.println("Robots:");
-        printCharactersBySpecies(characters, c -> c.getSpecies().equals("robot"));
+        printCharactersBySpecies(characters, c -> {
+            System.out.printf("Evaluating species[%s] %n", c.getSpecies());
+            return c.getSpecies().equals("robot");
+        });
 
-        System.out.println("Mutants:");
+        System.out.println("\nMutants:");
         printCharactersBySpecies(characters, new MutantSpeciesPredicate());
 
-        System.out.println("Humans:");
+        System.out.println("\nHumans:");
         printCharactersBySpecies(characters, c -> c.getSpecies().equals("human"),
                 c -> System.out.println(c.getFirstName() + " " + c.getLastName().toUpperCase()));
 
-        System.out.println("Aliens:");
+        System.out.println("\nAliens:");
         printCharactersBySpecies(characters, FuturamaCharacter::isAlienSpecies);
     }
 
