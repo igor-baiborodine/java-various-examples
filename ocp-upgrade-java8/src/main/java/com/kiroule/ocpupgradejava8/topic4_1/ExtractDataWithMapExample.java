@@ -2,6 +2,7 @@ package com.kiroule.ocpupgradejava8.topic4_1;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.lang.String.format;
@@ -29,12 +30,13 @@ public class ExtractDataWithMapExample {
         System.out.println("Distinct Futurama character species:");
         speciesStream.forEach(System.out::println);
 
-        System.out.println("\nHashcodes:");
-        characters.stream()
+        IntStream hashcodesStream = characters.stream()
                 // IntStream mapToInt(ToIntFunction<? super T> mapper);
                 .mapToInt(FuturamaCharacter::hashCode) // c -> c.hashCode()
-                .sorted()
-                .forEach(System.out::println);
+                .peek(hc -> System.out.println("Mapped value: " + hc))
+                .sorted();
+        System.out.println("\nHashcodes:");
+        hashcodesStream.forEach(System.out::println);
     }
 }
 
