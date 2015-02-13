@@ -30,13 +30,13 @@ public class ExtractDataWithMapExample {
         System.out.println("Distinct Futurama character species:");
         speciesStream.forEach(System.out::println);
 
-        IntStream hashcodesStream = characters.stream()
+        IntStream hashcodeStream = characters.stream()
                 // IntStream mapToInt(ToIntFunction<? super T> mapper);
                 .mapToInt(FuturamaCharacter::hashCode) // c -> c.hashCode()
                 .peek(hc -> System.out.println("Mapped value: " + hc))
                 .sorted();
         System.out.println("\nHashcodes:");
-        hashcodesStream.forEach(System.out::println);
+        hashcodeStream.forEach(System.out::println);
     }
 }
 
