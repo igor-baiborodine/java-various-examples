@@ -2,6 +2,9 @@ package com.kiroule.ocpupgradejava8.topic4_1;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+
+import static java.lang.String.format;
 
 /**
  * @author Igor Baiborodine
@@ -16,13 +19,15 @@ public class ExtractDataWithMapExample {
                 new FuturamaCharacter("Turanga", "Leela", "mutant"),
                 new FuturamaCharacter("Zapp", "Brannigan", "human"));
 
-        System.out.println("Distinct Futurama character species:");
-        characters.stream()
-                // <R> Stream<R> map(Function<? super T, ? extends R> mapper);
+        Stream<String> speciesStream = characters.stream()
+                .peek(c -> System.out.println("Filtered value: " + c))
+                        // <R> Stream<R> map(Function<? super T, ? extends R> mapper);
                 .map(FuturamaCharacter::getSpecies) // c -> c.getSpecies()
+                .peek(s -> System.out.println("Mapped value: " + s.toUpperCase()))
                 .distinct()
-                .sorted()
-                .forEach(System.out::println);
+                .sorted();
+        System.out.println("Distinct Futurama character species:");
+        speciesStream.forEach(System.out::println);
 
         System.out.println("\nHashcodes:");
         characters.stream()
@@ -47,9 +52,7 @@ class FuturamaCharacter {
     public String getSpecies() { return species; }
 
     @Override
-    public String toString() {
-        return firstName + " " + lastName;
-    }
+    public String toString() { return format("%s %s [%s]", firstName, lastName, species); }
 
     @Override
     public boolean equals(Object o) {
