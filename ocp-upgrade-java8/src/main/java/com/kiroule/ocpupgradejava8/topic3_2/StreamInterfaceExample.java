@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static java.lang.String.format;
+
 /**
  * @author Igor Baiborodine
  */
@@ -17,9 +19,10 @@ public class StreamInterfaceExample {
                 new FuturamaCharacter("Turanga", "Leela", "mutant"));
 
         long count = characters.stream()
+                .peek(c -> System.out.println("Filtered value: " + c))
                 .filter(new MutantSpeciesPredicate())
                 .count();
-        System.out.printf("Found %d mutant(s).", count);
+        System.out.printf("%nFound %d mutant(s).", count);
     }
 }
 
@@ -42,4 +45,7 @@ class FuturamaCharacter {
     }
 
     public String getSpecies() { return species; }
+
+    @Override
+    public String toString() { return format("%s %s [%s]", firstName, lastName, species); }
 }
