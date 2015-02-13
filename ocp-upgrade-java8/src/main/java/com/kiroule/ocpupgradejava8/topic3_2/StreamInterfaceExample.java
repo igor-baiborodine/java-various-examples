@@ -3,6 +3,7 @@ package com.kiroule.ocpupgradejava8.topic3_2;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import static java.lang.String.format;
 
@@ -18,18 +19,24 @@ public class StreamInterfaceExample {
                 new FuturamaCharacter("Philip", "Fry", "human"),
                 new FuturamaCharacter("Turanga", "Leela", "mutant"));
 
-        long count = characters.stream()
+        Stream<FuturamaCharacter> characterStream = characters.stream();
+
+        long count = characterStream
                 .peek(c -> System.out.println("Filtered value: " + c))
                 .filter(new MutantSpeciesPredicate())
                 .count();
         System.out.printf("%nFound %d mutant(s).", count);
+
+        // Cannot re-use the stream, will throw runtime exception:
+        // java.lang.IllegalStateException: stream has already been operated upon or closed
+        characterStream.count();
     }
 }
 
 class MutantSpeciesPredicate implements Predicate<FuturamaCharacter> {
     @Override
     public boolean test(FuturamaCharacter character) {
-        return character.getSpecies().equals("mutant");
+        return "mutant".equals(character.getSpecies());
     }
 }
 
