@@ -12,7 +12,7 @@ import static java.lang.String.format;
  */
 public class StreamInterfaceExample {
 
-    public static void main(String... args) {
+    public static void main(String... args) throws InterruptedException {
 
         List<FuturamaCharacter> characters = Arrays.asList(
                 new FuturamaCharacter("Bender", "Rodriguez", "robot"),
@@ -27,6 +27,7 @@ public class StreamInterfaceExample {
                 .count();
         System.out.printf("%nFound %d mutant(s).", count);
 
+        Thread.sleep(500);
         // Cannot re-use the stream, it will throw a runtime exception:
         // java.lang.IllegalStateException: stream has already been operated upon or closed
         characterStream.count();
