@@ -20,7 +20,7 @@ public class PredicateInterfaceExample {
 
         System.out.println("Robots:");
         printCharactersBySpecies(characters, c -> {
-            System.out.printf("Evaluating species[%s] %n", c.getSpecies());
+            System.out.printf("Evaluating character's species[%s] %n", c.getSpecies());
             return c.getSpecies().equals("robot");
         });
 
