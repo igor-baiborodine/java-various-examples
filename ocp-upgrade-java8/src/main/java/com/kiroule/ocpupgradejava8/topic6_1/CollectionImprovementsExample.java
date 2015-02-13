@@ -49,7 +49,7 @@ public class CollectionImprovementsExample {
 
             public int get(int n) {
                 if (n == 0 || n == 1) return n;
-                return cache.computeIfAbsent(n, (key) -> get(n - 2) + get(n - 1));
+                return cache.computeIfAbsent(n, key -> get(n - 2) + get(n - 1));
             }
         }
         Fibonacci fibonacci = new Fibonacci();
