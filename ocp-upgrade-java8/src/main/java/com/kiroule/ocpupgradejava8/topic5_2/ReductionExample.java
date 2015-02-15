@@ -8,47 +8,50 @@ import java.util.List;
  */
 public class ReductionExample {
 
-    public static void main(String... args) {
+  public static void main(String... args) {
 
-        List<FuturamaCharacter> characters = Arrays.asList(
-                new FuturamaCharacter("Bender", "Rodriguez", 5),
-                new FuturamaCharacter("Philip", "Fry", 126),
-                new FuturamaCharacter("Turanga", "Leela", 22));
+    List<FuturamaCharacter> characters = Arrays.asList(
+        new FuturamaCharacter("Bender", "Rodriguez", 5),
+        new FuturamaCharacter("Philip", "Fry", 126),
+        new FuturamaCharacter("Turanga", "Leela", 22));
 
-        System.out.println("Futurama characters:");
-        characters.forEach(c -> System.out.println(c));
+    System.out.println("Futurama characters:");
+    characters.forEach(c -> System.out.println(c));
 
-        int sumAge = characters
-                .stream()
-                .parallel()
-                .mapToInt(FuturamaCharacter::getAge)
-                .sum();
-        System.out.println("\nSum of ages: " + sumAge);
+    int sumAge = characters
+        .stream()
+        .parallel()
+        .mapToInt(FuturamaCharacter::getAge)
+        .sum();
+    System.out.println("\nSum of ages: " + sumAge);
 
-        int sumAgeReduce = characters
-                .stream()
-                .parallel()
-                .map(FuturamaCharacter::getAge)
-                .reduce(0, (a, b) -> a + b);
-        System.out.println("\nSum of ages with reduce: " + sumAgeReduce);
-    }
+    int sumAgeReduce = characters
+        .stream()
+        .parallel()
+        .map(FuturamaCharacter::getAge)
+        .reduce(0, (a, b) -> a + b);
+    System.out.println("\nSum of ages with reduce: " + sumAgeReduce);
+  }
 }
 
 class FuturamaCharacter {
-    private String firstName;
-    private String lastName;
-    private int age = 0;
 
-    public FuturamaCharacter(String firstName, String lastName, int age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-    }
+  private String firstName;
+  private String lastName;
+  private int age = 0;
 
-    public int getAge() { return age; }
+  public FuturamaCharacter(String firstName, String lastName, int age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
 
-    @Override
-    public String toString() {
-        return firstName + " " + lastName + " [" + age + "]";
-    }
+  public int getAge() {
+    return age;
+  }
+
+  @Override
+  public String toString() {
+    return firstName + " " + lastName + " [" + age + "]";
+  }
 }

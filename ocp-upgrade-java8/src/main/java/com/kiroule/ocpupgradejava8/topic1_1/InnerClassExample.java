@@ -5,22 +5,24 @@ package com.kiroule.ocpupgradejava8.topic1_1;
  */
 class InnerClassExample {
 
-    private String greeting = "Hello World!";
+  private String greeting = "Hello World!";
+
+  public void printGreeting() {
+    System.out.println("OUTER: " + greeting);
+  }
+
+  class HelloWorld {
 
     public void printGreeting() {
-        System.out.println("OUTER: " + greeting);
+      System.out.println("INNER: " + greeting);
     }
-    class HelloWorld {
-        public void printGreeting() {
-            System.out.println("INNER: " + greeting);
-        }
-    }
+  }
 
-    public static void main(String... args) {
-        InnerClassExample innerClassExample = new InnerClassExample();
-        innerClassExample.printGreeting();
+  public static void main(String... args) {
+    InnerClassExample innerClassExample = new InnerClassExample();
+    innerClassExample.printGreeting();
 
-        HelloWorld helloWorld = innerClassExample.new HelloWorld();
-        helloWorld.printGreeting();
-    }
+    HelloWorld helloWorld = innerClassExample.new HelloWorld();
+    helloWorld.printGreeting();
+  }
 }

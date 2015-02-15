@@ -16,25 +16,26 @@ import java.util.stream.Stream;
  */
 public class FilesApiImprovementsExample {
 
-    public static void main(String... args) throws IOException {
+  public static void main(String... args) throws IOException {
 
-        Path start = new File(".").toPath();
-        int maxDepth = Integer.MAX_VALUE;
-        BiPredicate<Path, BasicFileAttributes> topicDirectoriesMatcher =
-                (path, basicFileAttributes) -> basicFileAttributes.isDirectory() && path.toString().contains("topic");
-        Stream<Path> pathStream = Files.find(start, maxDepth, topicDirectoriesMatcher);
+    Path start = new File(".").toPath();
+    int maxDepth = Integer.MAX_VALUE;
+    BiPredicate<Path, BasicFileAttributes> topicDirectoriesMatcher =
+        (path, basicFileAttributes) -> basicFileAttributes.isDirectory() && path.toString()
+            .contains("topic");
+    Stream<Path> pathStream = Files.find(start, maxDepth, topicDirectoriesMatcher);
 
-        System.out.println("Topic directories ASC:");
-        pathStream.sorted().forEach(System.out::println);
+    System.out.println("Topic directories ASC:");
+    pathStream.sorted().forEach(System.out::println);
 
-        List<Path> paths = Files.walk(start)
-                .filter(p -> p.toString().contains("FilesApiImprovementsExample.java"))
-                .collect(Collectors.toList());
-        System.out.println("\nFile path: " + paths.get(0));
+    List<Path> paths = Files.walk(start)
+        .filter(p -> p.toString().contains("FilesApiImprovementsExample.java"))
+        .collect(Collectors.toList());
+    System.out.println("\nFile path: " + paths.get(0));
 
-        System.out.println("\nFile content: ");
-        Files.lines(paths.get(0), Charset.defaultCharset())
-                .forEach(System.out::println);
+    System.out.println("\nFile content: ");
+    Files.lines(paths.get(0), Charset.defaultCharset())
+        .forEach(System.out::println);
 
-    }
+  }
 }

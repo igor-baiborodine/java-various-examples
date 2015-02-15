@@ -8,21 +8,25 @@ import java.util.function.Function;
  */
 public class TypeInferenceExample {
 
-    public static void main(String... args) {
+  public static void main(String... args) {
 
-        Foo<Bar> foo = new Foo<>();
+    Foo<Bar> foo = new Foo<>();
 
-        foo.<String>apply(bar -> bar::setBar);
-        // We omit the type String and Java compiler automatically infers
-        // (from the method's argument) that the type parameter is String
-        foo.apply(bar -> bar::setBar);
-    }
+    foo.<String>apply(bar -> bar::setBar);
+    // We omit the type String and Java compiler automatically infers
+    // (from the method's argument) that the type parameter is String
+    foo.apply(bar -> bar::setBar);
+  }
 }
 
 class Foo<T> {
-    <U> void apply(Function<T, Consumer<U>> bar) {}
+
+  <U> void apply(Function<T, Consumer<U>> bar) {
+  }
 }
 
 class Bar {
-    void setBar(String bar){}
+
+  void setBar(String bar) {
+  }
 }

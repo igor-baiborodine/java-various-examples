@@ -14,30 +14,33 @@ import java.util.stream.Stream;
  */
 public class MergeAndFlatMapExample {
 
-    public static void main(String... args) {
+  public static void main(String... args) {
 
-        List<String> phrases = Arrays.asList(
-                "sporadic perjury",
-                "confounded skimming",
-                "incumbent jailer",
-                "confounded jailer");
+    List<String> phrases = Arrays.asList(
+        "sporadic perjury",
+        "confounded skimming",
+        "incumbent jailer",
+        "confounded jailer");
 
-        List<String> uniqueWords = phrases
-                .stream()
-                .flatMap(phrase -> Stream.of(phrase.split(" +")))
-                .distinct()
-                .sorted()
-                .collect(Collectors.toList());
-        System.out.println("Unique words: " + uniqueWords);
+    List<String> uniqueWords = phrases
+        .stream()
+        .flatMap(phrase -> Stream.of(phrase.split(" +")))
+        .distinct()
+        .sorted()
+        .collect(Collectors.toList());
+    System.out.println("Unique words: " + uniqueWords);
 
-        Map<Integer, String> lengthToWordsMap = new HashMap<>();
-        Consumer<String> action = w -> {
-            BiFunction<String, String, String> remappingFunction = (value, newValue) -> value + ", " + newValue;
-            lengthToWordsMap.merge(w.length(), w, remappingFunction);
-        };
-        uniqueWords.forEach(action);
+    Map<Integer, String> lengthToWordsMap = new HashMap<>();
+    Consumer<String> action = w -> {
+      BiFunction<String, String, String>
+          remappingFunction =
+          (value, newValue) -> value + ", " + newValue;
+      lengthToWordsMap.merge(w.length(), w, remappingFunction);
+    };
+    uniqueWords.forEach(action);
 
-        lengthToWordsMap.forEach((key, value) -> System.out.printf("%nWords with length %d: %s", key, value));
-    }
+    lengthToWordsMap
+        .forEach((key, value) -> System.out.printf("%nWords with length %d: %s", key, value));
+  }
 }
 

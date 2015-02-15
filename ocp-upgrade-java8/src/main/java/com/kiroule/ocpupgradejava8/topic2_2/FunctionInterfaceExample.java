@@ -9,52 +9,53 @@ import java.util.function.Function;
  */
 public class FunctionInterfaceExample {
 
-    public static void main(String... args) {
+  public static void main(String... args) {
 
-        List<FuturamaCharacter> characters = Arrays.asList(
-                new FuturamaCharacter("Bender", "Rodriguez"),
-                new FuturamaCharacter("Philip", "Fry"),
-                new FuturamaCharacter("Turanga", "Leela"));
+    List<FuturamaCharacter> characters = Arrays.asList(
+        new FuturamaCharacter("Bender", "Rodriguez"),
+        new FuturamaCharacter("Philip", "Fry"),
+        new FuturamaCharacter("Turanga", "Leela"));
 
-        System.out.println("Full names:");
-        for (FuturamaCharacter character : characters) {
-            System.out.println(character.getFullName(
-                    c -> c.getFirstName() + " " + c.getLastName()
-            ));
-        }
-        System.out.println("\nInverted full names:");
-        characters.forEach(c -> System.out.println(c.getFullName(new InvertedFullNameFunction())));
+    System.out.println("Full names:");
+    for (FuturamaCharacter character : characters) {
+      System.out.println(character.getFullName(
+          c -> c.getFirstName() + " " + c.getLastName()
+      ));
     }
+    System.out.println("\nInverted full names:");
+    characters.forEach(c -> System.out.println(c.getFullName(new InvertedFullNameFunction())));
+  }
 }
 
 class InvertedFullNameFunction implements Function<FuturamaCharacter, String> {
-    @Override
-    public String apply(FuturamaCharacter c) {
-        return c.getLastName() + ", " + c.getFirstName();
-    }
+
+  @Override
+  public String apply(FuturamaCharacter c) {
+    return c.getLastName() + ", " + c.getFirstName();
+  }
 }
 
 class FuturamaCharacter {
 
-    private String firstName;
-    private String lastName;
+  private String firstName;
+  private String lastName;
 
-    public FuturamaCharacter(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+  public FuturamaCharacter(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
 
-    public String getFullName(Function<FuturamaCharacter, String> function) {
-        return function.apply(this);
-    }
+  public String getFullName(Function<FuturamaCharacter, String> function) {
+    return function.apply(this);
+  }
 
-    public String getFirstName() {
-        return firstName;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 }
 
 
