@@ -1,24 +1,17 @@
 package com.kiroule.example.springjpahsqldb.config;
 
+import com.kiroule.example.springjpahsqldb.AbstractTest;
+
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextHierarchy;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.sql.DataSource;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextHierarchy({
-    @ContextConfiguration(classes = ApplicationConfig.class)})
-@ActiveProfiles("test")
-public class ApplicationConfigTest {
+public class ApplicationConfigTest extends AbstractTest {
 
   @Autowired
   private ApplicationContext applicationContext;
