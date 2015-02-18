@@ -10,7 +10,7 @@
 
     <properties>
         <!-- Java -->
-        <version.java>1.6</version.java>
+        <version.java>1.8</version.java>
 
         <!-- Third-party libraries -->
         <version.spring>4.1.4.RELEASE</version.spring>
