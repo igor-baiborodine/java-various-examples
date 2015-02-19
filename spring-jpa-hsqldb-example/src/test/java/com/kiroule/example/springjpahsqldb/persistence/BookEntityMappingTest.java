@@ -39,20 +39,22 @@ public class BookEntityMappingTest {
   private static final BigDecimal PRICE = new BigDecimal("50.0");
 
   @Autowired
-  private EntityManagerFactory emf;
-  private EntityManager em;
+  private EntityManagerFactory entityManagerFactory;
+  private EntityManager entityManager;
 
   @Before
   public void before() throws Throwable {
-    em = emf.createEntityManager();
-    getExecuteUpdateTransaction("delete from Book").execute(em);
+    entityManager = entityManagerFactory.createEntityManager();
+    TransactionTemplate template =
+        () -> entityManager.createQuery("delete from Book").executeUpdate();
+    template.execute(entityManager.getTransaction());
   }
 
   @After
   public void after() {
-    if (em != null) {
-      em.close();
-      em = null;
+    if (entityManager != null) {
+      entityManager.close();
+      entityManager = null;
     }
   }
 
@@ -60,22 +62,22 @@ public class BookEntityMappingTest {
   public void entityMapping_shouldThrowPersistenceExceptionOnIsbnValueWithLengthGreaterThanMax()
       throws Throwable {
     Book book = new BookBuilder(ISBN + "length is over the limit").build();
-    getPersistEntityTransaction(book).execute(em);
+    getPersistEntityTemplate(book).execute(entityManager.getTransaction());
   }
 
   @Test(expected = PersistenceException.class)
   public void entityMapping_shouldThrowPersistenceExceptionOnNullIsbnValue() throws Throwable {
     Book book = new Book();
-    getPersistEntityTransaction(book).execute(em);
+    getPersistEntityTemplate(book).execute(entityManager.getTransaction());
   }
 
   @Test(expected = PersistenceException.class)
   public void entityMapping_shouldThrowPersistenceExceptionOnNonUniqueIsbnValue() throws Throwable {
     Book book = new BookBuilder(ISBN).build();
-    getPersistEntityTransaction(book).execute(em);
+    getPersistEntityTemplate(book).execute(entityManager.getTransaction());
 
     Book bookWithExistingIsbn = new BookBuilder(ISBN).build();
-    getPersistEntityTransaction(bookWithExistingIsbn).execute(em);
+    getPersistEntityTemplate(bookWithExistingIsbn).execute(entityManager.getTransaction());
   }
 
   @Test
@@ -86,14 +88,14 @@ public class BookEntityMappingTest {
         .title(TITLE)
         .price(PRICE).build();
 
-    getPersistEntityTransaction(book).execute(em);
+    getPersistEntityTemplate(book).execute(entityManager.getTransaction());
     assertThat(book.getBookId(), notNullValue()); // managed
     assertThat(book.getVersion(), notNullValue());
 
-    em.clear();
-    assertThat(em.contains(book), is(false)); // detached
+    entityManager.clear();
+    assertThat(entityManager.contains(book), is(false)); // detached
 
-    Book foundBook = em.find(Book.class, book.getBookId());
+    Book foundBook = entityManager.find(Book.class, book.getBookId());
     assertThat(foundBook, notNullValue());
     assertThat(foundBook.getVersion(), is(book.getVersion()));
     assertThat(foundBook.getIsbn(), is(ISBN));
@@ -106,14 +108,14 @@ public class BookEntityMappingTest {
   public void entityMapping_shouldPersistBookEntityWithNullValueForOptionalFields()
       throws Throwable {
     Book book = new BookBuilder(ISBN).build();
-    getPersistEntityTransaction(book).execute(em);
+    getPersistEntityTemplate(book).execute(entityManager.getTransaction());
     assertThat(book.getBookId(), notNullValue());
     assertThat(book.getVersion(), notNullValue());
 
-    em.clear();
-    assertFalse(em.contains(book));
+    entityManager.clear();
+    assertFalse(entityManager.contains(book));
 
-    Book foundBook = em.find(Book.class, book.getBookId());
+    Book foundBook = entityManager.find(Book.class, book.getBookId());
     assertThat(foundBook, notNullValue());
     assertThat(foundBook.getVersion(), is(book.getVersion()));
     assertThat(foundBook.getIsbn(), is(ISBN));
@@ -125,14 +127,14 @@ public class BookEntityMappingTest {
   @Test
   public void entityMapping_shouldUpdateBookEntityInDataBase() throws Throwable {
     Book book = new BookBuilder(ISBN).build();
-    getPersistEntityTransaction(book).execute(em);
+    getPersistEntityTemplate(book).execute(entityManager.getTransaction());
     assertThat(book.getBookId(), notNullValue());
     assertThat(book.getVersion(), notNullValue());
 
-    em.clear();
-    assertFalse(em.contains(book)); // book is no longer managed
+    entityManager.clear();
+    assertFalse(entityManager.contains(book)); // book is no longer managed
 
-    Book foundBook = em.find(Book.class, book.getBookId());
+    Book foundBook = entityManager.find(Book.class, book.getBookId());
     assertThat(foundBook, notNullValue()); // foundBook is managed
     assertThat(foundBook.getVersion(), is(0L));
     assertThat(foundBook.getVersion(), is(book.getVersion()));
@@ -145,12 +147,12 @@ public class BookEntityMappingTest {
     foundBook.setTitle(TITLE);
     foundBook.setPrice(PRICE);
 
-    ApplicationManagedTransaction transaction = () -> em.merge(foundBook);
-    transaction.execute(em);
-    em.clear();
-    assertThat(em.contains(foundBook), is(false)); // foundBook is no longer managed
+    TransactionTemplate template = () -> entityManager.merge(foundBook);
+    template.execute(entityManager.getTransaction());
+    entityManager.clear();
+    assertThat(entityManager.contains(foundBook), is(false)); // foundBook is no longer managed
 
-    Book updatedBook = em.find(Book.class, foundBook.getBookId());
+    Book updatedBook = entityManager.find(Book.class, foundBook.getBookId());
     assertThat(updatedBook, notNullValue()); // updatedBook is managed
     assertThat(updatedBook.getVersion(), is(1L));
     assertThat(updatedBook.getVersion(), is(foundBook.getVersion()));
@@ -164,23 +166,19 @@ public class BookEntityMappingTest {
   public void entityMapping_shouldRemoveBookEntityFromPersistenceContextAndDeleteFromDatabase()
       throws Throwable {
     Book book = new BookBuilder(ISBN).build();
-    getPersistEntityTransaction(book).execute(em);
-    assertThat(em.contains(book), is(true)); // managed entity
+    getPersistEntityTemplate(book).execute(entityManager.getTransaction());
+    assertThat(entityManager.contains(book), is(true)); // managed entity
 
-    ApplicationManagedTransaction transaction = () -> em.remove(book);
-    transaction.execute(em);
-    assertThat(em.contains(book), is(false));
+    TransactionTemplate template = () -> entityManager.remove(book);
+    template.execute(entityManager.getTransaction());
+    assertThat(entityManager.contains(book), is(false));
 
-    Book foundBook = em.find(Book.class, book.getBookId());
+    Book foundBook = entityManager.find(Book.class, book.getBookId());
     assertThat(foundBook, nullValue());
   }
 
-  private ApplicationManagedTransaction getExecuteUpdateTransaction(String query) {
-    return () -> em.createQuery(query).executeUpdate();
-  }
-
-  private ApplicationManagedTransaction getPersistEntityTransaction(Book entity) {
-    return () -> em.persist(entity);
+  private TransactionTemplate getPersistEntityTemplate(Book entity) {
+    return () -> entityManager.persist(entity);
   }
 
 }
