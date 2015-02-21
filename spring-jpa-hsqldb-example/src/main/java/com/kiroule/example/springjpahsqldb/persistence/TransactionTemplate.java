@@ -11,6 +11,7 @@ public interface TransactionTemplate {
   void body();
 
   default void execute(EntityTransaction entityTransaction) {
+
     try {
       entityTransaction.begin();
       body();

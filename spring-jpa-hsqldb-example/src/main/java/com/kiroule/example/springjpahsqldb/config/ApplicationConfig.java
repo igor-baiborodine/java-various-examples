@@ -16,7 +16,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Configuration
 @Import(value = {
-    DataSourceConfig.class
+    DataSourceConfig.class,
+    JpaPersistenceConfig.class
 })
 @Slf4j
 public class ApplicationConfig {

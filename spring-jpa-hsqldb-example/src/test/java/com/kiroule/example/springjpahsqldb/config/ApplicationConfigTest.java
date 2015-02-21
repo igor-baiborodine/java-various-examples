@@ -1,17 +1,25 @@
 package com.kiroule.example.springjpahsqldb.config;
 
-import com.kiroule.example.springjpahsqldb.AbstractTest;
-
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-public class ApplicationConfigTest extends AbstractTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextHierarchy({
+    @ContextConfiguration(classes = ApplicationConfig.class)})
+@ActiveProfiles("test")
+public class ApplicationConfigTest {
 
   @Autowired
   private ApplicationContext applicationContext;
@@ -19,10 +27,14 @@ public class ApplicationConfigTest extends AbstractTest {
   @Autowired
   private DataSource dataSource;
 
+  @Autowired
+  private EntityManagerFactory entityManagerFactory;
+
   @Test
   public void customInit_shouldInitializeApplicationContext() throws Exception {
 
     assertThat(applicationContext, notNullValue());
     assertThat(dataSource, notNullValue());
+    assertThat(entityManagerFactory, notNullValue());
   }
 }

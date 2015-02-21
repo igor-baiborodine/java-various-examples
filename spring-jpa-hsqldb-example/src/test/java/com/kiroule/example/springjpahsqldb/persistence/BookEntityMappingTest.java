@@ -1,5 +1,6 @@
 package com.kiroule.example.springjpahsqldb.persistence;
 
+import com.kiroule.example.springjpahsqldb.config.ApplicationConfig;
 import com.kiroule.example.springjpahsqldb.domain.Book;
 import com.kiroule.example.springjpahsqldb.domain.builder.BookBuilder;
 
@@ -8,7 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
@@ -30,7 +33,9 @@ import static org.junit.Assert.assertThat;
  * @author Igor Baiborodine
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(value = "classpath:/META-INF/spring-config.xml")
+@ContextHierarchy({
+    @ContextConfiguration(classes = ApplicationConfig.class)})
+@ActiveProfiles("test")
 public class BookEntityMappingTest {
 
   private static final String ISBN = "978-0-321-35668-0";
