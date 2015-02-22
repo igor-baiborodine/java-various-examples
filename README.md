@@ -1,7 +1,7 @@
 java-various-examples
 =====================
 
-##Build Status (applicable only to projects prefixed with \[CI\])
+#####Build Status (applicable only to projects prefixed with \[CI\])
 Travis : [![Build
 Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=master)](https://travis-ci.org/igor-baiborodine/java-various-examples)
 
@@ -16,4 +16,4 @@ Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=
 * [Example of using MyBatis SQL mapping framework for basic CRUD operations and data retrieval with stored procedures (annotations-based SQL mapping and Spring)](https://github.com/igor-baiborodine/java-various-examples/tree/master/mybatis-annotations-spring-example)
 * [Example of using MyBatis SQL mapping framework for basic CRUD operations and data retrieval with stored procedures (XML-based SQL mapping)](https://github.com/igor-baiborodine/java-various-examples/tree/master/mybatis-xml-example)
 * [Example of using Spring, JPA 2, Hibernate, Unitils, and H2](https://github.com/igor-baiborodine/java-various-examples/tree/master/spring-jpa-unitils-example)
-* \[CI\][Example of using Spring, JPA 2, Hibernate, and HSQLDB](https://github.com/igor-baiborodine/java-various-examples/tree/master/spring-jpa-hsqldb-example)
+* \[CI\] [Example of using Spring, JPA 2, Hibernate, and HSQLDB](https://github.com/igor-baiborodine/java-various-examples/tree/master/spring-jpa-hsqldb-example)
