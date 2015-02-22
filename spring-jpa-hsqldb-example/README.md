@@ -4,19 +4,13 @@ spring-jpa-hsqldb-example
 #####This is an example of using Spring, JPA 2 with Hibernate, and HSQLDB.#####
 
 ######Software and technologies used:######
-* Java
-* Spring
-* JPA/Hibernate
-* HSQLDB
-* Maven
-* JUnit
-* Guava
-* IntelliJ IDEA 
+* [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
+* [Spring 4](http://projects.spring.io/spring-framework/#quick-start)
+* [JPA 2](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
+* [Hibernate ORM](http://hibernate.org/orm/)
+* [HyperSQL(HSQLDB)](http://hsqldb.org/)
+* [Apache Maven 3](http://maven.apache.org/)
+* [JUnit 4](http://junit.org/)
+* [Google Guava](https://github.com/google/guava)
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-######Resources:######
-* http://download.oracle.com/otndocs/jcp/persistence-2.0-fr-eval-oth-JSpec/
-* http://docs.oracle.com/javaee/6/tutorial/doc/bnbpz.html
-* http://static.springsource.org/spring/docs/3.2.x/spring-framework-reference/html/orm.html#orm-jpa
-* http://hsqldb.org/web/usagelinks.html
-* http://www.amazon.com/Java-Persistence-JPA-Daoqi-Yang/dp/1432755854/ref=cm_cr_pr_product_top
-* https://code.google.com/p/guava-libraries/wiki/GuavaExplained
