@@ -1,7 +1,7 @@
 java-various-examples
 =====================
 
-##Build Status (applicable only to projects prefixed with \[CI\])
+#####Build Status (applicable only to projects prefixed with \[CI\])
 Travis : [![Build
 Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=master)](https://travis-ci.org/igor-baiborodine/java-various-examples)
 
