@@ -1,8 +1,9 @@
 java-various-examples
 =====================
 
-#####Travis (applicable only to projects prefixed with \[CI\]) : [![Build
-Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=master)
+##Build Status (applicable only to projects prefixed with \[CI\])
+Travis : [![Build
+Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=master)](https://travis-ci.org/igor-baiborodine/java-various-examples)
 
 #####This project contains the following examples of using Java and Java-based technologies:
 * [Preparation materials for the "Upgrade to Java SE 8 Programmer" exam \(1Z1-810\)](https://github.com/igor-baiborodine/java-various-examples/tree/master/ocp-upgrade-java8)
