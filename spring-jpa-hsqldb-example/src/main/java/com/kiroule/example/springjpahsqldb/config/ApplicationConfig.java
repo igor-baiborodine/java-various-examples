@@ -1,5 +1,7 @@
 package com.kiroule.example.springjpahsqldb.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -9,8 +11,6 @@ import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * @author Igor Baiborodine
  */
@@ -19,15 +19,16 @@ import lombok.extern.slf4j.Slf4j;
     DataSourceConfig.class,
     JpaPersistenceConfig.class
 })
-@Slf4j
 public class ApplicationConfig {
+
+  private static final Logger log = LoggerFactory.getLogger(ApplicationConfig.class);
 
   @Autowired
   private Environment environment;
 
   /**
    * Application context custom initialization. Spring profiles can be configured with a system
-   * property -Dspring.profiles.active=prod
+   * property -Dspring.profiles.active=test
    */
   @PostConstruct
   public void customInit() {

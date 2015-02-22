@@ -13,12 +13,11 @@
         <version.java>1.8</version.java>
 
         <!-- Third-party libraries -->
-        <version.spring>4.1.4.RELEASE</version.spring>
-        <version.logback>1.1.2</version.logback>
-        <version.slf4j>1.7.10</version.slf4j>
-        <version.guava>18.0</version.guava>
-        <version.lombok>1.16.2</version.lombok>
-        <version.junit>4.12</version.junit>
+        <spring.version>4.1.4.RELEASE</spring.version>
+        <logback.version>1.1.2</logback.version>
+        <slf4j.version>1.7.10</slf4j.version>
+        <guava.version>18.0</guava.version>
+        <junit.version>4.12</junit.version>
 
         <!-- Version of maven plugins -->
         <version.plugin.maven-compiler-plugin>2.3</version.plugin.maven-compiler-plugin>
@@ -32,37 +31,37 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${version.spring}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>${version.spring}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${version.spring}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${version.spring}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${version.spring}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${version.spring}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${version.spring}</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Hibernate -->
@@ -88,7 +87,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${version.junit}</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -96,24 +95,29 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava-testlib</artifactId>
-            <version>${version.guava}</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>${version.guava}</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- Logging -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${version.logback}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${version.slf4j}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <!-- Misc -->
@@ -121,11 +125,6 @@
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
             <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${version.lombok}</version>
         </dependency>
     </dependencies>
 
