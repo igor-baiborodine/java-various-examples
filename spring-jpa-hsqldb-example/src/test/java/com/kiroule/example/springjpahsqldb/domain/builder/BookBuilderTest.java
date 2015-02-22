@@ -8,11 +8,12 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 /**
- * JUnit based unit tests for the {@link BookBuilder} class.
+ * JUnit-based unit tests for the {@link BookBuilder} class.
  *
  * @author Igor Baiborodine
  */
@@ -41,37 +42,37 @@ public class BookBuilderTest {
 
   @Test
   public void build_shouldInitIsbnField() {
-    Book b = builder.build();
-    assertEquals(ISBN, b.getIsbn());
+    Book book = builder.build();
+    assertThat(book.getIsbn(), is(ISBN));
   }
 
   @Test
   public void build_shouldInitAuthorField() {
-    Book b = builder.author(AUTHOR).build();
-    assertEquals(AUTHOR, b.getAuthor());
+    Book book = builder.author(AUTHOR).build();
+    assertThat(book.getAuthor(), is(AUTHOR));
   }
 
   @Test
   public void build_shouldInitTitleField() {
-    Book b = builder.title(TITLE).build();
-    assertEquals(TITLE, b.getTitle());
+    Book book = builder.title(TITLE).build();
+    assertThat(book.getTitle(), is(TITLE));
   }
 
   @Test
   public void build_shouldInitPriceField() {
-    Book b = builder.price(PRICE).build();
-    assertEquals(PRICE, b.getPrice());
+    Book book = builder.price(PRICE).build();
+    assertThat(book.getPrice(), is(PRICE));
   }
 
   @Test
   public void build_shouldNotInitBookIdField() {
-    Book b = builder.build();
-    assertNull(b.getBookId());
+    Book book = builder.build();
+    assertThat(book.getBookId(), nullValue());
   }
 
   @Test
   public void build_shouldNotInitVersionField() {
-    Book b = builder.build();
-    assertNull(b.getVersion());
+    Book book = builder.build();
+    assertThat(book.getVersion(), nullValue());
   }
 }
