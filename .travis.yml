@@ -1,0 +1,12 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+env:
+  - TEST_DIR=spring-jpa-hsqldb-example
+
+script: cd $TEST_DIR && mvn test
+
+notifications:
+  email: false
