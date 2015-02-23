@@ -12,10 +12,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 /**
- * JUnit test for the {@link Book} class.
+ * JUnit-based tests for the {@link Book} class.
  *
  * @author Igor Baiborodine
  */
@@ -30,6 +31,7 @@ public class BookTest {
 
   @Before
   public void before() {
+
     a1 = new BookBuilder("AAA").build();
     a2 = new BookBuilder("AAA").build();
     a3 = new BookBuilder("AAA").build();
@@ -40,6 +42,7 @@ public class BookTest {
 
   @After
   public void after() {
+
     a1 = null;
     a2 = null;
     a3 = null;
@@ -55,6 +58,7 @@ public class BookTest {
 
   @Test
   public void equals_shouldBeEqual() {
+
     new EqualsTester()
         .addEqualityGroup(a1, a2).testEquals();
     new EqualsTester()
@@ -69,18 +73,20 @@ public class BookTest {
 
   @Test
   public void compareToTest() {
-    assertEquals(0, b.compareTo(b));
-    assertEquals(-1, b.compareTo(c));
-    assertEquals(1, c.compareTo(b));
+
+    assertThat(b.compareTo(b), is(0));
+    assertThat(b.compareTo(c), is(-1));
+    assertThat(c.compareTo(b), is(1));
   }
 
   @Test
   public void compareTo_shouldSortInNaturalOrder() {
+
     List<Book> books = Arrays.asList(c, d, b);
     Collections.sort(books);
 
-    assertEquals(b, books.get(0));
-    assertEquals(c, books.get(1));
-    assertEquals(d, books.get(2));
+    assertThat(books.get(0), is(b));
+    assertThat(books.get(1), is(c));
+    assertThat(books.get(2), is(d));
   }
 }
