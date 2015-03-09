@@ -8,16 +8,21 @@
 - Class naming: unit tests - {ClassUnderTest}UnitTest, persistence tests - {ClassUnderTest}PersistenceTest, integration tests - {ClassUnderTest}IntegrationTest
 - Method naming: \[unitOfWork_stateUnderTest_expectedBehavior\], [read more...](http://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html)
 - Code layout: given-when-then pattern
+- Assertions: [Hamcrest library](https://code.google.com/p/hamcrest/wiki/Tutorial) 
+Example:
+
 ```
 @Test
-public void sum_simpleValues_calculated() {
+ public void sum_simpleValues_calculated() {
+     
+   // given  
+   Calcualtor calculator = new Calculator();
 
-    //given
-      
-    //when
-  
-    //then
- 
-}
+   // when 
+   int sum = calculator.sum(1, 1);
+   
+   // then
+   assertThat(sum, is(2));
+ }
 ```
-- Assertions: [Hamcrest library](https://code.google.com/p/hamcrest/wiki/Tutorial) 
+
