@@ -18,10 +18,10 @@
    Calcualtor calculator = new Calculator();
 
    // when 
-   int sum = calculator.sum(1, 1);
+   int sum = calculator.sum(1, 3);
    
    // then
-   assertThat(sum, is(2));
+   assertThat(sum, is(4));
  }
 ```
 
