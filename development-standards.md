@@ -9,7 +9,6 @@
 - Method naming: \[unitOfWork_stateUnderTest_expectedBehavior\], [read more...](http://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html)
 - Code layout: given-when-then pattern
 - Assertions: [Hamcrest library](https://code.google.com/p/hamcrest/wiki/Tutorial) 
-Example:
 
 ```
 @Test
