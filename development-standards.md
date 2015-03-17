@@ -7,7 +7,7 @@
 ####Tests
 - Class naming: unit tests - {ClassUnderTest}UnitTest, persistence tests - {ClassUnderTest}PersistenceTest, integration tests - {ClassUnderTest}IntegrationTest
 - Method naming: \[unitOfWork_stateUnderTest_expectedBehavior\], [read more...](http://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html)
-- Code layout: given-when-then pattern
+- Code layout: given-when-then pattern a.k.a. [Arrange-Act-Assert](http://c2.com/cgi/wiki?ArrangeActAssert)
 - Assertions: [Hamcrest library](https://code.google.com/p/hamcrest/wiki/Tutorial) 
 
 ```
