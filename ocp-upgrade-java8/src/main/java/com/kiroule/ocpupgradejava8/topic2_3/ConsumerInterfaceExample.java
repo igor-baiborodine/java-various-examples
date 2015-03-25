@@ -22,9 +22,7 @@ public class ConsumerInterfaceExample {
     characters.forEach(fullNameConsumer);
 
     System.out.println("\nInverted full names:");
-    for (FuturamaCharacter character : characters) {
-      character.printFullName(new InvertedFullNameConsumer());
-    }
+    characters.forEach(new InvertedFullNameConsumer());
 
     System.out.println("\nFull names after introducing the side effect:");
     characters.forEach(fullNameConsumer);
