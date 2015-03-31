@@ -48,10 +48,6 @@ class FuturamaCharacter {
     this.lastName = lastName;
   }
 
-  public void printFullName(Consumer<FuturamaCharacter> consumer) {
-    consumer.accept(this);
-  }
-
   public String getFirstName() {
     return firstName;
   }
