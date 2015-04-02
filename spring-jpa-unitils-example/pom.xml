@@ -8,7 +8,7 @@
     <artifactId>spring-jpa-unitils-example</artifactId>
     <version>1.0</version>
 
-    <description>An example of using Spring, JPA 2 with Hibernate, Unitils, and HSQLDB.</description>
+    <description>An example of using Spring, JPA 2 with Hibernate, Unitils, and H2.</description>
 
     <properties>
         <!-- Java -->
