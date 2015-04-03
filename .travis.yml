@@ -5,6 +5,7 @@ jdk:
 
 env:
   - TEST_DIR=spring-jpa-hsqldb-example
+  - TEST_DIR=spring-jpa-unitils-example
 
 script: cd $TEST_DIR && mvn test
 
