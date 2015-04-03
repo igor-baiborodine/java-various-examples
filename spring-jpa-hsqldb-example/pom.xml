@@ -7,10 +7,11 @@
     <groupId>java-various-examples</groupId>
     <artifactId>spring-jpa-hsqldb-example</artifactId>
     <version>1.0</version>
+    <description>An example of using Spring, JPA 2 with Hibernate, Unitils, and H2.</description>
 
     <properties>
         <!-- Java -->
-        <version.java>1.8</version.java>
+        <java.version>1.8</java.version>
 
         <!-- Third-party libraries -->
         <spring.version>4.1.4.RELEASE</spring.version>
@@ -20,7 +21,7 @@
         <junit.version>4.12</junit.version>
 
         <!-- Version of maven plugins -->
-        <version.plugin.maven-compiler-plugin>2.3</version.plugin.maven-compiler-plugin>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 
         <!-- Source code encoding -->
         <source.encoding>UTF-8</source.encoding>
@@ -133,10 +134,10 @@
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>${version.plugin.maven-compiler-plugin}</version>
+            <version>${maven-compiler-plugin.version}</version>
             <configuration>
-                <source>${version.java}</source>
-                <target>${version.java}</target>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
                 <encoding>${source.encoding}</encoding>
             </configuration>
         </plugin>
