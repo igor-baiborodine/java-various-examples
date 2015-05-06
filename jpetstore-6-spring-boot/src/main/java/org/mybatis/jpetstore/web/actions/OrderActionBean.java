@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package org.mybatis.jpetstore.actions;
+package org.mybatis.jpetstore.web.actions;
 
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -23,6 +23,7 @@ import net.sourceforge.stripes.integration.spring.SpringBean;
 
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,7 +48,7 @@ public class OrderActionBean extends AbstractActionBean {
 
   private static final List<String> CARD_TYPE_LIST;
 
-  @SpringBean
+  @Autowired
   private transient OrderService orderService;
 
   private Order order = new Order();

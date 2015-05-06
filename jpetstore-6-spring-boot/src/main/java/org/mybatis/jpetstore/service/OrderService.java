@@ -36,7 +36,6 @@ import java.util.Map;
  * @author Eduardo Macarron
  *
  */
-@Service
 public class OrderService {
 
   @Autowired

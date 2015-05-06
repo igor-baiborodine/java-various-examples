@@ -23,7 +23,6 @@ import org.mybatis.jpetstore.persistence.CategoryMapper;
 import org.mybatis.jpetstore.persistence.ItemMapper;
 import org.mybatis.jpetstore.persistence.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,6 @@ import java.util.List;
  * @author Eduardo Macarron
  *
  */
-@Service
 public class CatalogService {
 
   @Autowired

@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package org.mybatis.jpetstore.actions;
+package org.mybatis.jpetstore.web.actions;
 
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
