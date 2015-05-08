@@ -1,0 +1,14 @@
+<configuration debug="false" scan="true" scanPeriod="300 seconds">
+    <appender name="FILE"  class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.mybatis.jpetstore" level="DEBUG"/>
+    <logger name="net.sourceforge.stripes" level="TRACE"/>
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
