@@ -19,12 +19,12 @@ package org.mybatis.jpetstore.web.actions;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.SessionScope;
+import net.sourceforge.stripes.integration.spring.SpringBean;
 
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.service.CatalogService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class CatalogActionBean extends AbstractActionBean {
   private static final String VIEW_ITEM = "/WEB-INF/jsp/catalog/Item.jsp";
   private static final String SEARCH_PRODUCTS = "/WEB-INF/jsp/catalog/SearchProducts.jsp";
 
-  @Autowired
+  @SpringBean
   private transient CatalogService catalogService;
 
   private String keyword;

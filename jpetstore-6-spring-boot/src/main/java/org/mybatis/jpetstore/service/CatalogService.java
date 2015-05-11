@@ -29,7 +29,6 @@ import java.util.List;
 
 /**
  * @author Eduardo Macarron
- *
  */
 public class CatalogService {
 
@@ -57,8 +56,8 @@ public class CatalogService {
   }
 
   public List<Product> searchProductList(String keywords) {
-    List<Product> products = new ArrayList<Product>();
-    for(String keyword : keywords.split("\\s+")){
+    List<Product> products = new ArrayList<>();
+    for (String keyword : keywords.split("\\s+")) {
       products.addAll(productMapper.searchProductList("%" + keyword.toLowerCase() + "%"));
     }
     return products;

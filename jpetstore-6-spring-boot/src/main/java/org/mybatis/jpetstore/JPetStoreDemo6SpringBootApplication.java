@@ -35,7 +35,6 @@ public class JPetStoreDemo6SpringBootApplication extends SpringBootServletInitia
   @Override
   public void onStartup(ServletContext servletContext) throws ServletException {
 
-    servletContext.setInitParameter("contextConfigLocation", "<NONE>");
     servletContext.setInitParameter(
         "javax.servlet.jsp.jstl.fmt.localizationContext", "StripesResources");
 
@@ -44,12 +43,13 @@ public class JPetStoreDemo6SpringBootApplication extends SpringBootServletInitia
     stripesFilter.setInitParameter("ActionResolver.Packages", "org.mybatis.jpetstore.web");
     stripesFilter.setInitParameter(
         "Interceptor.Classes", "net.sourceforge.stripes.integration.spring.SpringInterceptor");
-    stripesFilter.addMappingForServletNames(EnumSet.of(REQUEST), true, "stripesDispatcher");
+    stripesFilter.addMappingForServletNames(EnumSet.of(REQUEST), false, "stripesDispatcher");
 
     ServletRegistration.Dynamic stripesDispatcher = servletContext.addServlet(
         "stripesDispatcher", new net.sourceforge.stripes.controller.DispatcherServlet());
     stripesDispatcher.setLoadOnStartup(1);
     stripesDispatcher.addMapping("*.action");
+    super.onStartup(servletContext);
   }
 
 }

@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -33,9 +34,13 @@ public class DataSourceConfig {
 
   @Bean
   public SqlSessionFactoryBean sqlSessionFactory() throws Exception {
-    SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-    sessionFactory.setDataSource(dataSource());
-    sessionFactory.setTypeAliasesPackage("org.mybatis.jpetstore.domain");
-    return sessionFactory;
+    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+    sqlSessionFactoryBean.setDataSource(dataSource());
+    PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+    sqlSessionFactoryBean.setMapperLocations(
+        resolver.getResources("classpath:org/mybatis/jpetstore/persistence/*.xml"));
+    sqlSessionFactoryBean.setTypeAliasesPackage("org.mybatis.jpetstore.domain");
+    return sqlSessionFactoryBean;
   }
+
 }
