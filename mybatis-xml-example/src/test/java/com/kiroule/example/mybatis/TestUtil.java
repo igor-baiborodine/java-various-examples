@@ -3,6 +3,11 @@ package com.kiroule.example.mybatis;
 import com.kiroule.example.mybatis.address.Address;
 import com.kiroule.example.mybatis.customer.Customer;
 
+import org.apache.ibatis.session.SqlSessionManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.InputStream;
 import java.util.Date;
 
 /**
@@ -10,28 +15,45 @@ import java.util.Date;
  */
 public class TestUtil {
 
-    public static Address newAddress() {
-        Address address = new Address();
+  private static final Logger logger = LoggerFactory.getLogger(TestUtil.class);
+  private static SqlSessionManager sqlSessionManager;
 
-        address.setAddress("University St.");
-        address.setCityId((short) 1);
-        address.setPhone("111-222-3333");
-        address.setPostalCode("H2Y 1C6");
-        address.setDistrict("Quebec");
-
-        return address;
+  static {
+    try (InputStream inputStream = MybatisExampleUtil.class.getResourceAsStream(
+        "/mybatisConfig-test.xml")) {
+      sqlSessionManager = SqlSessionManager.newInstance(inputStream);
+      logger.info("Created initial test SqlSessionManager[{}]", sqlSessionManager);
+    } catch (Throwable t) {
+      logger.error("Failed creating initial test SqlSessionManager:", t);
     }
+  }
 
-    public static Customer newCustomer() {
-        Customer customer = new Customer();
+  public static SqlSessionManager getSqlSessionManager() {
+    return sqlSessionManager;
+  }
 
-        customer.setFirstName("Bender");
-        customer.setLastName("Rodriguez");
-        customer.setEmail("bender.rodriquez@planetexpress.earth");
-        customer.setStoreId((byte) 1);
-        customer.setActive(true);
-        customer.setCreateDate(new Date());
+  public static Address newAddress() {
+    Address address = new Address();
 
-        return customer;
-    }
+    address.setAddress("University St.");
+    address.setCityId((short) 1);
+    address.setPhone("111-222-3333");
+    address.setPostalCode("H2Y 1C6");
+    address.setDistrict("Quebec");
+
+    return address;
+  }
+
+  public static Customer newCustomer() {
+    Customer customer = new Customer();
+
+    customer.setFirstName("Bender");
+    customer.setLastName("Rodriguez");
+    customer.setEmail("bender.rodriquez@planetexpress.earth");
+    customer.setStoreId((byte) 1);
+    customer.setActive(true);
+    customer.setCreateDate(new Date());
+
+    return customer;
+  }
 }

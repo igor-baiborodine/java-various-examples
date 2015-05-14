@@ -5,6 +5,8 @@
 		</encoder>
 	</appender>
 
+    <logger name="com.kiroule.example.mybatis" level="DEBUG"/>
+
 	<root level="INFO">
 		<appender-ref ref="FILE" />
 	</root>

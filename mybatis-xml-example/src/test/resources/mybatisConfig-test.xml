@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="TEST">
+		<environment id="TEST">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="org.hsqldb.jdbcDriver"/>
+				<property name="url" value="jdbc:hsqldb:hsql://localhost/xdb"/>
+				<property name="username" value="SA"/>
+				<property name="password" value=""/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/kiroule/example/mybatis/customer/CustomerMapper.xml"/>
+		<mapper resource="com/kiroule/example/mybatis/address/AddressMapper.xml"/>
+	</mappers>
+
+</configuration>
