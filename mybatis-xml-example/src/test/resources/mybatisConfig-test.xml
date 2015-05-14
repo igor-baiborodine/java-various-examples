@@ -8,7 +8,7 @@
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
 				<property name="driver" value="org.hsqldb.jdbcDriver"/>
-				<property name="url" value="jdbc:hsqldb:hsql://localhost/xdb"/>
+				<property name="url" value="jdbc:hsqldb:mem:testdb"/>
 				<property name="username" value="SA"/>
 				<property name="password" value=""/>
 			</dataSource>

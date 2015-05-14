@@ -16,7 +16,7 @@ public class TestDbServer {
   public static void start() {
 
     HsqlProperties props = new HsqlProperties();
-    props.setProperty("server.database.0", "file:/home/bender/Temp;");
+    props.setProperty("server.database.0", "mem:testdb;");
     props.setProperty("server.dbname.0", "xdb");
     server = new org.hsqldb.Server();
     try {
