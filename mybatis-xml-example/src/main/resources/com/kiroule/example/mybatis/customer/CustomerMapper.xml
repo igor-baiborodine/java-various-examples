@@ -17,6 +17,11 @@
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
     <result column="last_update" property="lastUpdate" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select * from customer
+  </select>
+
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated

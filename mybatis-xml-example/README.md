@@ -7,7 +7,7 @@ data retrieval with stored procedures. Implemented with XML-based SQL mapping.
 #####Technologies and software used:#####
 * [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [MySQL Community Server/Sakila database](http://dev.mysql.com/downloads/mysql/)
-* [HyperSQL database](http://hsqldb.org/)
+* [HyperSQL Database Engine](http://hsqldb.org/)
 * [MyBatis SQL Mapping Framework](https://code.google.com/p/mybatis/)
 * [MyBatis Generator](http://mybatis.org/generator/)
 * [Apache Maven](http://maven.apache.org/index.html)
