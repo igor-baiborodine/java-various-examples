@@ -20,8 +20,7 @@ public class MybatisExampleUtil {
       sqlSessionManager = SqlSessionManager.newInstance(inputStream);
       logger.info("Created initial SqlSessionManager[{}]", sqlSessionManager);
     } catch (Throwable t) {
-      logger.error("Failed creating initial SqlSessionManager, error[{}]", t.getMessage());
-      t.printStackTrace();
+      logger.error("Error while creating initial SqlSessionManager", t);
     }
   }
 

@@ -24,7 +24,7 @@ public class TestUtil {
       sqlSessionManager = SqlSessionManager.newInstance(inputStream);
       logger.info("Created initial test SqlSessionManager[{}]", sqlSessionManager);
     } catch (Throwable t) {
-      logger.error("Failed creating initial test SqlSessionManager:", t);
+      logger.error("Error while creating initial test SqlSessionManager:", t);
     }
   }
 
