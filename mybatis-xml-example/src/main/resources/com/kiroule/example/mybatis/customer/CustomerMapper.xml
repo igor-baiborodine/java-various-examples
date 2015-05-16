@@ -174,7 +174,7 @@
       use selectKey element to return the newly generated key after insert
     -->
     <selectKey resultType="short" keyProperty="customerId" order="AFTER">
-      SELECT LAST_INSERT_ID();
+      CALL IDENTITY()<!--SELECT LAST_INSERT_ID(); does not work with HSQLDB-->
     </selectKey>
   </insert>
   <insert id="insertSelective" parameterType="com.kiroule.example.mybatis.customer.Customer" >

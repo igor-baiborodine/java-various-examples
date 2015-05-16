@@ -163,7 +163,7 @@
       use selectKey element to return the newly generated key after insert
     -->
     <selectKey resultType="short" keyProperty="addressId" order="AFTER">
-      SELECT LAST_INSERT_ID();
+      CALL IDENTITY()<!--SELECT LAST_INSERT_ID(); does not work with HSQLDB-->
     </selectKey>
 
   </insert>

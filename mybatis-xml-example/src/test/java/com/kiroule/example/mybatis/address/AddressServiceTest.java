@@ -8,6 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static com.kiroule.example.mybatis.TestUtil.newAddress;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
+
 /**
  * @author Igor Baiborodine
  */
@@ -29,12 +33,13 @@ public class AddressServiceTest {
   public void setUp() {
     TestDbServer.dropTables();
     TestDbServer.createTables();
+    TestDbServer.insertData();
   }
 
   @Test
   public void addAddress_shouldAddNewAddress() {
-    //Short addressId = addressService.addAddress(newAddress());
-    //assertThat(addressId, notNullValue());
+    Short addressId = addressService.addAddress(newAddress());
+    assertThat(addressId, notNullValue());
   }
 
 }

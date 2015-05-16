@@ -22,9 +22,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class CustomerService {
 
+  private static final Logger logger = LoggerFactory.getLogger(CustomerService.class);
   private SqlSessionManager sqlSessionManager;
   private CustomerMapper customerMapper;
-  private static final Logger logger = LoggerFactory.getLogger(CustomerService.class);
 
   public CustomerService(@Nonnull SqlSessionManager sqlSessionManager) {
     checkNotNull(sqlSessionManager, "Argument[sqlSessionManager] must not be null");
@@ -58,18 +58,17 @@ public class CustomerService {
     try {
       AddressMapper addressMapper = sqlSessionManager.getMapper(AddressMapper.class);
       addressMapper.insert(address);
-      assert (address.getAddressId() > 0);
+      assert (address.getAddressId() >= 0);
 
       customer.setAddressId(address.getAddressId());
       customerMapper.insert(customer);
-      assert (customer.getCustomerId() > 0);
+      assert (customer.getCustomerId() >= 0);
 
       sqlSessionManager.commit();
       logger.info("Added customer[{}]", customer);
     } catch (Throwable t) {
       sqlSessionManager.rollback();
-      logger.error("Failed adding customer[{}], error[{}]", customer, t.getMessage());
-      t.printStackTrace();
+      logger.error("Error while adding customer[{}]:", customer, t);
     }
     return customer.getCustomerId();
   }

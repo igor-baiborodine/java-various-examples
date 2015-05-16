@@ -40,6 +40,7 @@ public class TestUtil {
     address.setPhone("111-222-3333");
     address.setPostalCode("H2Y 1C6");
     address.setDistrict("Quebec");
+    address.setLastUpdate(new Date());
 
     return address;
   }
