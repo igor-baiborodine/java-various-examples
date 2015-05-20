@@ -1,9 +1,5 @@
 package com.kiroule.example.mybatis.config;
 
-/**
- * @author Igor Baiborodine
- */
-
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +8,9 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
+/**
+ * @author Igor Baiborodine
+ */
 @Configuration
 @MapperScan("com.kiroule.example.mybatis.mapper")
 public class BaseDataSourceConfig {
