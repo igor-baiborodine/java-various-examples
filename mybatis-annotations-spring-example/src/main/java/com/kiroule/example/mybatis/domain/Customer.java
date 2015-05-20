@@ -1,4 +1,6 @@
-package com.kiroule.example.mybatis.generator;
+package com.kiroule.example.mybatis.domain;
+
+import com.google.common.base.Objects;
 
 import java.util.Date;
 
@@ -260,5 +262,37 @@ public class Customer {
    */
   public void setLastUpdate(Date lastUpdate) {
     this.lastUpdate = lastUpdate;
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Customer)) return false;
+
+    final Customer customer = (Customer) o;
+
+    if (!email.equals(customer.email)) return false;
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return email.hashCode();
+  }
+
+  @Override
+  public String toString() {
+    return Objects.toStringHelper(this)
+        .add("customerId", customerId)
+        .add("storeId", storeId)
+        .add("firstName", firstName)
+        .add("lastName", lastName)
+        .add("email", email)
+        .add("addressId", addressId)
+        .add("active", active)
+        .add("createDate", createDate)
+        .add("lastUpdate", lastUpdate)
+        .toString();
   }
 }
