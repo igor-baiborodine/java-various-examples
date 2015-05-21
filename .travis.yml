@@ -11,6 +11,7 @@ env:
   - TEST_DIR=jpetstore-6-jpa
   - TEST_DIR=jpetstore-6-spring-boot
   - TEST_DIR=mybatis-xml-example
+  - TEST_DIR=mybatis-annotations-spring-example
 
 script: cd $TEST_DIR && mvn test
 
