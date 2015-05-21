@@ -3,8 +3,11 @@ package com.kiroule.example.mybatis.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
@@ -19,12 +22,18 @@ import javax.annotation.PostConstruct;
     TestDataSourceConfig.class,
     ServiceConfig.class
 })
+@PropertySource("classpath:application-test.properties")
 public class TestApplicationConfig {
 
   private static final Logger logger = LoggerFactory.getLogger(TestApplicationConfig.class);
 
   @Autowired
   private Environment environment;
+
+  @Bean
+  public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+    return new PropertySourcesPlaceholderConfigurer();
+  }
 
   /**
    * Application context custom initialization. Spring profiles can be configured with a system

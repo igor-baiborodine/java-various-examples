@@ -6,7 +6,8 @@ import com.kiroule.example.mybatis.TestUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Igor Baiborodine
@@ -19,6 +20,6 @@ public class AddressServiceTest extends AbstractTest {
   @Test
   public void addAddress_shouldAddNewAddress() {
     Short addressId = addressService.addAddress(TestUtil.newAddress());
-    assertNotNull("add address failed - address id must not be null", addressId);
+    assertThat(addressId, notNullValue());
   }
 }

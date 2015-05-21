@@ -54,11 +54,11 @@ public class CustomerService {
     checkNotNull(address, "Argument[address] must not be null");
 
     addressMapper.insert(address);
-    assert (address.getAddressId() != 0);
+    assert (address.getAddressId() >= 0);
 
     customer.setAddressId(address.getAddressId());
     customerMapper.insert(customer);
-    assert (customer.getCustomerId() != 0);
+    assert (customer.getCustomerId() >= 0);
 
     logger.info("Added customer[{}]", customer);
     return customer.getCustomerId();

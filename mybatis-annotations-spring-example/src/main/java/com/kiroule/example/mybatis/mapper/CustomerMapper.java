@@ -44,7 +44,8 @@ public interface CustomerMapper {
 
   @Insert(INSERT)
   @Options(useGeneratedKeys = true, keyProperty = "customer_id", flushCache = true)
-  @SelectKey(statement = "SELECT LAST_INSERT_ID();",
+  // SELECT LAST_INSERT_ID(); does not work with HSQLDB
+  @SelectKey(statement = "CALL IDENTITY()",
       before = false,
       keyProperty = "customerId",
       resultType = Short.class)

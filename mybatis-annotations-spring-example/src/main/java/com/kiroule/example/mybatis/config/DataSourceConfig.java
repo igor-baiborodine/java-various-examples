@@ -4,13 +4,17 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 import javax.sql.DataSource;
 
 /**
  * @author Igor Baiborodine
  */
-public class DataSourceConfig extends BaseDataSourceConfig {
+@Import(value = {
+    BaseDataSourceConfig.class,
+})
+public class DataSourceConfig {
 
   private static final Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
 
