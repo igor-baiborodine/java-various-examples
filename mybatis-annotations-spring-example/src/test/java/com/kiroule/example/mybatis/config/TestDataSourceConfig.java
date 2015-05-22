@@ -23,7 +23,6 @@ public class TestDataSourceConfig {
   private static final Logger logger = LoggerFactory.getLogger(TestDataSourceConfig.class);
 
   @Bean
-  @Profile("test")
   public DataSource dataSource() {
     EmbeddedDatabase dataSource = new EmbeddedDatabaseBuilder()
         .setType(HSQL)

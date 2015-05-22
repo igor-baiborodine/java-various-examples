@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
@@ -19,12 +20,13 @@ import javax.annotation.PostConstruct;
     DataSourceConfig.class,
     ServiceConfig.class
 })
+@PropertySource("classpath:application.properties")
 public class ApplicationConfig {
 
   private static final Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
 
   @Autowired
-  private Environment environment;
+  private Environment env;
 
   /**
    * Application context custom initialization. Spring profiles can be configured with a system
@@ -34,10 +36,10 @@ public class ApplicationConfig {
   public void customInit() {
 
     logger.debug("Looking for Spring active profiles...");
-    if (environment.getActiveProfiles().length == 0) {
+    if (env.getActiveProfiles().length == 0) {
       logger.info("No Spring profile configured, running with default configuration.");
     } else {
-      logger.info("Detected Spring profiles: {}", Arrays.asList(environment.getActiveProfiles()));
+      logger.info("Detected Spring profiles: {}", Arrays.asList(env.getActiveProfiles()));
     }
   }
 }
