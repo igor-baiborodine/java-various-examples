@@ -12,6 +12,7 @@ env:
   - TEST_DIR=jpetstore-6-spring-boot
   - TEST_DIR=mybatis-xml-example
   - TEST_DIR=mybatis-annotations-spring-example
+  - TEST_DIR=rest-webapp-jersey-mongo-example
 
 script: cd $TEST_DIR && mvn test
 
