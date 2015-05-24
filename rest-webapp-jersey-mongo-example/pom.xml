@@ -9,7 +9,7 @@
   <name>REST Web App, JAX-RS/Jersey/MongoDB</name>
 
   <properties>
-    <spring.version>3.2.2.RELEASE</spring.version>
+    <spring.version>4.1.4.RELEASE</spring.version>
     <jersey.version>1.9.1</jersey.version>
     <jackson.version>1.9.12</jackson.version>
     <version.slf4j>1.7.5</version.slf4j>
@@ -22,8 +22,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
@@ -171,7 +171,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.2</version>
+      <version>4.12</version>
     </dependency>
     <dependency>
       <groupId>org.unitils</groupId>
