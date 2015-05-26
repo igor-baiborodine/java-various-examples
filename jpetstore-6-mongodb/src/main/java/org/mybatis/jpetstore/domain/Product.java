@@ -17,8 +17,6 @@
 package org.mybatis.jpetstore.domain;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -27,6 +25,8 @@ import org.mybatis.jpetstore.domain.builder.ProductBuilder;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.annotation.Nonnull;
 
@@ -100,13 +100,10 @@ public class Product
 
   public List<String> getNameKeywords() {
 
-    Iterable<String> iterable = Splitter.on(" ").split(getName());
-    List<String> nameKeywords = Lists.newArrayList(iterable);
-
-    for (int i = 0; i < nameKeywords.size(); i++) {
-      nameKeywords.set(i, nameKeywords.get(i).toLowerCase());
-    }
-    return nameKeywords;
+    return Stream.of(getName().split(" +"))
+        .distinct()
+        .map(String::toLowerCase)
+        .collect(Collectors.toList());
   }
 
   public String getProductId() {

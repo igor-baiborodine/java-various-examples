@@ -1,10 +1,7 @@
 package org.mybatis.jpetstore.domain;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mybatis.jpetstore.persistence.helper.TestBuilderFactory;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
@@ -15,8 +12,6 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author Igor Baiborodine
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(value = "classpath:application-context-test.xml")
 public class ProductTest {
 
   @Test
