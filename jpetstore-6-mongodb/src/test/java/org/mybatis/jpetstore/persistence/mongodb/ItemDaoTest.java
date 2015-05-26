@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,12 +105,7 @@ public class ItemDaoTest extends AbstractDaoTest {
     insertItem(item);
     items.add(item);
 
-    Collections.sort(items, new Comparator<Item>() {
-      @Override
-      public int compare(final Item o1, final Item o2) {
-        return o1.getQuantity().compareTo(o2.getQuantity());
-      }
-    });
+    Collections.sort(items, (o1, o2) -> o1.getQuantity().compareTo(o2.getQuantity()));
 
     List<Item> sortedPersistedItems = new ArrayList<>();
 
