@@ -223,6 +223,35 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>com.github.joelittlejohn.embedmongo</groupId>
+        <artifactId>embedmongo-maven-plugin</artifactId>
+        <version>0.1.12</version>
+        <executions>
+          <execution>
+            <id>start</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>start</goal>
+            </goals>
+            <configuration>
+              <port>37017</port>
+              <version>2.2.1</version>
+              <logging>none</logging>
+              <logFileEncoding>utf-8</logFileEncoding>
+              <bindIp>127.0.0.1</bindIp>
+              <downloadPath>http://fastdl.mongodb.org/</downloadPath>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <phase>test</phase>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
