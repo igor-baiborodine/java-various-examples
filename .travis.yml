@@ -13,6 +13,7 @@ env:
   - TEST_DIR=mybatis-xml-example
   - TEST_DIR=mybatis-annotations-spring-example
   - TEST_DIR=rest-webapp-jersey-mongo-example
+  - TEST_DIR=jpetstore-6-mongodb
 
 script: cd $TEST_DIR && mvn test
 
