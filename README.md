@@ -10,7 +10,7 @@ Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=
 #####This project contains the following examples of using Java and Java-based technologies:
 * \[CI\] [Exercise to migrate the original JPetStore-6 to Spring Boot with JavaConfig](/jpetstore-6-spring-boot)
 * [Preparation materials for the "Upgrade to Java SE 8 Programmer" exam \(1Z1-810\)](/ocp-upgrade-java8)
-* [Exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using MongoDB Java driver](/jpetstore-6-mongodb)
+* \[CI\] [Exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using MongoDB Java driver](/jpetstore-6-mongodb)
 * [Exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/SimpleDB using JPA/SimpleJPA](/jpetstore-6-simplejpa)
 * \[CI\] [Exercise to port the original JPetStore-6 from MyBatis 3 to JPA 2/Hibernate](/jpetstore-6-jpa)
 * \[CI\] [Example of implementing RESTful web services with JAX-RS/Jersey/MongoDB](/rest-webapp-jersey-mongo-example)
