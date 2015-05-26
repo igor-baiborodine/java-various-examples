@@ -19,13 +19,16 @@ package org.mybatis.jpetstore.domain;
 import com.google.common.base.Objects;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+
 import org.mybatis.jpetstore.domain.builder.ProductBuilder;
 
-import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.util.List;
+
+import javax.annotation.Nonnull;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Strings.emptyToNull;
@@ -34,133 +37,134 @@ import static com.google.common.base.Strings.emptyToNull;
  * @author Igor Baiborodine
  */
 public class Product
-        extends AbstractBaseDomain<String>
-        implements Serializable {
+    extends AbstractBaseDomain<String>
+    implements Serializable {
 
-    private String productId;
-    private String categoryId;
-    private String name;
-    private String description;
+  private String productId;
+  private String categoryId;
+  private String name;
+  private String description;
 
-    protected Product() {}
+  protected Product() {
+  }
 
-    public Product(@Nonnull final String productId, @Nonnull final String categoryId) {
+  public Product(@Nonnull final String productId, @Nonnull final String categoryId) {
 
-        checkNotNull(emptyToNull(productId), "Argument[productId] must not be null");
-        checkNotNull(emptyToNull(categoryId), "Argument[categoryId] must not be null");
-        this.productId = productId.trim();
-        this.categoryId = categoryId.trim();
+    checkNotNull(emptyToNull(productId), "Argument[productId] must not be null");
+    checkNotNull(emptyToNull(categoryId), "Argument[categoryId] must not be null");
+    this.productId = productId.trim();
+    this.categoryId = categoryId.trim();
+  }
+
+  @Nonnull
+  public static Product fromDBObject(@Nonnull final DBObject productObj) {
+
+    checkNotNull(productObj, "Argument[productObj] must not be null");
+    ProductBuilder builder =
+        new ProductBuilder(
+            (String) productObj.get("product_id"),
+            (String) productObj.get("category_id"))
+            .name((String) productObj.get("name"))
+            .description((String) productObj.get("description"));
+    return builder.build();
+  }
+
+  @Nonnull
+  public static Product copy(Product product) {
+
+    checkNotNull(product, "Argument[product] must not be null");
+    return new ProductBuilder(product.getProductId(), product.getCategoryId())
+        .name(product.getName())
+        .description(product.getDescription())
+        .build();
+  }
+
+  @Override
+  public String getId() {
+    return productId;
+  }
+
+  @Override
+  public DBObject toDBObject() {
+
+    BasicDBObject productObj = new BasicDBObject();
+    appendTo(productObj, "_id", getProductId());
+    appendTo(productObj, "product_id", getProductId());
+    appendTo(productObj, "category_id", getCategoryId());
+    appendTo(productObj, "name", getName());
+    appendTo(productObj, "name_keywords", getNameKeywords());
+    appendTo(productObj, "description", getDescription());
+
+    return productObj;
+  }
+
+  public List<String> getNameKeywords() {
+
+    Iterable<String> iterable = Splitter.on(" ").split(getName());
+    List<String> nameKeywords = Lists.newArrayList(iterable);
+
+    for (int i = 0; i < nameKeywords.size(); i++) {
+      nameKeywords.set(i, nameKeywords.get(i).toLowerCase());
     }
+    return nameKeywords;
+  }
 
-    @Override
-    public String getId() {
-        return productId;
+  public String getProductId() {
+    return productId;
+  }
+  // no setter for productId
+
+  public String getCategoryId() {
+    return categoryId;
+  }
+
+  public void setCategoryId(String categoryId) {
+    this.categoryId = categoryId;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+
+    if (o == this) {
+      return true;
     }
-
-    @Override
-    public DBObject toDBObject() {
-
-        BasicDBObject productObj = new BasicDBObject();
-        appendTo(productObj, "_id", getProductId());
-        appendTo(productObj, "product_id", getProductId());
-        appendTo(productObj, "category_id", getCategoryId());
-        appendTo(productObj, "name", getName());
-        appendTo(productObj, "name_keywords", getNameKeywords());
-        appendTo(productObj, "description", getDescription());
-
-        return productObj;
+    if (!(o instanceof Product)) {
+      return false;
     }
+    Product that = (Product) o;
+    return Objects.equal(this.getProductId(), that.getProductId());
+  }
 
-    @Nonnull
-    public static Product fromDBObject(@Nonnull final DBObject productObj) {
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(getProductId());
+  }
 
-        checkNotNull(productObj, "Argument[productObj] must not be null");
-        ProductBuilder builder =
-                new ProductBuilder(
-                        (String) productObj.get("product_id"),
-                        (String) productObj.get("category_id"))
-                        .name((String) productObj.get("name"))
-                        .description((String) productObj.get("description"));
-        return builder.build();
-    }
+  @Override
+  public String toString() {
 
-    @Nonnull
-    public static Product copy(Product product) {
-
-        checkNotNull(product, "Argument[product] must not be null");
-        return new ProductBuilder(product.getProductId(), product.getCategoryId())
-                .name(product.getName())
-                .description(product.getDescription())
-                .build();
-    }
-
-    public List<String> getNameKeywords() {
-
-        Iterable<String> iterable = Splitter.on(" ").split(getName());
-        List<String> nameKeywords = Lists.newArrayList(iterable);
-
-        for (int i=0; i < nameKeywords.size(); i++) {
-            nameKeywords.set(i, nameKeywords.get(i).toLowerCase());
-        }
-        return nameKeywords;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-    // no setter for productId
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-
-        if (o == this) {
-            return true;
-        }
-        if (! (o instanceof Product)) {
-            return false;
-        }
-        Product that = (Product) o;
-        return Objects.equal(this.getProductId(), that.getProductId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getProductId());
-    }
-
-    @Override
-    public String toString() {
-
-        return Objects.toStringHelper(this)
-                .add("productId", productId)
-                .add("categoryId", categoryId)
-                .add("name", name)
-                .add("description", description)
-                .toString();
-    }
+    return Objects.toStringHelper(this)
+        .add("productId", productId)
+        .add("categoryId", categoryId)
+        .add("name", name)
+        .add("description", description)
+        .toString();
+  }
 
 }

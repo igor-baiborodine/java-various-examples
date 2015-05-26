@@ -7,6 +7,7 @@ package org.mybatis.jpetstore.persistence.mongodb;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -25,33 +26,33 @@ import static org.junit.Assert.assertThat;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:application-context-test.xml")
-public abstract class AbstractBaseDaoTest {
+public abstract class AbstractDaoTest {
 
-    @Autowired
-    protected MongoClient mongoClient;
+  @Autowired
+  protected MongoClient mongoClient;
 
-    @Value("${mongodb.db.name}")
-    protected String dbName;
+  @Value("${mongodb.db.name}")
+  protected String dbName;
 
-    protected DB database;
-    protected DBCollection collection;
+  protected DB database;
+  protected DBCollection collection;
 
-    public abstract String getCollectionName();
+  public abstract String getCollectionName();
 
-    @Before
-    public void setUp() {
+  @Before
+  public void setUp() {
 
-        database = mongoClient.getDB(dbName);
-        collection = database.getCollection(getCollectionName());
-        assertThat(collection.count(), is(0L));
-    }
+    database = mongoClient.getDB(dbName);
+    collection = database.getCollection(getCollectionName());
+    assertThat(collection.count(), is(0L));
+  }
 
-    @After
-    public void tearDown() {
+  @After
+  public void tearDown() {
 
-        collection.drop();
-        collection = null;
-        database = null;
-    }
+    collection.drop();
+    collection = null;
+    database = null;
+  }
 
 }

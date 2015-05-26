@@ -9,13 +9,13 @@ import javax.annotation.PostConstruct;
  */
 public class InitialDataLoader {
 
-    @Autowired
-    InitialDataLoadUtils loadUtils;
+  @Autowired
+  InitialDataLoadUtils loadUtils;
 
-    @PostConstruct
-    public void execute() {
+  @PostConstruct
+  public void execute() {
 
-        loadUtils.importInitialDataToMongo();
-    }
+    loadUtils.importInitialDataToMongo();
+  }
 
 }

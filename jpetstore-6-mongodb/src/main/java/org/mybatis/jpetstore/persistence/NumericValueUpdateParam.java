@@ -5,5 +5,5 @@ package org.mybatis.jpetstore.persistence;
  */
 public enum NumericValueUpdateParam {
 
-    ID, KEY, INCREMENT
+  ID, KEY, INCREMENT
 }

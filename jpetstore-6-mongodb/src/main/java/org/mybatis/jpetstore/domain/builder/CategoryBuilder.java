@@ -11,39 +11,39 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author Igor Baiborodine
  */
 public class CategoryBuilder
-        implements Builder<Category> {
+    implements Builder<Category> {
 
-    @Nonnull
-    private String categoryId;
-    @Nullable
-    private String name;
-    @Nullable
-    private String description;
+  @Nonnull
+  private String categoryId;
+  @Nullable
+  private String name;
+  @Nullable
+  private String description;
 
-    public CategoryBuilder(@Nonnull String categoryId) {
+  public CategoryBuilder(@Nonnull String categoryId) {
 
-        checkNotNull(categoryId, "Argument[categoryId] must not be null");
-        this.categoryId = categoryId;
-    }
+    checkNotNull(categoryId, "Argument[categoryId] must not be null");
+    this.categoryId = categoryId;
+  }
 
-    public CategoryBuilder name(@Nullable final String name) {
+  public CategoryBuilder name(@Nullable final String name) {
 
-        this.name = name;
-        return this;
-    }
+    this.name = name;
+    return this;
+  }
 
-    public CategoryBuilder description(@Nullable final String description) {
+  public CategoryBuilder description(@Nullable final String description) {
 
-        this.description = description;
-        return this;
-    }
+    this.description = description;
+    return this;
+  }
 
-    @Nonnull
-    public Category build() {
+  @Nonnull
+  public Category build() {
 
-        Category category = new Category(categoryId);
-        category.setName(name);
-        category.setDescription(description);
-        return category;
-    }
+    Category category = new Category(categoryId);
+    category.setName(name);
+    category.setDescription(description);
+    return category;
+  }
 }

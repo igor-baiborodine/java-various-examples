@@ -6,6 +6,7 @@ package org.mybatis.jpetstore.service;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -25,35 +26,33 @@ import static org.junit.Assert.assertThat;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:application-context-test.xml")
-public abstract class AbstractBaseServiceTest {
+public abstract class AbstractServiceTest {
 
-    @Autowired
-    protected MongoClient mongoClient;
+  @Autowired
+  protected MongoClient mongoClient;
 
-    @Value("${mongodb.db.name}")
-    protected String dbName;
+  @Value("${mongodb.db.name}")
+  protected String dbName;
+  protected DB database;
+  @Autowired
+  private InitialDataLoadUtils helper;
 
-    @Autowired
-    private InitialDataLoadUtils helper;
+  @Before
+  public void setUp() {
 
-    protected DB database;
+    database = mongoClient.getDB(dbName);
+    database.dropDatabase();
 
-    @Before
-    public void setUp() {
+    database = mongoClient.getDB(dbName);
+    assertThat(database.getCollectionNames().size(), is(0));
+    helper.importInitialDataToMongo();
+  }
 
-        database = mongoClient.getDB(dbName);
-        database.dropDatabase();
+  @After
+  public void tearDown() {
 
-        database = mongoClient.getDB(dbName);
-        assertThat(database.getCollectionNames().size(), is(0));
-        helper.importInitialDataToMongo();
-    }
-
-    @After
-    public void tearDown() {
-
-        database.dropDatabase();
-        database = null;
-    }
+    database.dropDatabase();
+    database = null;
+  }
 
 }

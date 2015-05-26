@@ -16,14 +16,13 @@
 
 package org.mybatis.jpetstore.persistence;
 
+import org.mybatis.jpetstore.domain.Item;
+
 import java.util.List;
 import java.util.Map;
 
-import org.mybatis.jpetstore.domain.Item;
-
 /**
  * @author Eduardo Macarron
- *
  */
 public interface ItemMapper {
 

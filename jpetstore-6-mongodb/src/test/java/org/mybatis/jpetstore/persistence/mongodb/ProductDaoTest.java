@@ -2,6 +2,7 @@ package org.mybatis.jpetstore.persistence.mongodb;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+
 import org.junit.Test;
 import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.domain.builder.ProductBuilder;
@@ -16,110 +17,110 @@ import static org.mybatis.jpetstore.persistence.helper.TestBuilderFactory.create
 import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 /**
- * JUnit based unit tests for the {@link ProductDao} class.
+ * Integration tests for the {@link ProductDao} class.
  *
  * @author Igor Baiborodine
  */
-public class ProductDaoTest extends AbstractBaseDaoTest {
+public class ProductDaoTest extends AbstractDaoTest {
 
-    @Autowired
-    private ProductDao productDao;
+  @Autowired
+  private ProductDao productDao;
 
-    @Override
-    public String getCollectionName() {
+  @Override
+  public String getCollectionName() {
 
-        return productDao.getCollectionName();
-    }
+    return productDao.getCollectionName();
+  }
 
-    @Test(expected = NullPointerException.class)
-    public void getProduct_shouldThrowNPEForNullProductIdArgument() {
+  @Test(expected = NullPointerException.class)
+  public void getProduct_shouldThrowNPEForNullProductIdArgument() {
 
-        productDao.getProduct(null);
-    }
+    productDao.getProduct(null);
+  }
 
-    @Test(expected = NullPointerException.class)
-    public void getProduct_shouldThrowNPEForEmptyProductIdArgument() {
+  @Test(expected = NullPointerException.class)
+  public void getProduct_shouldThrowNPEForEmptyProductIdArgument() {
 
-        productDao.getProduct("");
-    }
+    productDao.getProduct("");
+  }
 
-    @Test
-    public void getProduct_shouldFindExistingProduct() {
+  @Test
+  public void getProduct_shouldFindExistingProduct() {
 
-        Product existingProduct = createProductBuilderWithAllFields().build();
-        insertProduct(existingProduct);
+    Product existingProduct = createProductBuilderWithAllFields().build();
+    insertProduct(existingProduct);
 
-        Product product = productDao.getProduct(existingProduct.getProductId());
-        assertReflectionEquals(existingProduct, product);
-    }
+    Product product = productDao.getProduct(existingProduct.getProductId());
+    assertReflectionEquals(existingProduct, product);
+  }
 
-    @Test(expected = NullPointerException.class)
-    public void getProductListByCategory_shouldThrowNPEForNullCategoryIdArgument() {
+  @Test(expected = NullPointerException.class)
+  public void getProductListByCategory_shouldThrowNPEForNullCategoryIdArgument() {
 
-        productDao.getProductListByCategory(null);
-    }
+    productDao.getProductListByCategory(null);
+  }
 
-    @Test(expected = NullPointerException.class)
-    public void getProductListByCategory_shouldThrowNPEForEmptyCategoryIdArgument() {
+  @Test(expected = NullPointerException.class)
+  public void getProductListByCategory_shouldThrowNPEForEmptyCategoryIdArgument() {
 
-        productDao.getProductListByCategory("");
-    }
+    productDao.getProductListByCategory("");
+  }
 
-    @Test
-    public void getProductListByCategory_shouldFindListWithExistingProducts() {
+  @Test
+  public void getProductListByCategory_shouldFindListWithExistingProducts() {
 
-        Product existingProduct = createProductBuilderWithAllFields().build();
-        insertProduct(existingProduct);
+    Product existingProduct = createProductBuilderWithAllFields().build();
+    insertProduct(existingProduct);
 
-        List<Product> products = productDao.getProductListByCategory(existingProduct.getCategoryId());
-        assertThat(products.size(), is(1));
-        assertReflectionEquals(existingProduct, products.get(0));
-    }
+    List<Product> products = productDao.getProductListByCategory(existingProduct.getCategoryId());
+    assertThat(products.size(), is(1));
+    assertReflectionEquals(existingProduct, products.get(0));
+  }
 
-    @Test
-    public void getProductListByCategory_shouldFindEmptyListForNonExistingCategory() {
+  @Test
+  public void getProductListByCategory_shouldFindEmptyListForNonExistingCategory() {
 
-        List<Product> products = productDao.getProductListByCategory("NON_EXISTING_CATEGORY");
-        assertThat(products.size(), is(0));
-    }
+    List<Product> products = productDao.getProductListByCategory("NON_EXISTING_CATEGORY");
+    assertThat(products.size(), is(0));
+  }
 
-    @Test(expected = NullPointerException.class)
-    public void searchProductList_shouldThrowNPEForNullKeywordArgument() {
+  @Test(expected = NullPointerException.class)
+  public void searchProductList_shouldThrowNPEForNullKeywordArgument() {
 
-        productDao.searchProductList(null);
-    }
+    productDao.searchProductList(null);
+  }
 
-    @Test(expected = NullPointerException.class)
-    public void searchProductList_shouldThrowNPEForEmptyKeywordArgument() {
+  @Test(expected = NullPointerException.class)
+  public void searchProductList_shouldThrowNPEForEmptyKeywordArgument() {
 
-        productDao.searchProductList("");
-    }
+    productDao.searchProductList("");
+  }
 
-    @Test
-    public void searchProductList_shouldFindListWithProductsWithNameContainingKeyword() {
+  @Test
+  public void searchProductList_shouldFindListWithProductsWithNameContainingKeyword() {
 
-        ProductBuilder builder = createProductBuilderWithAllFields();
-        builder.name("One Two Three");
-        Product existingProduct = builder.build();
-        insertProduct(existingProduct);
+    ProductBuilder builder = createProductBuilderWithAllFields();
+    builder.name("One Two Three");
+    Product existingProduct = builder.build();
+    insertProduct(existingProduct);
 
-        List<Product> products = productDao.searchProductList("One");
-        assertThat(products.size(), is(1));
-        assertReflectionEquals(existingProduct, products.get(0));
+    List<Product> products = productDao.searchProductList("One");
+    assertThat(products.size(), is(1));
+    assertReflectionEquals(existingProduct, products.get(0));
 
-        products = productDao.searchProductList("Two");
-        assertThat(products.size(), is(1));
+    products = productDao.searchProductList("Two");
+    assertThat(products.size(), is(1));
 
-        products = productDao.searchProductList("Three");
-        assertThat(products.size(), is(1));
-    }
+    products = productDao.searchProductList("Three");
+    assertThat(products.size(), is(1));
+  }
 
-    private void insertProduct(final Product product) {
+  private void insertProduct(final Product product) {
 
-        collection.insert(product.toDBObject());
+    collection.insert(product.toDBObject());
 
-        DBObject productObj = collection.findOne(new BasicDBObject("_id", product.getProductId()));
-        assertThat("Cannot find product with id[" + product.getProductId() + "]", productObj, notNullValue());
-    }
+    DBObject productObj = collection.findOne(new BasicDBObject("_id", product.getProductId()));
+    assertThat("Cannot find product with id[" + product.getProductId() + "]", productObj, notNullValue());
+  }
 
 }

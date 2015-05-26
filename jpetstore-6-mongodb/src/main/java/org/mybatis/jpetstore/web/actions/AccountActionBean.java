@@ -16,12 +16,6 @@
 
 package org.mybatis.jpetstore.web.actions;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -35,9 +29,14 @@ import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.service.AccountService;
 import org.mybatis.jpetstore.service.CatalogService;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 /**
  * @author Eduardo Macarron
- *
  */
 @SessionScope
 public class AccountActionBean extends AbstractActionBean {
@@ -51,22 +50,13 @@ public class AccountActionBean extends AbstractActionBean {
   private static final List<String> LANGUAGE_LIST;
   private static final List<String> CATEGORY_LIST;
 
-  @SpringBean
-  private transient AccountService accountService;
-  @SpringBean
-  private transient CatalogService catalogService;
-
-  private Account account = new Account();
-  private List<Product> myList;
-  private boolean authenticated;
-
   static {
-    List<String> langList = new ArrayList<String>();
+    List<String> langList = new ArrayList<>();
     langList.add("english");
     langList.add("japanese");
     LANGUAGE_LIST = Collections.unmodifiableList(langList);
 
-    List<String> catList = new ArrayList<String>();
+    List<String> catList = new ArrayList<>();
     catList.add("FISH");
     catList.add("DOGS");
     catList.add("REPTILES");
@@ -75,15 +65,23 @@ public class AccountActionBean extends AbstractActionBean {
     CATEGORY_LIST = Collections.unmodifiableList(catList);
   }
 
+  @SpringBean
+  private transient AccountService accountService;
+  @SpringBean
+  private transient CatalogService catalogService;
+  private Account account = new Account();
+  private List<Product> myList;
+  private boolean authenticated;
+
   public Account getAccount() {
     return this.account;
   }
-  
+
   public String getUsername() {
     return account.getUsername();
   }
 
-  @Validate(required=true, on={"signon", "newAccount", "editAccount"})
+  @Validate(required = true, on = {"signon", "newAccount", "editAccount"})
   public void setUsername(String username) {
     account.setUsername(username);
   }
@@ -92,7 +90,7 @@ public class AccountActionBean extends AbstractActionBean {
     return account.getPassword();
   }
 
-  @Validate(required=true, on={"signon", "newAccount", "editAccount"})
+  @Validate(required = true, on = {"signon", "newAccount", "editAccount"})
   public void setPassword(String password) {
     account.setPassword(password);
   }
@@ -116,7 +114,7 @@ public class AccountActionBean extends AbstractActionBean {
   public Resolution newAccountForm() {
     return new ForwardResolution(NEW_ACCOUNT);
   }
-  
+
   public Resolution newAccount() {
     accountService.insertAccount(account);
     account = accountService.getAccount(account.getUsername());
@@ -135,7 +133,7 @@ public class AccountActionBean extends AbstractActionBean {
     myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
     return new RedirectResolution(CatalogActionBean.class);
   }
-  
+
   @DefaultHandler
   public Resolution signonForm() {
     return new ForwardResolution(SIGNON);
@@ -144,7 +142,7 @@ public class AccountActionBean extends AbstractActionBean {
   public Resolution signon() {
 
     account = accountService.getAccount(getUsername(), getPassword());
-   
+
     if (account == null) {
       String value = "Invalid username or password.  Signon failed.";
       setMessage(value);

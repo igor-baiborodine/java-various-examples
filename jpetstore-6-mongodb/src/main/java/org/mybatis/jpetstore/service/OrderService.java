@@ -16,29 +16,28 @@
 
 package org.mybatis.jpetstore.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.LineItem;
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.Sequence;
-import org.mybatis.jpetstore.persistence.NumericValueUpdateParam;
 import org.mybatis.jpetstore.persistence.ItemMapper;
+import org.mybatis.jpetstore.persistence.NumericValueUpdateParam;
 import org.mybatis.jpetstore.persistence.OrderMapper;
 import org.mybatis.jpetstore.persistence.SequenceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static org.mybatis.jpetstore.persistence.NumericValueUpdateParam.ID;
-import static org.mybatis.jpetstore.persistence.NumericValueUpdateParam.KEY;
 import static org.mybatis.jpetstore.persistence.NumericValueUpdateParam.INCREMENT;
+import static org.mybatis.jpetstore.persistence.NumericValueUpdateParam.KEY;
 
 /**
  * @author Eduardo Macarron
- *
  */
 @Service
 public class OrderService {
@@ -50,42 +49,42 @@ public class OrderService {
   @Autowired
   private SequenceMapper sequenceMapper;
 
-    @Transactional
-    public void insertOrder(Order order) {
+  @Transactional
+  public void insertOrder(Order order) {
 
-        order.setOrderId(getNextId("order"));
+    order.setOrderId(getNextId("order"));
 
-        for (int i = 0; i < order.getLineItems().size(); i++) {
-            LineItem lineItem = order.getLineItems().get(i);
-            String itemId = lineItem.getItemId();
-            Integer increment = lineItem.getQuantity();
+    for (int i = 0; i < order.getLineItems().size(); i++) {
+      LineItem lineItem = order.getLineItems().get(i);
+      String itemId = lineItem.getItemId();
+      Integer increment = lineItem.getQuantity();
 
-            Map<NumericValueUpdateParam, Object> param = new HashMap<>(3);
-            param.put(ID, itemId);
-            param.put(KEY, "quantity");
-            param.put(INCREMENT, increment);
-            itemMapper.updateInventoryQuantity(param);
-        }
-
-        orderMapper.insertOrder(order);
-        orderMapper.insertOrderStatus(order);
-
+      Map<NumericValueUpdateParam, Object> param = new HashMap<>(3);
+      param.put(ID, itemId);
+      param.put(KEY, "quantity");
+      param.put(INCREMENT, increment);
+      itemMapper.updateInventoryQuantity(param);
     }
 
-    @Transactional
-    public Order getOrder(int orderId) {
+    orderMapper.insertOrder(order);
+    orderMapper.insertOrderStatus(order);
 
-        Order order = orderMapper.getOrder(orderId);
+  }
 
-        for (int i = 0; i < order.getLineItems().size(); i++) {
-            LineItem lineItem = order.getLineItems().get(i);
-            Item item = itemMapper.getItem(lineItem.getItemId());
-            item.setQuantity(itemMapper.getInventoryQuantity(lineItem.getItemId()));
-            lineItem.setItem(item);
-        }
+  @Transactional
+  public Order getOrder(int orderId) {
 
-        return order;
+    Order order = orderMapper.getOrder(orderId);
+
+    for (int i = 0; i < order.getLineItems().size(); i++) {
+      LineItem lineItem = order.getLineItems().get(i);
+      Item item = itemMapper.getItem(lineItem.getItemId());
+      item.setQuantity(itemMapper.getInventoryQuantity(lineItem.getItemId()));
+      lineItem.setItem(item);
     }
+
+    return order;
+  }
 
   public List<Order> getOrdersByUsername(String username) {
     return orderMapper.getOrdersByUsername(username);

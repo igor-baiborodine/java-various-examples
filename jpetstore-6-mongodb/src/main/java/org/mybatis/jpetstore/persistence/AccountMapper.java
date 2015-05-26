@@ -20,7 +20,6 @@ import org.mybatis.jpetstore.domain.Account;
 
 /**
  * @author Eduardo Macarron
- *
  */
 public interface AccountMapper {
 
@@ -29,9 +28,9 @@ public interface AccountMapper {
   Account getAccountByUsernameAndPassword(String username, String password);
 
   void insertAccount(Account account);
-  
+
   void insertProfile(Account account);
-  
+
   void insertSignon(Account account);
 
   void updateAccount(Account account);

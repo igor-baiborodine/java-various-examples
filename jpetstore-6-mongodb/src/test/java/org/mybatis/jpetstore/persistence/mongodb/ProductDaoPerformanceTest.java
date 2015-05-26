@@ -4,6 +4,7 @@ import com.ibm.icu.text.RuleBasedNumberFormat;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.mybatis.jpetstore.domain.Product;
@@ -21,99 +22,99 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  *
  * @author Igor Baiborodine
  */
-public class ProductDaoPerformanceTest extends AbstractBaseDaoTest {
+public class ProductDaoPerformanceTest extends AbstractDaoTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProductDaoPerformanceTest.class);
+  private static final Logger logger = LoggerFactory.getLogger(ProductDaoPerformanceTest.class);
 
-    private RuleBasedNumberFormat speller = new RuleBasedNumberFormat(RuleBasedNumberFormat.SPELLOUT);
+  private RuleBasedNumberFormat speller = new RuleBasedNumberFormat(RuleBasedNumberFormat.SPELLOUT);
 
-    @Autowired
-    private ProductDao productDao;
+  @Autowired
+  private ProductDao productDao;
 
-    private BasicDBObject explain;
-    private Product productWithKeyword;
+  private BasicDBObject explain;
+  private Product productWithKeyword;
 
-    @Override
-    public String getCollectionName() {
+  @Override
+  public String getCollectionName() {
 
-        return productDao.getCollectionName();
+    return productDao.getCollectionName();
+  }
+
+  @Test
+  @Ignore
+  public void searchProductList_shouldFindListWithProductsWithNameContainingKeyword() {
+
+    // tested on Acer with Intel i7 8-core, 8 GB RAM, Windows 7 with local MongoDB instance
+    long maxNumber = 1000000L;
+    String categoryId = "NUMBER";
+    String keyword = "million";
+    Product product = null;
+
+    // populate collection
+    for (long number = 1L; number <= maxNumber; number++) {
+
+      product = createProductBuilderWithBaseFields("NUMBER-" + number, categoryId).build();
+      product.setName(speller.format(number));
+      collection.insert(product.toDBObject());
+      if (number % 10000L == 0) {
+        logger.info("Inserted {} products", number);
+      }
     }
+    logger.info("Last inserted product[{}]", product);
 
-    @Test
-    @Ignore
-    public void searchProductList_shouldFindListWithProductsWithNameContainingKeyword() {
+    assertThat(collection.count(), is(maxNumber));
 
-        // tested on Acer with Intel i7 8-core, 8 GB RAM, Windows 7
-        long maxNumber = 1000000L;
-        String categoryId = "NUMBER";
-        String keyword = "million";
-        Product product = null;
+    // test performance of old implementation
+    DBObject regex = new BasicDBObject("$regex", ".*" + keyword + ".*");
+    DBObject nameRegexQuery = new BasicDBObject("name", regex);
 
-        // populate collection
-        for (long number = 1L; number <= maxNumber; number++) {
+    findProduct(nameRegexQuery);
+    assertReflectionEquals(product, productWithKeyword);
+    assertThat(explain.getBoolean("isMultiKey"), is(false));
+    assertThat(explain.getLong("nscanned"), is(maxNumber));
+    // "millis" : 6929
 
-            product = createProductBuilderWithBaseFields("NUMBER-" + number, categoryId).build();
-            product.setName(speller.format(number));
-            collection.insert(product.toDBObject());
-            if (number % 10000L == 0) {
-                logger.info("Inserted {} products", number);
-            }
-        }
-        logger.info("Last inserted product[{}]", product);
+    collection.ensureIndex(new BasicDBObject("name", 1));
 
-        assertThat(collection.count(), is(maxNumber));
+    findProduct(nameRegexQuery);
 
-        // test performance of old implementation
-        DBObject regex = new BasicDBObject("$regex", ".*" + keyword + ".*");
-        DBObject nameRegexQuery = new BasicDBObject("name", regex);
+    assertReflectionEquals(product, productWithKeyword);
+    assertThat(explain.getBoolean("isMultiKey"), is(false));
+    assertThat(explain.getLong("nscanned"), is(maxNumber));
+    // "millis" : 7561
 
-        findProduct(nameRegexQuery);
-        assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), is(false));
-        assertThat(explain.getLong("nscanned"), is(maxNumber));
-        // "millis" : 6929
+    // test performance of new implementation
+    DBObject nameKeywordsQuery = new BasicDBObject("name_keywords", keyword);
 
-        collection.ensureIndex(new BasicDBObject("name", 1));
+    findProduct(nameKeywordsQuery);
 
-        findProduct(nameRegexQuery);
+    assertReflectionEquals(product, productWithKeyword);
+    assertThat(explain.getBoolean("isMultiKey"), is(false));
+    assertThat(explain.getLong("nscanned"), is(maxNumber));
+    // "millis" : 1633
 
-        assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), is(false));
-        assertThat(explain.getLong("nscanned"), is(maxNumber));
-        // "millis" : 7561
+    collection.ensureIndex(new BasicDBObject("name_keywords", 1));
 
-        // test performance of new implementation
-        DBObject nameKeywordsQuery = new BasicDBObject("name_keywords", keyword);
+    findProduct(nameKeywordsQuery);
 
-        findProduct(nameKeywordsQuery);
+    assertReflectionEquals(product, productWithKeyword);
+    assertThat(explain.getBoolean("isMultiKey"), is(true));
+    assertThat(explain.getLong("nscanned"), is(1L));
+    // "millis" : 0
 
-        assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), is(false));
-        assertThat(explain.getLong("nscanned"), is(maxNumber));
-        // "millis" : 1633
+  }
 
-        collection.ensureIndex(new BasicDBObject("name_keywords", 1));
+  private void findProduct(DBObject query) {
 
-        findProduct(nameKeywordsQuery);
+    try (DBCursor cursor = collection.find(query)) {
+      explain = (BasicDBObject) cursor.explain();
 
-        assertReflectionEquals(product, productWithKeyword);
-        assertThat(explain.getBoolean("isMultiKey"), is(true));
-        assertThat(explain.getLong("nscanned"), is(1L));
-        // "millis" : 0
-
+      while (cursor.hasNext()) {
+        DBObject productObj = cursor.next();
+        productWithKeyword = Product.fromDBObject(productObj);
+      }
     }
-
-    private void findProduct(DBObject query) {
-
-        try (DBCursor cursor = collection.find(query)) {
-            explain = (BasicDBObject) cursor.explain();
-
-            while (cursor.hasNext()) {
-                DBObject productObj = cursor.next();
-                productWithKeyword = Product.fromDBObject(productObj);
-            }
-        }
-        logger.info("explain[{}]", explain);
-    }
+    logger.info("explain[{}]", explain);
+  }
 
 }

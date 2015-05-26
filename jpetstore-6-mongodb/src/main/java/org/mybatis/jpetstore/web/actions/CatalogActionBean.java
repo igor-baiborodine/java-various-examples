@@ -16,8 +16,6 @@
 
 package org.mybatis.jpetstore.web.actions;
 
-import java.util.List;
-
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.SessionScope;
@@ -28,9 +26,10 @@ import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
 import org.mybatis.jpetstore.service.CatalogService;
 
+import java.util.List;
+
 /**
  * @author Eduardo Macarron
- *
  */
 @SessionScope
 public class CatalogActionBean extends AbstractActionBean {

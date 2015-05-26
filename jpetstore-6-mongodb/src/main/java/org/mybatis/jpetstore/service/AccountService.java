@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Eduardo Macarron
- *
  */
 @Service
 public class AccountService {

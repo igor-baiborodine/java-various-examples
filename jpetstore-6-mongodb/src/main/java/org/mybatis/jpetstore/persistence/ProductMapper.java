@@ -16,13 +16,12 @@
 
 package org.mybatis.jpetstore.persistence;
 
-import java.util.List;
-
 import org.mybatis.jpetstore.domain.Product;
+
+import java.util.List;
 
 /**
  * @author Eduardo Macarron
- *
  */
 public interface ProductMapper {
 

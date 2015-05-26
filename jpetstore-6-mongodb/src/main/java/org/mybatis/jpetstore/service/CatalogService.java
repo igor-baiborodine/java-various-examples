@@ -16,8 +16,6 @@
 
 package org.mybatis.jpetstore.service;
 
-import java.util.List;
-
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
@@ -27,9 +25,10 @@ import org.mybatis.jpetstore.persistence.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Eduardo Macarron
- *
  */
 @Service
 public class CatalogService {

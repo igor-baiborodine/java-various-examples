@@ -12,18 +12,18 @@ import static com.google.common.base.Strings.isNullOrEmpty;
  */
 public abstract class AbstractBaseDomain<ID> {
 
-    public abstract ID getId();
+  public abstract ID getId();
 
-    public abstract DBObject toDBObject();
+  public abstract DBObject toDBObject();
 
-    protected void appendTo(BasicDBObject dbObject, String key, Object value) {
+  protected void appendTo(BasicDBObject dbObject, String key, Object value) {
 
-        if (value instanceof BigDecimal) {
-            dbObject.append(key, value.toString());
-        } else if (value instanceof String && (!isNullOrEmpty((String) value))
-                || value != null) {
-            dbObject.append(key, value);
-        }
+    if (value instanceof BigDecimal) {
+      dbObject.append(key, value.toString());
+    } else if (value instanceof String && (!isNullOrEmpty((String) value))
+        || value != null) {
+      dbObject.append(key, value);
     }
+  }
 
 }

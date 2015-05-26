@@ -16,12 +16,6 @@
 
 package org.mybatis.jpetstore.web.actions;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
@@ -30,9 +24,14 @@ import net.sourceforge.stripes.integration.spring.SpringBean;
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.service.OrderService;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 /**
  * @author Eduardo Macarron
- *
  */
 @SessionScope
 public class OrderActionBean extends AbstractActionBean {
@@ -47,21 +46,20 @@ public class OrderActionBean extends AbstractActionBean {
 
   private static final List<String> CARD_TYPE_LIST;
 
-  @SpringBean
-  private transient OrderService orderService;
-
-  private Order order = new Order();
-  private boolean shippingAddressRequired;
-  private boolean confirmed;
-  private List<Order> orderList;
-
   static {
-    List<String> cardList = new ArrayList<String>();
+    List<String> cardList = new ArrayList<>();
     cardList.add("Visa");
     cardList.add("MasterCard");
     cardList.add("American Express");
     CARD_TYPE_LIST = Collections.unmodifiableList(cardList);
   }
+
+  @SpringBean
+  private transient OrderService orderService;
+  private Order order = new Order();
+  private boolean shippingAddressRequired;
+  private boolean confirmed;
+  private List<Order> orderList;
 
   public int getOrderId() {
     return order.getOrderId();

@@ -17,100 +17,102 @@
 package org.mybatis.jpetstore.domain;
 
 import com.google.common.base.Objects;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
-import javax.annotation.Nullable;
 import java.io.Serializable;
+
+import javax.annotation.Nullable;
 
 /**
  * @author Igor Baiborodine
- *
  */
 public class Sequence
-        extends AbstractBaseDomain<String>
-        implements Serializable {
+    extends AbstractBaseDomain<String>
+    implements Serializable {
 
-    private String name;
-    private Integer nextId;
+  private String name;
+  private Integer nextId;
 
-    public Sequence() {}
+  public Sequence() {
+  }
 
-    public Sequence(String name, int nextId) {
-        this.name = name;
-        this.nextId = nextId;
+  public Sequence(String name, int nextId) {
+    this.name = name;
+    this.nextId = nextId;
+  }
+
+  public static Sequence fromDBObject(@Nullable final BasicDBObject sequenceObj) {
+
+    Sequence sequence = null;
+
+    if (sequenceObj != null) {
+      String name = sequenceObj.getString("name");
+      Integer nextId = sequenceObj.getInt("next_id");
+      sequence = new Sequence(name, nextId);
     }
+    return sequence;
+  }
 
-    @Override
-    public String getId() {
-        return name;
+  @Override
+  public String getId() {
+    return name;
+  }
+
+  @Override
+  public DBObject toDBObject() {
+
+    BasicDBObject sequenceObj = new BasicDBObject();
+    appendTo(sequenceObj, "_id", getName());
+    appendTo(sequenceObj, "name", getName());
+    appendTo(sequenceObj, "next_id", getNextId());
+
+    return sequenceObj;
+  }
+
+  @Override
+  public boolean equals(final Object o) {
+
+    if (o == this) {
+      return true;
     }
-
-    @Override
-    public DBObject toDBObject() {
-
-        BasicDBObject sequenceObj = new BasicDBObject();
-        appendTo(sequenceObj, "_id", getName());
-        appendTo(sequenceObj, "name", getName());
-        appendTo(sequenceObj, "next_id", getNextId());
-
-        return sequenceObj;
+    if (!(o instanceof Sequence)) {
+      return false;
     }
+    Sequence that = (Sequence) o;
+    return Objects.equal(this.getName(), that.getName());
+  }
 
-    public static Sequence fromDBObject(@Nullable final BasicDBObject sequenceObj) {
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(getName());
+  }
 
-        Sequence sequence = null;
+  @Override
+  public String toString() {
 
-        if (sequenceObj != null) {
-            String name = sequenceObj.getString("name");
-            Integer nextId = sequenceObj.getInt("next_id");
-            sequence = new Sequence(name, nextId);
-        }
-        return sequence;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-
-        if (o == this) {
-            return true;
-        }
-        if (! (o instanceof Sequence)) {
-            return false;
-        }
-        Sequence that = (Sequence) o;
-        return Objects.equal(this.getName(), that.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getName());
-    }
-
-    @Override
-    public String toString() {
-
-        return Objects.toStringHelper(this)
-                .add("name", name)
-                .add("nextId", nextId)
-                .toString();
-    }
+    return Objects.toStringHelper(this)
+        .add("name", name)
+        .add("nextId", nextId)
+        .toString();
+  }
 
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(final String name) {
-        this.name = name;
-    }
+  public void setName(final String name) {
+    this.name = name;
+  }
 
-    public Integer getNextId() {
-        return nextId;
-    }
+  public Integer getNextId() {
+    return nextId;
+  }
 
-    public void setNextId(final Integer nextId) {
-        this.nextId = nextId;
-    }
+  public void setNextId(final Integer nextId) {
+    this.nextId = nextId;
+  }
 
 }

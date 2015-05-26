@@ -16,10 +16,6 @@
 
 package org.mybatis.jpetstore.web.actions;
 
-import java.util.Iterator;
-
-import javax.servlet.http.HttpServletRequest;
-
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.SessionScope;
@@ -30,9 +26,12 @@ import org.mybatis.jpetstore.domain.CartItem;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.service.CatalogService;
 
+import java.util.Iterator;
+
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author Eduardo Macarron
- *
  */
 @SessionScope
 public class CartActionBean extends AbstractActionBean {
@@ -92,10 +91,10 @@ public class CartActionBean extends AbstractActionBean {
 
     Iterator<CartItem> cartItems = getCart().getAllCartItems();
     while (cartItems.hasNext()) {
-      CartItem cartItem = (CartItem) cartItems.next();
+      CartItem cartItem = cartItems.next();
       String itemId = cartItem.getItem().getItemId();
       try {
-        int quantity = Integer.parseInt((String) request.getParameter(itemId));
+        int quantity = Integer.parseInt(request.getParameter(itemId));
         getCart().setQuantityByItemId(itemId, quantity);
         if (quantity < 1) {
           cartItems.remove();
