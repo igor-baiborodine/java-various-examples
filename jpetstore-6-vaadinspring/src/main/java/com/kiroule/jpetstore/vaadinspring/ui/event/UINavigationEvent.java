@@ -1,4 +1,4 @@
-package com.kiroule.jpetstore.vaadinspring.ui.util.event;
+package com.kiroule.jpetstore.vaadinspring.ui.event;
 
 /**
  * @author Igor Baiborodine
