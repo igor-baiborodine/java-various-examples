@@ -16,9 +16,7 @@ import com.kiroule.example.restwebapp.domain.Book;
 
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -30,9 +28,6 @@ public class BookResourceIntegrationTest {
 
   private static String basePath = "/resources/books";
   private static String nonExistingIsbn = "000-12345699";
-
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
 
   @ClassRule
   public static JettyServerRule server = new JettyServerRule(new EmbeddedJetty());

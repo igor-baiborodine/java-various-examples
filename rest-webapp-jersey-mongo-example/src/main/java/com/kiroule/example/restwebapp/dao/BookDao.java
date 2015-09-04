@@ -44,7 +44,6 @@ public class BookDao {
     booksCollection = bookshelfDatabase.getCollection(collectionName);
   }
 
-  @Nonnull
   public Optional<Book> create(@Nonnull final Book bookToCreate) {
     checkNotNull(bookToCreate, "Argument[bookToCreate] must not be null");
 
@@ -61,7 +60,6 @@ public class BookDao {
     }
   }
 
-  @Nonnull
   public List<Book> readAll() {
     final List<Book> books = new ArrayList<>();
 
@@ -75,7 +73,6 @@ public class BookDao {
     return books;
   }
 
-  @Nonnull
   public Optional<Book> readByIsbn(@Nonnull final String isbn) {
     checkNotNull(isbn, "Argument[isbn] must not be null");
 
@@ -91,7 +88,6 @@ public class BookDao {
     return Optional.empty();
   }
 
-  @Nonnull
   public Optional<Book> update(@Nonnull final Book bookToUpdate) {
     checkNotNull(bookToUpdate, "Argument[bookToUpdate] must not be null");
 
