@@ -1,12 +1,23 @@
 package com.kiroule.example.restwebapp.resources;
 
-import com.google.common.base.Optional;
+import static com.kiroule.example.restwebapp.resources.BookResource.BOOK_NOT_FOUND_MSG;
+import static java.lang.String.format;
+import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
+import static javax.ws.rs.core.Response.Status.NO_CONTENT;
+import static javax.ws.rs.core.Response.Status.OK;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
+
 import com.google.common.collect.Sets;
 
 import com.kiroule.example.restwebapp.dao.BookDao;
 import com.kiroule.example.restwebapp.domain.Book;
 import com.kiroule.example.restwebapp.domain.builder.BookBuilder;
-import com.sun.jersey.api.NotFoundException;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,18 +30,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
-
-import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
-import static javax.ws.rs.core.Response.Status.NO_CONTENT;
-import static javax.ws.rs.core.Response.Status.OK;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.when;
-import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 /**
  * JUnit/Mockito based unit tests for the {@link BookResource} class.
@@ -76,7 +79,7 @@ public class BookResourceTest {
 
   @Test
   public void create_shouldReturnResponseWithBadRequestStatus() { // 400
-    when(bookDaoMock.create(book)).thenReturn(Optional.<Book>absent());
+    when(bookDaoMock.create(book)).thenReturn(Optional.empty());
     Response response = resource.create(book);
     assertEquals(BAD_REQUEST.getStatusCode(), response.getStatus());
   }
@@ -87,8 +90,7 @@ public class BookResourceTest {
     Response response = resource.readAll();
     assertEquals(OK.getStatusCode(), response.getStatus());
 
-    GenericEntity<List<Book>> booksEntity = (GenericEntity<List<Book>>) response.getEntity();
-    List<Book> books = booksEntity.getEntity();
+    List<Book> books = (List<Book>) response.getEntity();
     assertEquals(1, books.size());
     assertReflectionEquals(book, books.get(0));
   }
@@ -109,10 +111,12 @@ public class BookResourceTest {
     assertEquals(NO_CONTENT.getStatusCode(), response.getStatus());
   }
 
-  @Test(expected = NotFoundException.class)
-  public void update_shouldThrowNotFoundException() {
-    when(bookDaoMock.update(book)).thenReturn(Optional.<Book>absent());
-    resource.update(book);
+  @Test
+  public void update_shouldReturnResponseWithNotFoundStatus() { // 404
+    when(bookDaoMock.update(book)).thenReturn(Optional.empty());
+    Response response = resource.update(book);
+    assertThat(response.getStatus(), is(NOT_FOUND.getStatusCode()));
+    assertThat(response.getEntity(), is(format(BOOK_NOT_FOUND_MSG, book.getIsbn())));
   }
 
   @Test
@@ -122,9 +126,11 @@ public class BookResourceTest {
     assertEquals(NO_CONTENT.getStatusCode(), response.getStatus());
   }
 
-  @Test(expected = NotFoundException.class)
+  @Test
   public void delete_shouldThrowNotFoundException() {
     when(bookDaoMock.delete(book)).thenReturn(false);
-    resource.delete(ISBN);
+    Response response = resource.delete(ISBN);
+    assertThat(response.getStatus(), is(NOT_FOUND.getStatusCode()));
+    assertThat(response.getEntity(), is(format(BOOK_NOT_FOUND_MSG, book.getIsbn())));
   }
 }

@@ -1,6 +1,6 @@
 package com.kiroule.example.restwebapp.dao;
 
-import com.google.common.base.Optional;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.kiroule.example.restwebapp.domain.Book;
 import com.kiroule.example.restwebapp.domain.builder.BookBuilder;
@@ -20,10 +20,9 @@ import org.slf4j.LoggerFactory;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.Nonnull;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * @author Igor Baiborodine
@@ -58,7 +57,7 @@ public class BookDao {
       return Optional.of(bookToCreate);
     } catch (MongoException.DuplicateKey e) {
       logger.info("Book with isbn[{}] already exists", bookToCreate.getIsbn());
-      return Optional.absent(); // book already exists
+      return Optional.empty(); // book already exists
     }
   }
 
@@ -89,7 +88,7 @@ public class BookDao {
       return Optional.of(book);
     }
     logger.info("Book with isbn[{}] does not exist", isbn);
-    return Optional.absent();
+    return Optional.empty();
   }
 
   @Nonnull
@@ -105,7 +104,7 @@ public class BookDao {
       return Optional.of(bookToUpdate);
     }
     logger.info("Book with isbn[{}] does not exist");
-    return Optional.absent(); // book does not exist
+    return Optional.empty(); // book does not exist
   }
 
   public boolean delete(@Nonnull final Book bookToDelete) {

@@ -1,6 +1,13 @@
 package com.kiroule.example.restwebapp.dao;
 
-import com.google.common.base.Optional;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
+
 import com.google.common.collect.Sets;
 
 import com.kiroule.example.restwebapp.domain.Book;
@@ -26,15 +33,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals;
 
 /**
  * JUnit based unit tests for the {@link BookDao} class.
@@ -43,7 +43,7 @@ import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEqua
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath:application-context-test.xml")
-public class BookDaoTest {
+public class BookDaoIntegrationTest {
 
   private static final String ISBN = "978-0-321-35668-0";
   private static final String AUTHOR = "Joshua Bloch";
