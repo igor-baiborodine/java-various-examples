@@ -22,24 +22,6 @@
         <local.server.stop-port>8099</local.server.stop-port>
     </properties>
 
-    <repositories>
-      <repository>
-        <id>codehaus-snapshots</id>
-        <name>Codehaus (snapshots)</name>
-        <releases>
-          <enabled>false</enabled>
-          <updatePolicy>always</updatePolicy>
-          <checksumPolicy>warn</checksumPolicy>
-        </releases>
-        <snapshots>
-          <enabled>false</enabled>
-          <updatePolicy>never</updatePolicy>
-          <checksumPolicy>fail</checksumPolicy>
-        </snapshots>
-        <url>https://nexus.codehaus.org/snapshots/</url>
-      </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
