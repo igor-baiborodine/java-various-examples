@@ -32,11 +32,11 @@
           <checksumPolicy>warn</checksumPolicy>
         </releases>
         <snapshots>
-          <enabled>true</enabled>
+          <enabled>false</enabled>
           <updatePolicy>never</updatePolicy>
           <checksumPolicy>fail</checksumPolicy>
         </snapshots>
-        <url>https://oss.sonatype.org/content/repositories/codehaus-snapshots/</url>
+        <url>https://nexus.codehaus.org/snapshots/</url>
       </repository>
     </repositories>
 
