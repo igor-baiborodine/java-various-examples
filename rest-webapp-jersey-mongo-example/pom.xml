@@ -22,6 +22,24 @@
         <local.server.stop-port>8099</local.server.stop-port>
     </properties>
 
+    <repositories>
+      <repository>
+        <id>codehaus-snapshots</id>
+        <name>Codehaus (snapshots)</name>
+        <releases>
+          <enabled>false</enabled>
+          <updatePolicy>always</updatePolicy>
+          <checksumPolicy>warn</checksumPolicy>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+          <updatePolicy>never</updatePolicy>
+          <checksumPolicy>fail</checksumPolicy>
+        </snapshots>
+        <url>https://oss.sonatype.org/content/repositories/codehaus-snapshots/</url>
+      </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
@@ -92,6 +110,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Jersey -->
@@ -255,6 +274,12 @@
             <artifactId>junit-servers-jetty</artifactId>
             <version>0.3.1</version>
             <scope>test</scope>
+            <exclusions>
+              <exclusion>
+                <groupId>sample.ProjectD</groupId> <!-- Exclude Project-D from Project-B -->
+                <artifactId>Project-D</artifactId>
+              </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
