@@ -10,10 +10,13 @@ env:
   - TEST_DIR=rest-webapp-jersey-example
   - TEST_DIR=jpetstore-6-jpa
   - TEST_DIR=jpetstore-6-spring-boot
-  - TEST_DIR=mybatis-xml-example
+  - TEST_DIR=mybatis-xml-example
   - TEST_DIR=mybatis-annotations-spring-example
   - TEST_DIR=rest-webapp-jersey-mongo-example
   - TEST_DIR=jpetstore-6-mongodb
+  
+before_install:
+  - sed -i.bak -e 's|https://nexus.codehaus.org/snapshots/|https://oss.sonatype.org/content/repositories/codehaus-snapshots/|g' ~/.m2/settings.xml  
 
 script: cd $TEST_DIR && mvn test
 
