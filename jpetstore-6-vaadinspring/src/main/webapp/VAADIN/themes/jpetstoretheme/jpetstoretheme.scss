@@ -1,0 +1,16 @@
+@import "../valo/valo.scss";
+
+@mixin jpetstoretheme {
+
+  @include valo;
+
+  .left-menu {
+    width: 250px;
+    position: relative;
+
+    .valo-menu-item,
+    .valo-menu-title {
+      text-align: left;
+    }
+  }
+}

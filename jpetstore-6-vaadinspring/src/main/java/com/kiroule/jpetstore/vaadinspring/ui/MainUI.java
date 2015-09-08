@@ -8,19 +8,32 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
+import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.UI;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Title("JPetStore 6 Demo Spring Vaadin")
-@Theme("valo")
+@Theme("jpetstoretheme")
 @SpringUI
 public class MainUI extends UI {
 
   private final static Logger logger = LoggerFactory.getLogger(MainUI.class);
 
+  @Autowired
+  private SpringViewProvider viewProvider;
+
   private EventBus eventBus;
+
+  public static MainUI getCurrent() {
+    return (MainUI) UI.getCurrent();
+  }
+
+  public static EventBus getEventBus() {
+    return getCurrent().eventBus;
+  }
 
   @Override
   protected void init(VaadinRequest request) {
@@ -31,7 +44,7 @@ public class MainUI extends UI {
 
   private void setupEventBus() {
     eventBus = new EventBus((throwable, subscriberExceptionContext) -> {
-      logger.error("Subscription event error: ", throwable);
+      logger.error("Subscriber event error: ", throwable);
     });
     eventBus.register(this);
   }
@@ -41,11 +54,7 @@ public class MainUI extends UI {
     getNavigator().navigateTo(view.getViewName());
   }
 
-  public static MainUI getCurrent() {
-    return (MainUI) UI.getCurrent();
-  }
-
-  public static EventBus getEventBus() {
-    return getCurrent().eventBus;
+  public SpringViewProvider getViewProvider() {
+    return viewProvider;
   }
 }
