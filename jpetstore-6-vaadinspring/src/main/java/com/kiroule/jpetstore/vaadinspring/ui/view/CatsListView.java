@@ -11,15 +11,15 @@ import com.vaadin.ui.Label;
 import javax.annotation.PostConstruct;
 
 @UIScope
-@SpringView(name = DogsListView.VIEW_NAME)
-@ViewConfig(displayName = "Dogs")
-public class DogsListView extends VerticalSpacedLayout implements View {
+@SpringView(name = CatsListView.VIEW_NAME)
+@ViewConfig(displayName = "Cats")
+public class CatsListView extends VerticalSpacedLayout implements View {
 
-  public static final String VIEW_NAME = "dogs";
+  public static final String VIEW_NAME = "cats";
 
   @PostConstruct
   void init() {
-    addComponent(new Label("Dogs view: not implemented"));
+    addComponent(new Label("Cats view: not implemented"));
   }
 
   @Override
