@@ -5,8 +5,7 @@
     </encoder>
   </appender>
 
-  <logger name="org.mybatis.jpetstore" level="DEBUG"/>
-  <logger name="net.sourceforge.stripes" level="TRACE"/>
+  <logger name="com.kiroule.jpetstore.vaadinspring" level="DEBUG"/>
 
   <root level="INFO">
     <appender-ref ref="FILE"/>
