@@ -22,9 +22,15 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>org.mybatis.jpetstore.JPetStoreDemo6SpringBootApplication</start-class>
+        <project.source.version>1.8</project.source.version>
+        <project.target.version>1.8</project.target.version>
+
+        <jetty-plugin.version>9.2.2.v20140723</jetty-plugin.version>
+        <local.server.port>8080</local.server.port>
+        <local.server.path>/</local.server.path>
+        <local.server.stop-port>8099</local.server.stop-port>
+
         <version.slf4j>1.7.5</version.slf4j>
-        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -120,8 +126,23 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${project.source.version}</source>
+                    <target>${project.target.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-plugin.version}</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>${local.server.path}</contextPath>
+                    </webApp>
+                    <httpConnector>
+                        <port>${local.server.port}</port>
+                    </httpConnector>
+                    <stopKey>rest-tests-jetty</stopKey>
+                    <stopPort>${local.server.stop-port}</stopPort>
                 </configuration>
             </plugin>
         </plugins>
