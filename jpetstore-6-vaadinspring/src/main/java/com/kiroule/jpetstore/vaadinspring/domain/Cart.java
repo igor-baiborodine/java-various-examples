@@ -80,12 +80,12 @@ public class Cart implements Serializable {
   }
 
   public void incrementQuantityByItemId(String itemId) {
-    CartItem cartItem = (CartItem) itemMap.get(itemId);
+    CartItem cartItem = itemMap.get(itemId);
     cartItem.incrementQuantity();
   }
 
   public void setQuantityByItemId(String itemId, int quantity) {
-    CartItem cartItem = (CartItem) itemMap.get(itemId);
+    CartItem cartItem = itemMap.get(itemId);
     cartItem.setQuantity(quantity);
   }
 
@@ -93,7 +93,7 @@ public class Cart implements Serializable {
     BigDecimal subTotal = new BigDecimal("0");
     Iterator<CartItem> items = getAllCartItems();
     while (items.hasNext()) {
-      CartItem cartItem = (CartItem) items.next();
+      CartItem cartItem = items.next();
       Item item = cartItem.getItem();
       BigDecimal listPrice = item.getListPrice();
       BigDecimal quantity = new BigDecimal(String.valueOf(cartItem.getQuantity()));
