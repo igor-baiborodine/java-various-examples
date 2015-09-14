@@ -26,7 +26,8 @@
       PRODUCTID,
       NAME,
       DESCN as description,
-      CATEGORY as categoryId
+      CATEGORY as categoryId,
+      IMAGE
     FROM PRODUCT
     WHERE PRODUCTID = #{productId}
   </select>
@@ -36,7 +37,8 @@
       PRODUCTID,
       NAME,
       DESCN as description,
-      CATEGORY as categoryId
+      CATEGORY as categoryId,
+      IMAGE
     FROM PRODUCT
     WHERE CATEGORY = #{value}
   </select>
@@ -46,7 +48,8 @@
       PRODUCTID,
       NAME,
       DESCN as description,
-      CATEGORY as categoryId
+      CATEGORY as categoryId,
+      IMAGE
     from PRODUCT
     WHERE lower(name) like #{value}
   </select>
