@@ -1,7 +1,5 @@
 package com.kiroule.example.mybatis;
 
-import com.kiroule.example.mybatis.config.TestApplicationConfig;
-
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;

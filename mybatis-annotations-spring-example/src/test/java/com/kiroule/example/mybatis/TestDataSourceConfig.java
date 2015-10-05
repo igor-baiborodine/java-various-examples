@@ -1,10 +1,12 @@
-package com.kiroule.example.mybatis.config;
+package com.kiroule.example.mybatis;
+
+import com.kiroule.example.mybatis.config.DataSourceConfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
@@ -15,8 +17,9 @@ import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.
 /**
  * @author Igor Baiborodine
  */
+@Configuration
 @Import(value = {
-    BaseDataSourceConfig.class,
+    DataSourceConfig.class,
 })
 public class TestDataSourceConfig {
 

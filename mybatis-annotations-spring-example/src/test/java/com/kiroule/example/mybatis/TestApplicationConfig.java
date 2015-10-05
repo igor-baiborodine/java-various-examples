@@ -1,4 +1,6 @@
-package com.kiroule.example.mybatis.config;
+package com.kiroule.example.mybatis;
+
+import com.kiroule.example.mybatis.config.ServiceConfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
