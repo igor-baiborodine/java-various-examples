@@ -6,8 +6,6 @@ import com.kiroule.jpetstore.vaadinspring.ui.theme.JPetStoreTheme;
 import com.kiroule.jpetstore.vaadinspring.ui.util.ViewConfig;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.ThemeResource;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 
 import org.vaadin.viritin.fields.MTable;
@@ -26,12 +24,8 @@ public abstract class ProductListView extends MVerticalLayout implements View {
   @PostConstruct
   public void init() {
     productList = new MTable<>(Product.class)
-        .withProperties("productId", "name", "description", "image")
-        .withColumnHeaders("ID", "Name", "Description", "Image")
-        .withGeneratedColumn("image", entity -> {
-          ThemeResource resource = new ThemeResource("../images/" + entity.getImage());
-          return new Image(null, resource);
-        })
+        .withProperties("productId", "name")
+        .withColumnHeaders("Product ID", "Name")
         .setSortableProperties("productId", "name")
         .withFullWidth();
     productList.setBeans(productRepository.getProductListByCategory(getViewConfig().productCategory()));
