@@ -10,6 +10,9 @@ import org.vaadin.viritin.layouts.MVerticalLayout;
 
 import javax.annotation.PostConstruct;
 
+/**
+ * @author Igor Baiborodine
+ */
 @SpringView(name = HomeView.VIEW_NAME)
 @ViewConfig(displayName = "Home")
 public class HomeView extends MVerticalLayout implements View {

@@ -21,6 +21,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * @author Igor Baiborodine
+ */
 @Title("JPetStore 6 Demo Spring Vaadin")
 @Theme("jpetstoretheme")
 @SpringUI

@@ -1,9 +1,14 @@
 package com.kiroule.jpetstore.vaadinspring.ui.util;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
 
+/**
+ * @author Igor Baiborodine
+ */
 public class PageTitleUpdater implements ViewChangeListener {
 
   @Override
@@ -18,7 +23,12 @@ public class PageTitleUpdater implements ViewChangeListener {
     ViewConfig viewConfig = view.getClass().getAnnotation(ViewConfig.class);
 
     if (viewConfig != null) {
-      Page.getCurrent().setTitle(viewConfig.displayName());
+      String title = viewConfig.displayName();
+
+      if (!isNullOrEmpty(event.getParameters())) {
+        title += "#" + event.getParameters();
+      }
+      Page.getCurrent().setTitle(title);
     }
   }
 }

@@ -5,12 +5,7 @@ import com.google.common.collect.Maps;
 import com.kiroule.jpetstore.vaadinspring.ui.event.UIEventBus;
 import com.kiroule.jpetstore.vaadinspring.ui.event.UINavigationEvent;
 import com.kiroule.jpetstore.vaadinspring.ui.theme.JPetStoreTheme;
-import com.kiroule.jpetstore.vaadinspring.ui.util.ViewConfig;
-import com.kiroule.jpetstore.vaadinspring.ui.view.BirdsListView;
-import com.kiroule.jpetstore.vaadinspring.ui.view.CatsListView;
-import com.kiroule.jpetstore.vaadinspring.ui.view.DogsListView;
-import com.kiroule.jpetstore.vaadinspring.ui.view.FishListView;
-import com.kiroule.jpetstore.vaadinspring.ui.view.ReptilesListView;
+import com.kiroule.jpetstore.vaadinspring.ui.view.ProductListView;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
@@ -35,25 +30,16 @@ public class LeftNavBar extends CssLayout implements ViewChangeListener {
     Label logo = new Label("<strong>JPetStore 6 Demo Vaadin</strong>", ContentMode.HTML);
     logo.addStyleName(JPetStoreTheme.MENU_TITLE);
     addComponent(logo);
-    addView(FishListView.VIEW_NAME, getDisplayName(FishListView.class));
-    addView(DogsListView.VIEW_NAME, getDisplayName(DogsListView.class));
-    addView(CatsListView.VIEW_NAME, getDisplayName(CatsListView.class));
-    addView(ReptilesListView.VIEW_NAME, getDisplayName(ReptilesListView.class));
-    addView(BirdsListView.VIEW_NAME, getDisplayName(BirdsListView.class));
+    addView("FISH", "Fish");
+    addView("DOGS", "Dogs");
+    addView("CATS", "Cats");
+    addView("REPTILES", "Reptiles");
+    addView("BIRDS", "Birds");
   }
 
-  private String getDisplayName(Class<?> listViewClass) {
+  public void addView(String categoryId, String displayName) {
 
-    ViewConfig viewConfig = listViewClass.getAnnotation(ViewConfig.class);
-
-    if (viewConfig != null) {
-      return viewConfig.displayName();
-    }
-    return "Not Available";
-  }
-
-  public void addView(String uri, String displayName) {
-
+    String uri = ProductListView.VIEW_NAME + "/" + categoryId;
     Button viewButton = new Button(displayName, click -> UIEventBus.post(new UINavigationEvent(uri)));
     uriToButtonMap.put(uri, viewButton);
 
@@ -71,10 +57,9 @@ public class LeftNavBar extends CssLayout implements ViewChangeListener {
   public void afterViewChange(ViewChangeEvent event) {
 
     uriToButtonMap.values().forEach(button -> button.removeStyleName(JPetStoreTheme.SELECTED));
-    Button button = uriToButtonMap.get(event.getViewName());
+    Button button = uriToButtonMap.get(event.getViewName() + "/" + event.getParameters());
     if (button != null) {
       button.addStyleName(JPetStoreTheme.SELECTED);
     }
   }
-
 }
