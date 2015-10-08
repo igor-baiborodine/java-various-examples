@@ -78,3 +78,6 @@ buildNumber.properties
 ### Vaadin ###
 styles.scss.cache
 
+### JRebel ###
+rebel.xml
+
