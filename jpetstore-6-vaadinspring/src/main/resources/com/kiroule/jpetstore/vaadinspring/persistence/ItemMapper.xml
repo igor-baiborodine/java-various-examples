@@ -58,7 +58,7 @@
       ATTR3 AS attribute3,
       ATTR4 AS attribute4,
       ATTR5 AS attribute5,
-      QTY AS quantity
+      V.QTY AS quantity
     from ITEM I, INVENTORY V, PRODUCT P
     where P.PRODUCTID = I.PRODUCTID
       and I.ITEMID = V.ITEMID

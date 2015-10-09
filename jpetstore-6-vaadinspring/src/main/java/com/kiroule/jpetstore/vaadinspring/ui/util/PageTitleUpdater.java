@@ -26,7 +26,7 @@ public class PageTitleUpdater implements ViewChangeListener {
       String title = viewConfig.displayName();
 
       if (!isNullOrEmpty(event.getParameters())) {
-        title += "#" + event.getParameters();
+        title += " | " + event.getParameters();
       }
       Page.getCurrent().setTitle(title);
     }

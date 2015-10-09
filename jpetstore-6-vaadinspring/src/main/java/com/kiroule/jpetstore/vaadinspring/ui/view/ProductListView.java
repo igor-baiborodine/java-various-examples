@@ -59,8 +59,8 @@ public class ProductListView extends MVerticalLayout implements View {
 
     addComponent(getHeader());
     addComponent(productList);
-    this.setSizeFull();
-    this.expand(productList);
+    setSizeFull();
+    expand(productList);
   }
 
   @Override

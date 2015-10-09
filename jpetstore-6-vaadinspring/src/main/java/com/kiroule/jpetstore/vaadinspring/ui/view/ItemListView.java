@@ -6,6 +6,7 @@ import com.kiroule.jpetstore.vaadinspring.domain.Item;
 import com.kiroule.jpetstore.vaadinspring.domain.Product;
 import com.kiroule.jpetstore.vaadinspring.persistence.ItemMapper;
 import com.kiroule.jpetstore.vaadinspring.persistence.ProductMapper;
+import com.kiroule.jpetstore.vaadinspring.ui.form.ItemForm;
 import com.kiroule.jpetstore.vaadinspring.ui.theme.JPetStoreTheme;
 import com.kiroule.jpetstore.vaadinspring.ui.util.ViewConfig;
 import com.vaadin.navigator.View;
@@ -15,6 +16,7 @@ import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
+import com.vaadin.ui.Window;
 
 import org.vaadin.viritin.fields.MTable;
 import org.vaadin.viritin.layouts.MVerticalLayout;
@@ -50,18 +52,19 @@ public class ItemListView extends MVerticalLayout implements View {
         .withColumnHeaders("Item ID", "Description", "List Price", "")
         .setSortableProperties("itemId", "product", "listPrice")
         .withGeneratedColumn("itemId", entity -> {
-          Button inventoryButton = new Button(entity.getItemId(),
-              click -> Notification.show("Item Form: not implemented", Notification.Type.WARNING_MESSAGE));
-          inventoryButton.setData(entity.getProductId());
-          inventoryButton.addStyleName("link");
-          return inventoryButton;
+          Button itemIdButton = new Button(entity.getItemId(), this::viewDetails);
+          itemIdButton.setData(entity);
+          itemIdButton.addStyleName("link");
+          return itemIdButton;
         })
         .withGeneratedColumn("product", entity -> entity.getAttribute1() + " " + product.getName())
         .withGeneratedColumn("attribute5", entity -> {
           //String uri = ShoppingCartView.VIEW_NAME + "/" + entity.getItemId;
           Button addToCartButton = new Button("Add to Cart",
+              // TODO: implement me
               //click -> UIEventBus.post(new UINavigationEvent(uri)));
-              click -> Notification.show("Shopping Cart View: not implemented", Notification.Type.WARNING_MESSAGE));
+              click -> Notification.show(format("Adding item %s to shopping cart", click.getButton().getData()),
+                  Notification.Type.HUMANIZED_MESSAGE));
           addToCartButton.setData(entity.getItemId());
           return addToCartButton;
         })
@@ -69,8 +72,8 @@ public class ItemListView extends MVerticalLayout implements View {
 
     addComponent(getHeader());
     addComponent(itemList);
-    this.setSizeFull();
-    this.expand(itemList);
+    setSizeFull();
+    expand(itemList);
   }
 
   @Override
@@ -85,5 +88,11 @@ public class ItemListView extends MVerticalLayout implements View {
     header.addStyleName(JPetStoreTheme.LABEL_H2);
     header.addStyleName(JPetStoreTheme.LABEL_BOLD);
     return header;
+  }
+
+  private void viewDetails(Button.ClickEvent click) {
+    ItemForm itemForm = new ItemForm((Item) click.getButton().getData());
+    Window popup = itemForm.openInModalPopup();
+    popup.setCaption("View Details");
   }
 }
