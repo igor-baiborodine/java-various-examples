@@ -1,50 +1,54 @@
 package com.kiroule.jpetstore.vaadinspring.ui.menu;
 
+import static com.kiroule.jpetstore.vaadinspring.ui.util.ViewConfigUtil.getDisplayName;
+
 import com.kiroule.jpetstore.vaadinspring.ui.MainUI;
 import com.kiroule.jpetstore.vaadinspring.ui.event.UIEventBus;
 import com.kiroule.jpetstore.vaadinspring.ui.event.UINavigationEvent;
 import com.kiroule.jpetstore.vaadinspring.ui.theme.JPetStoreTheme;
-import com.kiroule.jpetstore.vaadinspring.ui.view.ProductListView;
+import com.kiroule.jpetstore.vaadinspring.ui.view.CartView;
+import com.kiroule.jpetstore.vaadinspring.ui.view.HelpView;
+import com.kiroule.jpetstore.vaadinspring.ui.view.SearchView;
+import com.kiroule.jpetstore.vaadinspring.ui.view.SignInView;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.TextField;
 
 /**
  * @author Igor Baiborodine
  */
-public class LeftNavBar extends CssLayout implements ViewChangeListener {
+public class TopNavBar extends CssLayout implements ViewChangeListener {
 
-  public LeftNavBar() {
+  public TopNavBar() {
 
-    setHeight("100%");
+    setSizeFull();
     addStyleName(JPetStoreTheme.MENU_ROOT);
-    addStyleName(JPetStoreTheme.LEFT_MENU);
+    addStyleName(JPetStoreTheme.TOP_MENU);
 
-    Label logo = new Label("<strong>JPetStore 6 Demo Vaadin</strong>", ContentMode.HTML);
-    logo.addStyleName(JPetStoreTheme.MENU_TITLE);
-    addComponent(logo);
-    addButton("FISH", "Fish");
-    addButton("DOGS", "Dogs");
-    addButton("CATS", "Cats");
-    addButton("REPTILES", "Reptiles");
-    addButton("BIRDS", "Birds");
+    TextField searchTextField = new TextField();
+    addComponent(searchTextField);
+
+    addButton(SearchView.VIEW_NAME, getDisplayName(SearchView.class));
+    addButton(SignInView.VIEW_NAME, getDisplayName(SignInView.class));
+    addButton(CartView.VIEW_NAME, getDisplayName(CartView.class));
+    addButton(HelpView.VIEW_NAME, getDisplayName(HelpView.class));
   }
 
-  public void addButton(String categoryId, String displayName) {
+  private Button addButton(String viewName, String displayName) {
 
-    String uri = ProductListView.VIEW_NAME + "/" + categoryId;
+    String uri = viewName;
     Button viewButton = new Button(displayName, click -> UIEventBus.post(new UINavigationEvent(uri)));
     MainUI.getUriToButtonMap().put(uri, viewButton);
 
     viewButton.addStyleName(JPetStoreTheme.MENU_ITEM);
     viewButton.addStyleName(JPetStoreTheme.BUTTON_BORDERLESS);
     addComponent(viewButton);
+    return viewButton;
   }
 
   @Override
-  public boolean beforeViewChange(ViewChangeEvent event) {
+  public boolean beforeViewChange(ViewChangeEvent viewChangeEvent) {
     return true; // false blocks navigation, always return true here
   }
 
@@ -52,7 +56,7 @@ public class LeftNavBar extends CssLayout implements ViewChangeListener {
   public void afterViewChange(ViewChangeEvent event) {
 
     MainUI.getUriToButtonMap().values().forEach(button -> button.removeStyleName(JPetStoreTheme.SELECTED));
-    Button button = MainUI.getUriToButtonMap().get(event.getViewName() + "/" + event.getParameters());
+    Button button = MainUI.getUriToButtonMap().get(event.getViewName());
     if (button != null) {
       button.addStyleName(JPetStoreTheme.SELECTED);
     }

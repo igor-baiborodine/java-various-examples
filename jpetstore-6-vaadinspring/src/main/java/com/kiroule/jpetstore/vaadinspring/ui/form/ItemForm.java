@@ -51,7 +51,7 @@ public class ItemForm extends AbstractForm<Item> {
     addToCart = new Button("Add to Cart",
         // TODO: implement me
         //click -> UIEventBus.post(new UINavigationEvent(uri)));
-        click -> Notification.show(format("Adding item %s to shopping cart", click.getButton().getData()),
+        click -> Notification.show(format("Adding %s item to shopping cart", click.getButton().getData()),
             Notification.Type.HUMANIZED_MESSAGE));
     addToCart.setData(item.getItemId());
   }

@@ -176,8 +176,7 @@
               <classpathScope>compile</classpathScope>
               <mainClass>com.vaadin.sass.SassCompiler</mainClass>
               <arguments>
-                <argument>src/main/resources/VAADIN/themes/jpetstoretheme/styles.scss</argument>
-                <argument>src/main/resources/VAADIN/themes/jpetstoretheme/styles.css</argument>
+                <argument>src/main/webapp/VAADIN/themes/jpetstoretheme/styles.scss</argument>
               </arguments>
             </configuration>
           </execution>

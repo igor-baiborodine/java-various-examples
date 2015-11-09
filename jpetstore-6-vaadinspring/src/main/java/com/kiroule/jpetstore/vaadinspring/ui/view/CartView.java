@@ -13,15 +13,15 @@ import javax.annotation.PostConstruct;
 /**
  * @author Igor Baiborodine
  */
-@SpringView(name = HomeView.VIEW_NAME)
-@ViewConfig(displayName = "Home")
-public class HomeView extends MVerticalLayout implements View {
+@SpringView(name = CartView.VIEW_NAME)
+@ViewConfig(displayName = "Cart")
+public class CartView extends MVerticalLayout implements View {
 
-  public static final String VIEW_NAME = "";
+  public static final String VIEW_NAME = "cart";
 
   @PostConstruct
   void init() {
-    addComponent(new Label("Home: not implemented"));
+    addComponent(new Label("Cart: not implemented"));
   }
 
   @Override

@@ -7,7 +7,7 @@ import com.vaadin.ui.themes.ValoTheme;
  */
 public class JPetStoreTheme extends ValoTheme {
 
-  public static final String MAIN_LAYOUT = "main-layout";
+  public static final String TOP_MENU = "top-menu";
   public static final String LEFT_MENU = "left-menu";
   public static final String SELECTED = "selected";
 }
