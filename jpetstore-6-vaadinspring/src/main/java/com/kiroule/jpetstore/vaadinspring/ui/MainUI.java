@@ -7,7 +7,6 @@ import com.google.common.eventbus.Subscribe;
 import com.kiroule.jpetstore.vaadinspring.ui.event.UINavigationEvent;
 import com.kiroule.jpetstore.vaadinspring.ui.menu.LeftNavBar;
 import com.kiroule.jpetstore.vaadinspring.ui.menu.TopNavBar;
-import com.kiroule.jpetstore.vaadinspring.ui.theme.JPetStoreTheme;
 import com.kiroule.jpetstore.vaadinspring.ui.util.PageTitleUpdater;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -17,7 +16,6 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -71,24 +69,25 @@ public class MainUI extends UI {
 
   private void initMainContent() {
 
-    HorizontalLayout mainContent = new HorizontalLayout();
-    mainContent.setSizeFull();
-    setContent(mainContent);
+    HorizontalLayout contentLayout = new HorizontalLayout();
+    contentLayout.setSizeFull();
+    setContent(contentLayout);
 
     LeftNavBar leftNavBar = new LeftNavBar();
-    mainContent.addComponent(leftNavBar);
+    contentLayout.addComponent(leftNavBar);
 
-    VerticalLayout mainViewLayout = new VerticalLayout();
+    VerticalLayout viewLayout = new VerticalLayout();
+    viewLayout.setSizeFull();
+    contentLayout.addComponent(viewLayout);
+    contentLayout.setExpandRatio(viewLayout, 1.0f);
+
     TopNavBar topNavBar = new TopNavBar();
-    mainViewLayout.addComponent(topNavBar);
+    viewLayout.addComponent(topNavBar);
 
-    Panel viewContainer = new Panel();
+    VerticalLayout viewContainer = new VerticalLayout();
     viewContainer.setSizeFull();
-    viewContainer.addStyleName(JPetStoreTheme.PANEL_BORDERLESS);
-    mainViewLayout.addComponent(viewContainer);
-
-    mainContent.addComponent(mainViewLayout);
-    mainContent.setExpandRatio(mainViewLayout, 1.0f);
+    viewLayout.addComponent(viewContainer);
+    viewLayout.setExpandRatio(viewContainer, 1.0f);
 
     Navigator navigator = new Navigator(this, viewContainer);
     navigator.addProvider(viewProvider);

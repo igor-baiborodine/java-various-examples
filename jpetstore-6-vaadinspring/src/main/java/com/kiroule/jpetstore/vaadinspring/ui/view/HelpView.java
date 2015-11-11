@@ -1,12 +1,9 @@
 package com.kiroule.jpetstore.vaadinspring.ui.view;
 
 import com.kiroule.jpetstore.vaadinspring.ui.util.ViewConfig;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.Label;
-
-import org.vaadin.viritin.layouts.MVerticalLayout;
+import com.vaadin.ui.CustomLayout;
+import com.vaadin.ui.Panel;
 
 import javax.annotation.PostConstruct;
 
@@ -15,17 +12,15 @@ import javax.annotation.PostConstruct;
  */
 @SpringView(name = HelpView.VIEW_NAME)
 @ViewConfig(displayName = "Help")
-public class HelpView extends MVerticalLayout implements View {
+public class HelpView extends AbstractView {
 
   public static final String VIEW_NAME = "help";
 
   @PostConstruct
   void init() {
-    addComponent(new Label("Help: not implemented"));
-  }
-
-  @Override
-  public void enter(ViewChangeListener.ViewChangeEvent event) {
-    // This view is constructed in the init() method()
-  }
+    Panel contentPanel = new Panel(new CustomLayout("help-content-layout"));
+    addComponents(getTitle(), contentPanel);
+    setSizeFull();
+    expand(contentPanel);
+ }
 }

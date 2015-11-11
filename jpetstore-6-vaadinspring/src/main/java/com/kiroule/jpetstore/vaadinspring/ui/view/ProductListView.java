@@ -6,17 +6,13 @@ import com.kiroule.jpetstore.vaadinspring.persistence.CategoryMapper;
 import com.kiroule.jpetstore.vaadinspring.persistence.ProductMapper;
 import com.kiroule.jpetstore.vaadinspring.ui.event.UIEventBus;
 import com.kiroule.jpetstore.vaadinspring.ui.event.UINavigationEvent;
-import com.kiroule.jpetstore.vaadinspring.ui.theme.JPetStoreTheme;
 import com.kiroule.jpetstore.vaadinspring.ui.util.ViewConfig;
-import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
 
 import org.vaadin.viritin.fields.MTable;
-import org.vaadin.viritin.layouts.MVerticalLayout;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -27,7 +23,7 @@ import javax.annotation.Resource;
 @UIScope
 @SpringView(name = ProductListView.VIEW_NAME)
 @ViewConfig(displayName = "Product")
-public class ProductListView extends MVerticalLayout implements View {
+public class ProductListView extends AbstractView {
 
   public static final String VIEW_NAME = "product-list";
 
@@ -38,7 +34,6 @@ public class ProductListView extends MVerticalLayout implements View {
   private CategoryMapper categoryRepository;
 
   private MTable<Product> productList;
-  private Label header;
 
   @PostConstruct
   public void init() {
@@ -57,7 +52,7 @@ public class ProductListView extends MVerticalLayout implements View {
         })
         .withFullWidth();
 
-    addComponent(getHeader());
+    addComponent(getTitle());
     addComponent(productList);
     setSizeFull();
     expand(productList);
@@ -66,14 +61,7 @@ public class ProductListView extends MVerticalLayout implements View {
   @Override
   public void enter(ViewChangeListener.ViewChangeEvent event) {
     Category category = categoryRepository.getCategory(event.getParameters());
-    header.setValue(category.getName());
+    title.setValue(category.getName());
     productList.setBeans(productRepository.getProductListByCategory(category.getCategoryId()));
-  }
-
-  private Label getHeader() {
-    header = new Label("Category Name Header");
-    header.addStyleName(JPetStoreTheme.LABEL_H2);
-    header.addStyleName(JPetStoreTheme.LABEL_BOLD);
-    return header;
   }
 }

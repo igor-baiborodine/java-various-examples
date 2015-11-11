@@ -4,6 +4,19 @@
 
   @include valo;
 
+  .v-margin-left {
+    padding-left: 20px;
+  }
+  .v-margin-bottom {
+    padding-bottom: 20px;
+  }
+  .v-margin-right {
+    padding-right: 20px;
+  }
+  .v-margin-top {
+    padding-top: 20px;
+  }
+
   .left-menu {
     width: 250px;
     position: relative;

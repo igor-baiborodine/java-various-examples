@@ -22,7 +22,8 @@ public class TopNavBar extends CssLayout implements ViewChangeListener {
 
   public TopNavBar() {
 
-    setSizeFull();
+    setWidth(100f, Unit.PERCENTAGE);
+    setHeight(44f, Unit.PIXELS);
     addStyleName(JPetStoreTheme.MENU_ROOT);
     addStyleName(JPetStoreTheme.TOP_MENU);
 
