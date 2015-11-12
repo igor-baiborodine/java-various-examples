@@ -10,9 +10,13 @@ import com.kiroule.jpetstore.vaadinspring.ui.view.CartView;
 import com.kiroule.jpetstore.vaadinspring.ui.view.HelpView;
 import com.kiroule.jpetstore.vaadinspring.ui.view.SearchView;
 import com.kiroule.jpetstore.vaadinspring.ui.view.SignInView;
+import com.vaadin.event.ShortcutAction;
+import com.vaadin.event.ShortcutListener;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 
 /**
@@ -27,19 +31,44 @@ public class TopNavBar extends CssLayout implements ViewChangeListener {
     addStyleName(JPetStoreTheme.MENU_ROOT);
     addStyleName(JPetStoreTheme.TOP_MENU);
 
-    TextField searchTextField = new TextField();
+    final TextField searchTextField = new TextField();
+    searchTextField.setImmediate(true);
+    searchTextField.addShortcutListener(new ShortcutListener("enter-shortcut", ShortcutAction.KeyCode.ENTER, null) {
+      @Override
+      public void handleAction(Object sender, Object target) {
+        searchProducts(((TextField) target).getValue());
+      }
+    });
     addComponent(searchTextField);
 
-    addButton(SearchView.VIEW_NAME, getDisplayName(SearchView.class));
+    addButton(null, getDisplayName(SearchView.class), event -> searchProducts(searchTextField.getValue()));
     addButton(SignInView.VIEW_NAME, getDisplayName(SignInView.class));
     addButton(CartView.VIEW_NAME, getDisplayName(CartView.class));
     addButton(HelpView.VIEW_NAME, getDisplayName(HelpView.class));
   }
 
+  private void searchProducts(String keyword) {
+
+    if (keyword.trim().length() < 3) {
+      new Notification("Keyword length must be greater than 2", null, Notification.Type.WARNING_MESSAGE)
+          .show(Page.getCurrent());
+    } else {
+      String uri = SearchView.VIEW_NAME + "/" + keyword.trim().toLowerCase().replaceAll("%", "");
+      UIEventBus.post(new UINavigationEvent(uri));
+    }
+  }
+
   private Button addButton(String viewName, String displayName) {
+    return addButton(viewName, displayName, null);
+  }
+
+  private Button addButton(String viewName, String displayName, Button.ClickListener clickListener) {
 
     String uri = viewName;
-    Button viewButton = new Button(displayName, click -> UIEventBus.post(new UINavigationEvent(uri)));
+    if (clickListener == null) {
+      clickListener = event -> UIEventBus.post(new UINavigationEvent(uri));
+    }
+    Button viewButton = new Button(displayName, clickListener);
     MainUI.getUriToButtonMap().put(uri, viewButton);
 
     viewButton.addStyleName(JPetStoreTheme.MENU_ITEM);

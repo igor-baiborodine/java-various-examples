@@ -18,6 +18,9 @@ public class PageTitleUpdater implements ViewChangeListener {
   @Override
   public void afterViewChange(ViewChangeEvent event) {
     String title = ViewConfigUtil.getDisplayName(event.getNewView().getClass());
+    if (title.isEmpty()) {
+      title = "Home";
+    }
     if (!isNullOrEmpty(event.getParameters())) {
       title += " | " + event.getParameters();
     }
