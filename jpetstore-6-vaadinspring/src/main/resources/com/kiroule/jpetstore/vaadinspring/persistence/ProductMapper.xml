@@ -42,13 +42,14 @@
   </select>
 
   <select id="searchProductList" resultType="Product">
-    select
+    <bind name="likeValue" value="'%' + _parameter + '%'" />
+    SELECT
       PRODUCTID,
       NAME,
       DESCN as description,
       CATEGORY as categoryId
-    from PRODUCT
-    WHERE lower(name) like #{value}
+    FROM PRODUCT
+    WHERE LOWER(NAME) LIKE #{likeValue}
   </select>
 
 </mapper>
