@@ -4,7 +4,7 @@ java-various-examples
 [Development Standards](https://github.com/igor-baiborodine/java-various-examples/blob/master/development-standards.md)
 
 #####Build Status (applicable only to projects prefixed with \[CI\])
-Travis : [![Build
+Travis CI: [![Build
 Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=master)](https://travis-ci.org/igor-baiborodine/java-various-examples)
 
 #####This project contains the following examples of using Java and Java-based technologies:
