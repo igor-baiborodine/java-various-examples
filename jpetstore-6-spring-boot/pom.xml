@@ -141,7 +141,7 @@
                     <httpConnector>
                         <port>${local.server.port}</port>
                     </httpConnector>
-                    <stopKey>rest-tests-jetty</stopKey>
+                    <stopKey>stop-jetty</stopKey>
                     <stopPort>${local.server.stop-port}</stopPort>
                 </configuration>
             </plugin>
