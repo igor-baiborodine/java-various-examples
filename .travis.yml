@@ -10,7 +10,6 @@ env:
   - TEST_DIR=jpetstore-6-jpa
   - TEST_DIR=jpetstore-6-mongodb
   - TEST_DIR=jpetstore-6-spring-boot
-  - TEST_DIR=jpetstore-6-vaadinspring
   - TEST_DIR=rest-webapp-jersey-example
   - TEST_DIR=rest-webapp-jersey-mongo-example
   - TEST_DIR=rest-webapp-spring-mvc-example
