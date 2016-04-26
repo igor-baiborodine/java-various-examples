@@ -1,10 +1,9 @@
 java-various-examples
 =====================
-
-[Development Standards](https://github.com/igor-baiborodine/java-various-examples/blob/master/development-standards.md)
-
 [![Build
 Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=master)](https://travis-ci.org/igor-baiborodine/java-various-examples) (applicable only to projects prefixed with \[CI\])
+
+[Development Standards](https://github.com/igor-baiborodine/java-various-examples/blob/master/development-standards.md)
 
 #####This project contains the following examples of using Java and Java-based technologies:
 * [Exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using Spring Data MongoDB](https://github.com/igor-baiborodine/jpetstore-6-spring-data-mongodb)
