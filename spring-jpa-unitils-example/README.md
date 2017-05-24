@@ -1,9 +1,9 @@
 spring-jpa-unitils-example
 -------------------------
 
-#####This project is an example of using Spring, JPA 2 with Hibernate, Unitils, and H2.#####
+This project is an example of using Spring, JPA 2 with Hibernate, Unitils, and H2.
 
-######Technologies and software used:######
+#### Technologies and software used:
 * [Java SE 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Spring](http://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/)
 * [JPA](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
