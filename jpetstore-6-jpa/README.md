@@ -1,9 +1,9 @@
 jpetstore-6-jpa
 ---------------
 
-#####This project is an exercise to migrate the original JPetStore-6 from MyBatis 3 to JPA 2/Hibernate.#####
+#### This project is an exercise to migrate the original JPetStore-6 from MyBatis 3 to JPA 2/Hibernate.
 
-######Technologies and software used:######
+##### Technologies and software used:
 * [Java SE 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Spring](http://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/)
 * [JPA](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
