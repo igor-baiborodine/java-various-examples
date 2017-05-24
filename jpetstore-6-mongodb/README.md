@@ -1,9 +1,9 @@
 jpetstore-6-mongodb
 ---------------------------
 
-#####This project is an exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using MongoDB Java driver.#####
+#### This project is an exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using MongoDB Java driver.
 
-######Technologies and software used:######
+##### Technologies and software used:
 * [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [MongoDB](http://www.mongodb.org/)
 * [MongoDB Java Driver](http://docs.mongodb.org/ecosystem/drivers/java/)
