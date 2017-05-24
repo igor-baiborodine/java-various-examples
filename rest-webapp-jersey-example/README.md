@@ -1,9 +1,9 @@
 rest-webapp-jersey-example
 ---------------------------
 
-#####This is an example of using Spring IoC and JAX-RS/Jersey.#####
+This is an example of using Spring IoC and JAX-RS/Jersey.
 
-######Technologies and software used:######
+#### Technologies and software used:
 * Java
 * Spring
 * JAX-RS/Jersey
@@ -13,7 +13,7 @@ rest-webapp-jersey-example
 * Guava
 * IntelliJ IDEA 
 
-######Resources: ######
+#### Resources: 
 * http://docs.oracle.com/javaee/6/tutorial/doc/giepu.html
 * http://jcp.org/aboutJava/communityprocess/final/jsr311/index.html
 * http://www.oracle.com/technetwork/articles/java/jersey-jquery-177519.html
