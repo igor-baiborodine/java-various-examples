@@ -1,9 +1,9 @@
 spring-jpa-hsqldb-example
 -------------------------
 
-#####This is an example of using Spring, JPA 2 with Hibernate, and HSQLDB.#####
+This is an example of using Spring, JPA 2 with Hibernate, and HSQLDB.
 
-######Software and technologies used:######
+#### oftware and technologies used:
 * [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
 * [Spring 4](http://projects.spring.io/spring-framework/#quick-start)
 * [JPA 2](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
@@ -13,4 +13,3 @@ spring-jpa-hsqldb-example
 * [JUnit 4](http://junit.org/)
 * [Google Guava](https://github.com/google/guava)
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
-
