@@ -1,9 +1,9 @@
 jpetstore-6-simplejpa
 ---------------------
 
-#####This project is an exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/SimpleDB using JPA/SimpleJPA.#####
+#### This project is an exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/SimpleDB using JPA/SimpleJPA.
 
-######BEWARE that SimpleJPA does not support:######
+##### BEWARE that SimpleJPA does not support:
 * Creation of DELETE and UPDATE queries from EntityManager, e.g.,
 ```java
 Query query = em.createQuery("delete from Category");
@@ -13,7 +13,7 @@ Query query = em.createQuery("delete from Category");
 Query query = em.createNamedQuery("Category.getCategoryList");
 ```
 
-######Technologies and software used:######
+##### Technologies and software used:
 * [Java SE 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Spring](http://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/)
 * [JPA](http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html)
