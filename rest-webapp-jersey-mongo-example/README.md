@@ -1,10 +1,12 @@
 rest-webapp-jersey-mongo-example
 ---------------------------
 
-#####This is an example of using Spring IoC, JAX-RS/Jersey, and MongoDB.#####
-UPDATE 2015-09-04: upgrade to Jersey 2, integration tests with REST Assured framework, switch to Java 8's Optional
+This is an example of using Spring IoC, JAX-RS/Jersey, and MongoDB.
 
-######Technologies and software used:######
+> UPDATES
+* 2015-09-04 Upgrade to Jersey 2; add integration tests with REST Assured framework; Switch to Java 8's Optional
+
+#### Technologies and software used:
 * [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [MongoDB](http://www.mongodb.org/)
 * [Spring 4](http://projects.spring.io/spring-framework/)
