@@ -9,7 +9,7 @@
 - Assertions: [Hamcrest library](https://code.google.com/p/hamcrest/wiki/Tutorial) 
 
 ```
-@Test
+ @Test
  public void sum_simpleValues_calculated() {
      
    // given  
