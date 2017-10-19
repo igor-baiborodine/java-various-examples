@@ -1,6 +1,6 @@
 #### Code style
 - [Google Java Style](http://google.github.io/styleguide/javaguide.html)
-- [intellij-java-google-style.xml](https://github.com/igor-baiborodine/java-various-examples/blob/master/intellij-java-google-style.xml)
+- [intellij-java-google-style.xml](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
  
 #### Tests
 - Class naming: unit tests - {ClassUnderTest}UnitTest, persistence tests - {ClassUnderTest}PersistenceTest, integration tests - {ClassUnderTest}IntegrationTest
