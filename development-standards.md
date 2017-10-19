@@ -1,5 +1,5 @@
 #### Code style
-- [Google Java Style](https://google-styleguide.googlecode.com/svn/trunk/javaguide.html)
+- [Google Java Style](http://google.github.io/styleguide/javaguide.html)
 - [intellij-java-google-style.xml](https://github.com/igor-baiborodine/java-various-examples/blob/master/intellij-java-google-style.xml)
  
 #### Tests
