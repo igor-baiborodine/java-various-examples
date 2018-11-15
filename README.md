@@ -6,6 +6,7 @@ Status](https://travis-ci.org/igor-baiborodine/java-various-examples.svg?branch=
 [Development Standards](https://github.com/igor-baiborodine/java-various-examples/blob/master/development-standards.md)
 
 #### This project contains the following examples of using Java and Java-based technologies:
+* [Spring Boot 2 REST API sample application](https://github.com/igor-baiborodine/campsite-booking)
 * [Various Java programming exercises, problems, algorithms, puzzles etc.](https://github.com/igor-baiborodine/java-coding-skills)
 * [Exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using Spring Data MongoDB](https://github.com/igor-baiborodine/jpetstore-6-spring-data-mongodb)
 * [Exercise to port the original JPetStore-6 to Vaadin and Spring Boot with JavaConfig](https://github.com/igor-baiborodine/jpetstore-6-vaadin-spring-boot)
